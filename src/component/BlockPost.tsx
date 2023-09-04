@@ -1,3 +1,4 @@
+import { BlockBlog } from "./BlockBlog"
 
 export const BlockPost = () => {
 
@@ -40,35 +41,56 @@ export const BlockPost = () => {
                                     <picture className="block_post_picture">
                                         <img src="/img/game.jpg" alt="picture" className="block_post_img" />
                                     </picture>
+                                    <span style={{ display: "flex" }}>Today</span>
+                                    <span>loremf,efoeffefe</span>
+                                </a>
+                            </li>                            <li className="block_post_li">
+                                <a href="/" className="block_post_a">
+                                    <picture className="block_post_picture">
+                                        <img src="/img/game.jpg" alt="picture" className="block_post_img" />
+                                    </picture>
+                                    <span style={{ display: "flex" }}>Today</span>
+                                    <span>loremf,efoeffefe2222</span>
+                                </a>
+                            </li>                            <li className="block_post_li">
+                                <a href="/" className="block_post_a">
+                                    <picture className="block_post_picture">
+                                        <img src="/img/game.jpg" alt="picture" className="block_post_img" />
+                                    </picture>
+                                    <span style={{ display: "flex" }}>Today</span>
+                                    <span>loremf,efoeffefe</span>
+                                </a>
+                            </li>                            <li className="block_post_li">
+                                <a href="/" className="block_post_a">
+                                    <picture className="block_post_picture">
+                                        <img src="/img/game.jpg" alt="picture" className="block_post_img" />
+                                    </picture>
+                                    <span style={{ display: "flex" }}>Today</span>
+                                    <span>loremf,efoeffefe</span>
+                                </a>
+                            </li>                            <li className="block_post_li">
+                                <a href="/" className="block_post_a">
+                                    <picture className="block_post_picture">
+                                        <img src="/img/game.jpg" alt="picture" className="block_post_img" />
+                                    </picture>
+                                    <span style={{ display: "flex" }}>Today</span>
+                                    <span>loremf,efoeffefe</span>
+                                </a>
+                            </li>                            <li className="block_post_li">
+                                <a href="/" className="block_post_a">
+                                    <picture className="block_post_picture">
+                                        <img src="/img/game.jpg" alt="picture" className="block_post_img" />
+                                    </picture>
+                                    <span style={{ display: "flex" }}>Today</span>
+                                    <span>loremf,efoeffefe</span>
                                 </a>
                             </li>
-                            <li className="block_post_li">
-                                <picture className="block_post_picture">
-                                    <img src="/img/game.jpg" alt="picture" className="block_post_img" />
-                                </picture>
-                            </li>
-                            <li className="block_post_li">
-                                <picture className="block_post_picture">
-                                    <img src="/img/game.jpg" alt="picture" className="block_post_img" />
-                                </picture>
-                            </li>
-                            <li className="block_post_li">
-                                <picture className="block_post_picture">
-                                    <img src="/img/game.jpg" alt="picture" className="block_post_img" />
-                                </picture>
-                            </li>
-                            <li className="block_post_li">
-                                <picture className="block_post_picture">
-                                    <img src="/img/game.jpg" alt="picture" className="block_post_img" />
-                                </picture>
-                            </li>
-                            <li className="block_post_li">
-                                <picture className="block_post_picture">
-                                    <img src="/img/game.jpg" alt="picture" className="block_post_img" />
-                                </picture>
-                            </li>
                         </ul>
+                        <button style={{ cursor: "crosshair" }}>Глянути Більше</button>
                     </div>
+                    <>
+                        <BlockBlog />
+                    </>
                 </div>
 
             </div>
