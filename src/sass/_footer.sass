@@ -1,0 +1,40 @@
+.block_footer-wrapper
+    background: #000
+    cursor: pointer
+    position: relative
+.block_footer_box
+    display: grid
+    grid-template-columns: 1fr 400px
+    padding: 30px
+.block_footer_left_tags_box
+    display: flex
+    flex-wrap: wrap
+.block_footer_left_tag_a
+    text-decoration: none
+    color: #fff
+    &:not(:last-child)::after
+        color: #fff
+        content: "\22c5"
+        margin-left: 8px
+        margin-right: 8px
+    &:hover
+        color: #fff
+
+.block_footer_left_new_a
+    text-decoration: none
+    color: #fff
+    display: flex
+    justify-content: left
+    margin-bottom: 20px
+.block_footer_right_tags_box
+    display: flex
+.block_footer_rigth_tag_a
+    text-decoration: none
+    color: #fff
+    &:not(:last-child)::after
+        color: #fff
+        content: "\22c5"
+        margin-left: 8px
+        margin-right: 8px
+    &:hover
+        color: #fff

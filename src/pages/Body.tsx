@@ -3,6 +3,7 @@ import { Footer } from "../component/Footer"
 import { Rewies } from "../component/Rewies"
 
 
+
 export const Body = () => {
 
 

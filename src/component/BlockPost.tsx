@@ -1,4 +1,7 @@
 import { BlockBlog } from "./BlockBlog"
+import { BlockHelpDiscus } from "./BlockHelpDiscus"
+import { BlockHotDiscus } from "./BlockHotDiscus"
+import { BlockHotPost } from "./slide/BlockHotPost"
 
 export const BlockPost = () => {
 
@@ -86,10 +89,21 @@ export const BlockPost = () => {
                                 </a>
                             </li>
                         </ul>
-                        <button style={{ cursor: "crosshair" }}>Глянути Більше</button>
+                        <button className="block_pos_btn">Глянути Більше</button>
                     </div>
                     <>
                         <BlockBlog />
+                        <BlockHotPost />
+                        <BlockBlog />
+                        <BlockHotDiscus />
+                        <BlockBlog />
+                        <BlockHotPost />
+                        <BlockBlog />
+                        <BlockHotDiscus />
+                        <BlockBlog />
+                        <BlockHotPost />
+                        <BlockBlog />
+                        <BlockHelpDiscus />
                     </>
                 </div>
 
