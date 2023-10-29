@@ -1,13 +1,16 @@
-import { FC, Dispatch, SetStateAction, useState } from "react"
+import { FC , useState } from "react"
+import { FontSelector } from "./FontSelector"
 
 type TextEditor = {
     description : string,
-    setDescription: Dispatch<SetStateAction<string>>
+    setDescription: (des :string) => void
 } 
 
 export const  TextEditor : FC<TextEditor> = ({description, setDescription})=> {
 
     const [activeTab, setActiveTab] = useState("redactor")
+    const [fontFamily, setFontFamily] = useState('');
+
 
     const handleChangeTab = (tabName:string)=> {
         setActiveTab(tabName)
@@ -32,11 +35,18 @@ export const  TextEditor : FC<TextEditor> = ({description, setDescription})=> {
             }
             {
                 activeTab === `redactor` && (
+                   
+                   <div>
+                    <div>
+                        <FontSelector fontFamily={fontFamily} setFontFamily={setFontFamily}/>
+                    </div>
                     <textarea
                     value={description}
-                    onChange={(e)=> setDescription(e.target.value)}    
+                    onChange={(e)=> setDescription(e.target.value)}   
+                    className={fontFamily.toLowerCase().replace(/\s+/g, '-')}
                     placeholder="Можете писати ..."
                     />
+                   </div>
                 )
             }
             </div>
