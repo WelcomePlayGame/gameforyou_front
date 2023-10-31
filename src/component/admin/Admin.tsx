@@ -1,7 +1,9 @@
 
 import {Routes, Route} from 'react-router-dom'
+import { AddArticle} from './form/AddArticle'
+import { Article } from './article/Article'
+import { Category } from './Category/Category'
 import { AddCategory } from './form/AddCategory'
-import { Category } from './category/Category'
 
 export const Admin = ()=> {
 
@@ -12,7 +14,9 @@ export const Admin = ()=> {
         <>
         <Routes>
         <Route path='/addcategory' element={<AddCategory/>}/>
-        <Route path='/listcategory' element={<Category/>}/>
+        <Route path='/listarticle' element={<Article/>}/>
+        <Route path='/addarticle' element={<AddArticle/>}/>
+        <Route path='/listcategory' element={<Category/>} />
         </Routes>
         </>
     )

@@ -1,34 +1,49 @@
-import {useState} from 'react'
-import {Helmet} from 'react-helmet'
-import { TextEditor } from '../../text_editor/TextEditor'
-export const AddCategory = ()=> {
+import { useState } from "react";
+import {addCategory, ResponseDataCategory} from '../../../helper/MethodPost';
+import {BASE_URL, CATEGORY, ADD} from '../../../helper/conf';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+export const AddCategory = () => {
+    const [title , setTitle] = useState('');
+    const category: ResponseDataCategory = {
+        title: title
+    };
 
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
+    const handleSubmit = async (event : React.FormEvent) => {
+        event.preventDefault();
+        try{
+            await addCategory(BASE_URL+CATEGORY+ADD, category);
+
+            toast.success("Категорія створена");
+            setTitle('')
+        } catch (error) {
+            setTitle('')
+            toast.error(`Така назва ${title} для категорії вже існує`)
+        }
+    }
+
     return (
-     <section className='addcategory'>
-        <Helmet>
-            <title>Додати категорію</title>
-            <meta name='Сторнінка для додавання категорії' />
-        </Helmet>
-        <form>
-        <div className="addCategory_box">
-        <div className="addCategory_box_secton"></div>
-        <div className="addCategory_box_secton">
-            <div>
-            <input type="text"
-                name='title'
-                placeholder='Написати назву категорії'
-                id='title'
-            />
+        <section>
+            <h4>Створення категорії</h4>
+            <form className="category_form" onSubmit={handleSubmit}>
+            <div className="category_form_box">
+                <div className="category_form_box_top">
+                <input
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                    placeholder="Напишіть назву категорії"
+                    minLength={5}
+                    maxLength={75}
+                    required 
+                    title="Название должно содержать от 5 до 75 символов."
+                    className="category_form_box_top_input"
+                />
+                </div>
+                <div className="category_form_box_bottom">
+                <button type="submit" className="category_form_box_bottom_button">Додати категорію</button>
+                </div>
             </div>
-            <div>
-                <TextEditor description={description} setDescription={setDescription}/>
-            </div>
-        </div>
-        <div className="addCategory_box_secton"></div>
-       </div>
-        </form>
-     </section>
-    )
+            </form>
+        </section>
+    );
 }

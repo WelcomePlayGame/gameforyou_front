@@ -1,12 +1,25 @@
-
-
-
+import { useEffect, useState } from "react"
+import {getAllCategory, ResponseDataCategory} from '../../../helper/MethodGet'
+import {BASE_URL, CATEGORY} from '../../../helper/conf'
 export const Category = ()=> {
 
+    const [categororyList , setCategoryList] = useState <ResponseDataCategory []> ([])
 
+    useEffect(()=> {
+        getAllCategory(BASE_URL+CATEGORY)
+        .then((data)=> setCategoryList(data))
+    }, [])
+    
     return (
-        <>
-        <h2>List Category</h2>
-        </>
+
+        <section>
+            {
+                categororyList.map((category) => (
+                    <div key={category.title}>
+                        {category.title}
+                    </div>
+                ))
+            }
+        </section>
     )
 }

@@ -5,11 +5,13 @@ import { Body } from './pages/Body';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AdminMenu } from './component/admin/AdminMenu';
 import { Admin } from './component/admin/Admin';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App">
-  
+  <ToastContainer/>
   <BrowserRouter>
       <Header />
       <AdminMenu/>

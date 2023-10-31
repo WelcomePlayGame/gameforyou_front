@@ -1,5 +1,5 @@
 
-import { FC } from "react" 
+import { FC} from "react" 
 
 type FontSelector = {
     fontFamily : string,
@@ -9,6 +9,7 @@ type FontSelector = {
 export const FontSelector: FC<FontSelector> = ({fontFamily , setFontFamily})=> {
 
     const fonts = ["Arial", "Verdana", "Times New Roman", "Georgia", "Courier New"];
+  
 
 
 
