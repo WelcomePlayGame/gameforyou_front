@@ -12,7 +12,6 @@ export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription })
     const quillRef = useRef<ReactQuill | null>(null);
     const [images, setImages] = useState<{ [url: string]: number }>({});
 
-
     const handleImageUpload = async () => {
         const quill = quillRef.current!.getEditor();
         const range = quill.getSelection(true);

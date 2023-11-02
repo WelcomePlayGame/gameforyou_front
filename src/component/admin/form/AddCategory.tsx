@@ -2,7 +2,6 @@ import { useState } from "react";
 import {addCategory, ResponseDataCategory} from '../../../helper/MethodPost';
 import {BASE_URL, CATEGORY, ADD} from '../../../helper/conf';
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
 export const AddCategory = () => {
     const [title , setTitle] = useState('');
     const category: ResponseDataCategory = {
@@ -15,9 +14,7 @@ export const AddCategory = () => {
             await addCategory(BASE_URL+CATEGORY+ADD, category);
 
             toast.success("Категорія створена");
-            setTitle('')
         } catch (error) {
-            setTitle('')
             toast.error(`Така назва ${title} для категорії вже існує`)
         }
     }

@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export type ResponseDataCategory = {
+    id: number;
     title : string;
 }
 
