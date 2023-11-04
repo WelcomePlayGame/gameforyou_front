@@ -1,11 +1,11 @@
 import axios from "axios"
-
+import { toast } from 'react-toastify';
 export type ResponseDataCategory = {
     id: number;
     title : string;
 }
 
-type DataGet <T> = (url : T) => Promise<ResponseDataCategory []>;
+type DataGet <T> = (url : T) => Promise<ResponseDataCategory []>
 
 export const getAllCategory : DataGet <string>  = async (url)=> {
 
@@ -14,8 +14,8 @@ export const getAllCategory : DataGet <string>  = async (url)=> {
         console.log(response.data)
         return response.data;
     } catch (error) {
-        console.error(error)
-        throw error;
+        toast.error("Відсутнє підключення")
+        return [];
     }
 
 }

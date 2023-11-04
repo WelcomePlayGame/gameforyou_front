@@ -6,9 +6,10 @@ import axios from 'axios';
 interface QuilEditorProps {
     description: string;
     setDescription: (text: string) => void;
+    onIdsUpdate: (ids : number []) => void;
 }
 
-export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription }) => {
+export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription, onIdsUpdate }) => {
     const quillRef = useRef<ReactQuill | null>(null);
     const [images, setImages] = useState<{ [url: string]: number }>({});
 
@@ -17,7 +18,7 @@ export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription })
         const range = quill.getSelection(true);
         const input = document.createElement('input');
         input.setAttribute('type', 'file');
-        input.setAttribute('accept', 'image/*');
+        input.setAttribute('accept', '.jpeg,.jpg,.png,.webp');
         input.click();
         input.onchange = async () => {
             const file = input.files && input.files[0];
@@ -31,7 +32,14 @@ export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription })
                         }
                     });
                     const result = response.data;
-                    setImages(prevImages => ({ ...prevImages, [result.url]: result.id }));
+                    setImages(prevImages => {
+                        const newImages = { ...prevImages, [result.url]: result.id };
+                        // Вызываем callback с массивом всех текущих id
+                        const allIds : number [] = Object.values(newImages) as number [] ;
+                        onIdsUpdate(allIds); // Это место, где вы вызываете callback
+                        return newImages;
+                    });
+        
                     quill.insertEmbed(range.index, 'image', result.url);
                     quill.setSelection({ index: range.index + 1, length: 0 });
 

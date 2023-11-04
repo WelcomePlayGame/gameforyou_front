@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import {getAllCategory, ResponseDataCategory} from '../../../helper/MethodGet'
 import {BASE_URL, CATEGORY} from '../../../helper/conf'
+import { error } from "console"
 export const Category = ()=> {
 
     const [categororyList , setCategoryList] = useState <ResponseDataCategory []> ([])

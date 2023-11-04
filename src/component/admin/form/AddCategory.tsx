@@ -29,7 +29,7 @@ export const AddCategory = () => {
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                     placeholder="Напишіть назву категорії"
-                    minLength={5}
+                    minLength={4}
                     maxLength={75}
                     required 
                     title="Название должно содержать от 5 до 75 символов."
