@@ -12,7 +12,7 @@ export const AddCategory = () => {
         event.preventDefault();
         try{
             await addCategory(BASE_URL+CATEGORY+ADD, category);
-
+            setTitle('')
             toast.success("Категорія створена");
         } catch (error) {
             toast.error(`Така назва ${title} для категорії вже існує`)

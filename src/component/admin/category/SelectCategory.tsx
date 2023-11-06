@@ -17,7 +17,6 @@ useEffect(()=> {
                 {
                     category.map((cat)=> (
                         <option key={cat.id} value={cat.id}>
-                        
                             {cat.title}
                         </option>
                     ))

@@ -1,0 +1,16 @@
+
+
+
+export const ListGamePost = ()=> {
+
+
+
+
+
+
+
+    return (
+        <>
+        </>
+    )
+}

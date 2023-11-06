@@ -4,6 +4,11 @@ import { AddArticle} from './form/AddArticle'
 import { Article } from './article/Article'
 import { Category } from './Category/Category'
 import { AddCategory } from './form/AddCategory'
+import { AddGamePost } from './form/AddGamePost'
+import { AddGenres } from './form/AddGenres'
+import { AddPlatform } from './form/AddPlatform'
+import { AddPublisher } from './form/AddPublisher'
+import { AddDevoloper } from './form/AddDevoloper'
 
 export const Admin = ()=> {
 
@@ -17,6 +22,11 @@ export const Admin = ()=> {
         <Route path='/listarticle' element={<Article/>}/>
         <Route path='/addarticle' element={<AddArticle/>}/>
         <Route path='/listcategory' element={<Category/>} />
+        <Route path='/addgamepost' element={<AddGamePost/>}/>
+        <Route path='/addgenre' element={<AddGenres/>}/>
+        <Route path='/addplatform' element={<AddPlatform/>}/>
+        <Route path='/addpublisher' element={<AddPublisher/>}/>
+        <Route path='/adddevoloper' element={<AddDevoloper/>}/>
         </Routes>
         </>
     )

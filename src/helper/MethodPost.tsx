@@ -5,18 +5,36 @@ export type ResponseDataCategory = {
     title: string;
 }
 
-export interface Article {
+interface Base {
     title : string;
     des : string;
     seo_des : string;
     seo_title : string;
     mark : string;
-    category : string;
 }
 
-type DataPost<T, U> = (url: T, category: U) => Promise<ResponseDataCategory>;
+ interface Article extends Base  {
+    category : {
+        id: string
+    };
+    gamePost : {
+        id : string
+    };
+}
+ interface GamePost extends Base {
+    devoloper : {
+        id : string
+    }
+    publisher : {
+        id : string
+    }
+    platform : {
+        id : string
+    }
+}
 
-export const addCategory: DataPost<string, ResponseDataCategory> = async (url, category) => {
+type DataPostCatagory<T, U> = (url: T, category: U) => Promise<ResponseDataCategory>;
+export const addCategory: DataPostCatagory<string, ResponseDataCategory> = async (url, category) => {
     try {
         const response = await axios.post<ResponseDataCategory>(url, category, {
             headers: {
@@ -33,30 +51,30 @@ export const addCategory: DataPost<string, ResponseDataCategory> = async (url, c
     }
 };
 
-export const submitArticle = async (article: Article, posterPhoto: File[], ids: number[], url : string) => {
+export const submitArticle = async (article: Article | GamePost, posterPhoto: File[],  ids: number[], url: string, posterPhotoHorizontal?: File []) => {
     const formData = new FormData();
-    formData.append('article', JSON.stringify(article));
+    formData.append('article', new Blob([JSON.stringify(article)], {type: "application/json"}));
     posterPhoto.forEach((file, index) => {
-        formData.append('posterPhoto', file, `poster_${index}.jpg`)
-    })
-     ids.forEach((id)=> {
-        formData.append(`id`, `${id}`);
-     })
-
-     try {
-        const response  = await axios.post(url, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-        })
+        formData.append('posterPhoto', file);
+    });
+    if (posterPhotoHorizontal) {
+        posterPhotoHorizontal.forEach((file) => {
+            formData.append('posterPhotoVertical', file);
+        });
+    }
+    formData.append('ids', new Blob([JSON.stringify(ids)], {type: "application/json"}));
+    try {
+        const response = await axios.post(url, formData); // Без явного указания заголовка Content-Type
         if (response.status !== 200) {
             throw new Error(`Server responded with status code ${response.status}`);
         }
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}:`, value);
+          }
+          
         return response.data;
-     } catch (error) {
-        toast.error("Проблема з сервером")
-     }
-
-    return formData;
-  };
-  
+    } catch (error) {
+        console.log(formData)
+        toast.error("Проблема з сервером");
+    }
+};
