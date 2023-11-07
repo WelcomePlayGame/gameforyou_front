@@ -5,12 +5,13 @@ import axios from 'axios';
 
 interface QuilEditorProps {
     url : string;
+    url_delete : string;
     description: string;
     setDescription: (text: string) => void;
     onIdsUpdate: (ids : number []) => void;
 }
 
-export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription, onIdsUpdate, url}) => {
+export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription, onIdsUpdate, url, url_delete}) => {
     const quillRef = useRef<ReactQuill | null>(null);
     const [images, setImages] = useState<{ [url: string]: number }>({});
 
@@ -27,7 +28,7 @@ export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription, o
                 const formData = new FormData();
                 formData.append('photo', file);
                 try {
-                    const response = await axios.post(url, formData, {
+                    const response = await axios.post(`${url}/add`, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }
@@ -70,7 +71,7 @@ export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription, o
                     if (!currentContent.ops.some(op => op.insert && op.insert.image === url)) {
                         // Если изображение отсутствует, отправляем запрос на удаление
                         const id = images[url];
-                        axios.delete(`${url}/delete/${id}`)
+                        axios.delete(`${url_delete}/delete/${id}`)
                             .then(() => {
                                 // Удаляем изображение из состояния при успешном удалении
                                 setImages(prevImages => {

@@ -102,7 +102,7 @@ export const AddArticle = ()=> {
             />
             </div>
             <div>
-                <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL+ARTICLE_DES_URL+ADD}/>
+                <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL+ARTICLE_DES_URL} url_delete={BASE_URL+ARTICLE_DES_URL}/>
             </div>
         </div>
         <div className="addCategory_box_secton">

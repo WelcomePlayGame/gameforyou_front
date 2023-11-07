@@ -1,12 +1,12 @@
 import {useState, useEffect, ChangeEvent } from 'react'
 import {getAllCategory, ResponseDataCategory} from "../../helper/MethodGet"
-import {BASE_URL, PLATFORM} from "../../helper/conf"
+import {BASE_URL, DEVOLOPER} from "../../helper/conf"
 export const SelectDevolopers = ({onChange} : {onChange : (event : ChangeEvent<HTMLSelectElement>) => void})=> {
 const [devolopers, setSelectDevolopers] = useState <ResponseDataCategory [] >([])
 
 
 useEffect(()=> {
-    getAllCategory(BASE_URL+PLATFORM)
+    getAllCategory(BASE_URL+DEVOLOPER)
     .then((data)=> setSelectDevolopers(data))
 }, [])
 

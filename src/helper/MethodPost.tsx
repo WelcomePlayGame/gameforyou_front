@@ -22,15 +22,29 @@ interface Base {
     };
 }
  interface GamePost extends Base {
+    url_game : string,
+    datatime : string,
+    OS : string,
+    minProcessor : string,
+    maxProcessor : string,
+    minRam : string,
+    maxRam : string,
+    DirectX : string,
+    lan : string,
+    memory : string,
+    genre : {
+        id : string []
+    };
     devoloper : {
         id : string
-    }
+    };
     publisher : {
         id : string
-    }
+    };
     platform : {
-        id : string
-    }
+        id : string []
+    };
+
 }
 
 type DataPostCatagory<T, U> = (url: T, category: U) => Promise<ResponseDataCategory>;
@@ -51,16 +65,15 @@ export const addCategory: DataPostCatagory<string, ResponseDataCategory> = async
     }
 };
 
-export const submitArticle = async (article: Article | GamePost, posterPhoto: File[],  ids: number[], url: string, posterPhotoHorizontal?: File []) => {
+export const submitArticle = async (article: Article | GamePost, posterPhoto: File[],  ids: number[], url: string, posterPhotoVertical?: File ) => {
     const formData = new FormData();
     formData.append('article', new Blob([JSON.stringify(article)], {type: "application/json"}));
-    posterPhoto.forEach((file, index) => {
+    posterPhoto.forEach((file) => {
         formData.append('posterPhoto', file);
     });
-    if (posterPhotoHorizontal) {
-        posterPhotoHorizontal.forEach((file) => {
-            formData.append('posterPhotoVertical', file);
-        });
+    if (posterPhotoVertical) {
+            formData.append('posterPhotoVertical', posterPhotoVertical);
+    
     }
     formData.append('ids', new Blob([JSON.stringify(ids)], {type: "application/json"}));
     try {

@@ -6,7 +6,8 @@ import { SelectGenres } from '../../Genres/SelectGenres'
 import { SelectDevolopers } from '../../Devoloper/SelectDevolopers'
 import { SelectPublishers } from '../../Publisher/SelectPublishers'
 import { SelectPlatforms } from '../../Platforms/SelectPlatforms'
-import {BASE_URL} from '../../../helper/conf'
+import {BASE_URL, GAMEPOST} from '../../../helper/conf'
+import {submitArticle} from '../../../helper/MethodPost'
 
 export const AddGamePost = ()=> {
     const [title, setTitle] = useState('')
@@ -14,17 +15,25 @@ export const AddGamePost = ()=> {
     const [seo_title, setSeoTitle] = useState('')
     const [seo_des, setSeoDes] = useState('')
     const [url_game, setUrlGame] = useState('')
-    const [genre, setGenre] = useState('game')
+    const [mark, setMark] = useState('game')
+    const [datatime, setDataTime] =  useState('')
+    const [genre, setGenre] = useState<string []>([])
     const [devoloper, setDevoloper] = useState('')
     const [publisher, setPublisher] = useState('')
-    const [platform, setPlatform] = useState('')
+    const [platform, setPlatform] = useState<string []>([])
     const [ids, setIds] = useState<number []>([])
+    const [OS, setOS] = useState('')
+    const [minProcessor, setMinProcessor] = useState('')
+    const [maxProcessor, setMaxProcessor] = useState('')
+    const [minRam, setMinRam] = useState('');
+    const [maxRam, setMaxRam] = useState('')
+    const [DirectX, setDirectX] = useState('')
+    const [lan, setLan] = useState('');
+    const [memory , setMemory] = useState('');
     const [poster_480x320, setPoster_480x320] = useState <File | null>(null);
     const [poster_1024x768, setPoster_1024x768] = useState<File | null>(null);
     const [poster_1440x900, setPoster_1440x900] = useState<File | null>(null);
-    const [poster_300x600, setPoster_300x600] = useState <File | null>(null);
-    const [poster_200x400, setPoster_200x400] = useState<File | null>(null);
-    const [poster_100x200, setPoster_100x200] = useState<File | null>(null);
+    const [poster_300x600, setPoster_300x300] = useState <File | null>(null);
     const posterPhoto_horizontal : File [] = [];
     const posterPhoto_vertical : File [] = [];
     if(poster_1440x900) {
@@ -40,16 +49,45 @@ export const AddGamePost = ()=> {
     if(poster_300x600) {
         posterPhoto_vertical.push(poster_300x600);
     }
-    if(poster_200x400) {
-        posterPhoto_vertical.push(poster_200x400);
-    }
-    if(poster_100x200) {
-        posterPhoto_vertical.push(poster_100x200);
+    const gamepost = {
+        title : title,
+        des : des,
+        seo_title : seo_title,
+        seo_des : seo_des,
+        url_game : url_game,
+        mark : mark,
+        datatime : datatime,
+        genre : {
+            id : genre,
+        },
+        devoloper : {
+            id : devoloper,
+        },
+        publisher : {
+            id : publisher,
+        },
+        platform : {
+            id : platform,
+        },
+        OS : OS,
+        minProcessor : minProcessor,
+        maxProcessor : maxProcessor,
+        minRam : minRam,
+        maxRam : maxRam,
+        DirectX : DirectX,
+        lan : lan,
+        memory : memory,
     }
 
   const  handleIdsUpdate = (id : number[]) => {
     setIds(id);
   } 
+
+
+  const handleSubmit = (e : React.FormEvent) => {
+    e.preventDefault();
+    submitArticle(gamepost, posterPhoto_horizontal, ids, BASE_URL+GAMEPOST)
+  }
 
     return (
        <section className="addGamePost_container">
@@ -57,40 +95,16 @@ export const AddGamePost = ()=> {
         <title>Додати Ігру</title>
             <meta name='Сторнінка для додавання ігри' />
         </Helmet>
-        <form className='addGamePost'>
+        <form className='addGamePost' onSubmit={handleSubmit}>
         <div className="addGamePostBox">
-            <div className="addGamePostBoxSection">
+            <div className="addGamePostBoxSection poster">
             <div>
             <FileCustomInput 
-                    setImageState={setPoster_300x600}
+                    setImageState={setPoster_300x300}
                     imageSize={
                        {
                         width : 300,
-                        height: 600,
-                       }
-                    }
-                    maxSize = {0.3}
-                />
-            </div>
-            <div>
-            <FileCustomInput 
-                    setImageState={setPoster_200x400}
-                    imageSize={
-                       {
-                        width : 200,
-                        height: 400,
-                       }
-                    }
-                    maxSize = {0.2}
-                />
-            </div>
-            <div>
-            <FileCustomInput 
-                    setImageState={setPoster_100x200}
-                    imageSize={
-                       {
-                        width : 100,
-                        height: 200,
+                        height: 300,
                        }
                     }
                     maxSize = {0.1}
@@ -149,12 +163,12 @@ export const AddGamePost = ()=> {
             />
             </div>
             <div>
-            <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL}/>
+            <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL+GAMEPOST} url_delete={BASE_URL+GAMEPOST}/>
             </div>
             </div>
             <div className="addGamePostBoxSection">
                 <div>
-                    <SelectGenres onChange={(e)=> setGenre(e.target.value)}/>
+                    <SelectGenres onChange={(e)=> setGenre(e)}/>
                 </div>
                 <div>
                     <SelectDevolopers onChange={(e)=> setDevoloper(e.target.value)}/>
@@ -163,7 +177,7 @@ export const AddGamePost = ()=> {
                     <SelectPublishers onChange={(e)=> setPublisher(e.target.value)}/>
                 </div>
                 <div>
-                    <SelectPlatforms onChange={(e)=> setPlatform(e.target.value)}/>
+                    <SelectPlatforms onChange={(e)=> setPlatform(e)}/>
                 </div>
                 <div>
                     <input
@@ -201,8 +215,128 @@ export const AddGamePost = ()=> {
                     className='input_seo'
                     />
                 </div>
-            
+            <div>
+                <input
+                type='date'
+                value={datatime}
+                onChange={(e)=>setDataTime(e.target.value)}
+                name='datatime'
+                id='datatime'
+                className='input_seo'
+                required
+                />
             </div>
+            </div>
+        </div>
+        <div className='addGamePostBox_bottom'>
+                    <div>
+                    <div className='addGamePostBox_bottom_input'>
+                        <input
+                        type='text'
+                        value={OS}
+                        name={OS}
+                        placeholder='Написати Опер. Систему'
+                        onChange={(e)=> setOS(e.target.value)}
+                        minLength={4}
+                        maxLength={20}
+                        required
+                        className='input_seo input_bottom'
+                        />
+                    </div>
+                    <div className='addGamePostBox_bottom_input'>
+                        <input
+                        type='text'
+                        value={minProcessor}
+                        name={minProcessor}
+                        placeholder='Написати мінімальні потреби для процессору'
+                        onChange={(e)=> setMinProcessor(e.target.value)}
+                        minLength={4}
+                        maxLength={20}
+                        required
+                        className='input_seo input_bottom'
+                        />
+                    </div>
+                    <div className='addGamePostBox_bottom_input'>
+                        <input
+                        type='text'
+                        value={maxProcessor}
+                        name={maxProcessor}
+                        placeholder='Написати максимальні потреби для процессору'
+                        onChange={(e)=> setMaxProcessor(e.target.value)}
+                        minLength={4}
+                        maxLength={20}
+                        required
+                        className='input_seo input_bottom'
+                        />
+                    </div>
+                    <div className='addGamePostBox_bottom_input'>
+                        <input
+                        type='text'
+                        value={minRam}
+                        name={minRam}
+                        placeholder='Написати мінімальні потреби для процессору'
+                        onChange={(e)=> setMinRam(e.target.value)}
+                        minLength={4}
+                        maxLength={20}
+                        required
+                        className='input_seo input_bottom'
+                        />
+                    </div>
+                    </div>
+                   <div>
+                   <div className='addGamePostBox_bottom_input'>
+                        <input
+                        type='text'
+                        value={maxRam}
+                        name={maxRam}
+                        placeholder='Написати рекомендовані потреби для процессору'
+                        onChange={(e)=> setMaxRam(e.target.value)}
+                        minLength={4}
+                        maxLength={20}
+                        required
+                        className='input_seo input_bottom'
+                        />
+                    </div>
+                    <div className='addGamePostBox_bottom_input'>
+                        <input
+                        type='text'
+                        value={DirectX}
+                        name={DirectX}
+                        placeholder='Написати потрібні драйвера'
+                        onChange={(e)=> setDirectX(e.target.value)}
+                        minLength={4}
+                        maxLength={20}
+                        required
+                        className='input_seo input_bottom'
+                        />
+                    </div>
+                    <div className='addGamePostBox_bottom_input'>
+                        <input
+                        type='text'
+                        value={lan}
+                        name={lan}
+                        placeholder='Яка потрібна сеть?'
+                        onChange={(e)=> setLan(e.target.value)}
+                        minLength={4}
+                        maxLength={20}
+                        required
+                        className='input_seo input_bottom'
+                        />
+                    </div>
+                    <div className='addGamePostBox_bottom_input'>
+                        <input
+                        type='text'
+                        value={memory}
+                        name={memory}
+                        placeholder='Скільки місця на жорсткому диску?'
+                        onChange={(e)=> setMemory(e.target.value)}
+                        minLength={4}
+                        maxLength={20}
+                        required
+                        className='input_seo input_bottom'
+                        />
+                    </div>
+                   </div>
         </div>
         </form>
        </section>
