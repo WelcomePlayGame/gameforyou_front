@@ -15,9 +15,9 @@ export const AddArticle = ()=> {
     const [mark, setMark] = useState('news')
     const [category, setCategory] = useState('')
     const [gamePost, setGamePost] = useState('')
-    const [poster_480x320, setPoster_480x320] = useState <File | null>(null);
-    const [poster_1024x768, setPoster_1024x768] = useState<File | null>(null);
-    const [poster_1440x900, setPoster_1440x900] = useState<File | null>(null);
+    const [poster_480x320, setPoster_480x320] = useState <File | undefined>(undefined);
+    const [poster_1024x768, setPoster_1024x768] = useState<File | undefined>(undefined);
+    const [poster_1440x900, setPoster_1440x900] = useState<File | undefined>(undefined);
     const posterPhoto  : File [] = [];
     const [ids, setIds] = useState<number []>([])
     const article = {
@@ -66,6 +66,7 @@ export const AddArticle = ()=> {
         <div className='file_box_custom'>
         <FileCustomInput
         setImageState={setPoster_1440x900}
+        file={poster_1440x900}
         imageSize={{width : 1440, height : 900}}
         maxSize={0.4}
         />
@@ -73,6 +74,7 @@ export const AddArticle = ()=> {
         <div>
         <FileCustomInput
         setImageState={setPoster_1024x768}
+        file={poster_1024x768}
         imageSize={{width : 1024, height : 768}}
         maxSize={0.3}
         />
@@ -80,6 +82,7 @@ export const AddArticle = ()=> {
         <div>
         <FileCustomInput
         setImageState={setPoster_480x320}
+        file={poster_480x320}
         imageSize={{width : 480, height : 320}}
         maxSize={0.2}
         />

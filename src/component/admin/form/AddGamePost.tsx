@@ -1,12 +1,12 @@
 import {Helmet} from 'react-helmet'
 import { QuilEditor } from '../../QuilEditor/QuilEditor'
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { FileCustomInput } from '../../QuilEditor/FileCustomInput'
 import { SelectGenres } from '../../Genres/SelectGenres'
 import { SelectDevolopers } from '../../Devoloper/SelectDevolopers'
 import { SelectPublishers } from '../../Publisher/SelectPublishers'
 import { SelectPlatforms } from '../../Platforms/SelectPlatforms'
-import {BASE_URL, GAMEPOST} from '../../../helper/conf'
+import {BASE_URL, GAMEPOST, GAMEPOST_DES_URL, ADD} from '../../../helper/conf'
 import {submitArticle} from '../../../helper/MethodPost'
 
 export const AddGamePost = ()=> {
@@ -30,12 +30,11 @@ export const AddGamePost = ()=> {
     const [DirectX, setDirectX] = useState('')
     const [lan, setLan] = useState('');
     const [memory , setMemory] = useState('');
-    const [poster_480x320, setPoster_480x320] = useState <File | null>(null);
-    const [poster_1024x768, setPoster_1024x768] = useState<File | null>(null);
-    const [poster_1440x900, setPoster_1440x900] = useState<File | null>(null);
-    const [poster_300x600, setPoster_300x300] = useState <File | null>(null);
+    const [poster_480x320, setPoster_480x320] = useState <File | undefined>(undefined);
+    const [poster_1024x768, setPoster_1024x768] = useState<File | undefined>(undefined);
+    const [poster_1440x900, setPoster_1440x900] = useState<File | undefined>(undefined);
+    const [poster_300x300, setPoster_300x300] = useState <File | undefined>(undefined);
     const posterPhoto_horizontal : File [] = [];
-    const posterPhoto_vertical : File [] = [];
     if(poster_1440x900) {
         posterPhoto_horizontal.push(poster_1440x900)
     }
@@ -46,9 +45,7 @@ export const AddGamePost = ()=> {
         posterPhoto_horizontal.push(poster_480x320)
     }
 
-    if(poster_300x600) {
-        posterPhoto_vertical.push(poster_300x600);
-    }
+    
     const gamepost = {
         title : title,
         des : des,
@@ -83,10 +80,17 @@ export const AddGamePost = ()=> {
     setIds(id);
   } 
 
+  const handleDateChange = (e:ChangeEvent<HTMLInputElement>)=> {
+    const date = e.target.value; // получаем дату в формате YYYY-MM-DD
+    const time = 'T00:00:00Z'; // добавляем время и часовой пояс UTC
+    const datetime = date + time; // соединяем дату со временем
+    console.log(datatime);
+    setDataTime(datetime); // обновляем состояние
+  }
 
   const handleSubmit = (e : React.FormEvent) => {
     e.preventDefault();
-    submitArticle(gamepost, posterPhoto_horizontal, ids, BASE_URL+GAMEPOST)
+    submitArticle(gamepost, posterPhoto_horizontal, ids, BASE_URL+GAMEPOST+ADD, poster_300x300)
   }
 
     return (
@@ -101,6 +105,7 @@ export const AddGamePost = ()=> {
             <div>
             <FileCustomInput 
                     setImageState={setPoster_300x300}
+                    file={poster_300x300}
                     imageSize={
                        {
                         width : 300,
@@ -115,6 +120,7 @@ export const AddGamePost = ()=> {
             <div>
             <FileCustomInput 
                     setImageState={setPoster_1440x900}
+                    file={poster_1440x900}
                     imageSize={
                        {
                         width : 1440,
@@ -127,6 +133,7 @@ export const AddGamePost = ()=> {
             <div>
             <FileCustomInput 
                     setImageState={setPoster_1024x768}
+                    file={poster_1024x768}
                     imageSize={
                        {
                         width : 1024,
@@ -139,6 +146,7 @@ export const AddGamePost = ()=> {
             <div>
             <FileCustomInput 
                     setImageState={setPoster_480x320}
+                    file={poster_480x320}
                     imageSize={
                        {
                         width : 480,
@@ -163,7 +171,7 @@ export const AddGamePost = ()=> {
             />
             </div>
             <div>
-            <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL+GAMEPOST} url_delete={BASE_URL+GAMEPOST}/>
+            <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL+GAMEPOST_DES_URL} url_delete={BASE_URL+GAMEPOST_DES_URL}/>
             </div>
             </div>
             <div className="addGamePostBoxSection">
@@ -218,8 +226,8 @@ export const AddGamePost = ()=> {
             <div>
                 <input
                 type='date'
-                value={datatime}
-                onChange={(e)=>setDataTime(e.target.value)}
+                value={datatime.substring(0,10)}
+                onChange={handleDateChange}
                 name='datatime'
                 id='datatime'
                 className='input_seo'
@@ -338,6 +346,7 @@ export const AddGamePost = ()=> {
                     </div>
                    </div>
         </div>
+        <button type='submit'>Зберегти</button>
         </form>
        </section>
     )

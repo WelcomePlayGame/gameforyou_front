@@ -6,12 +6,13 @@ type SetImageType = (file : File) => void
 
 export const FileCustomInput : FC<{
     setImageState : SetImageType,
+    file : File | undefined
     imageSize : {
         width : number,
         height : number,
     }
     maxSize : number
-}> = ({ setImageState, imageSize , maxSize })=> {
+}> = ({ setImageState, imageSize , maxSize, file })=> {
 
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
@@ -58,7 +59,7 @@ export const FileCustomInput : FC<{
                 <div>
                 <span>{`${imageSize.width}x${imageSize.height}`}</span>
                 </div>
-                <div>Завантажити постер</div>
+                <div>{file?.name}</div>
             </label>
         </div>
     )
