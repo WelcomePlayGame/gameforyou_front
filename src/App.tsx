@@ -3,7 +3,7 @@ import './App.css';
 import { Header } from './component/Header';
 import { Body } from './pages/Body';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { AdminMenu } from './component/admin/AdminMenu';
+import { AdminMenu } from './component/admin/menu/AdminMenu';
 import { Admin } from './component/admin/Admin';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

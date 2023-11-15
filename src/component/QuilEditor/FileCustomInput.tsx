@@ -13,6 +13,12 @@ export const FileCustomInput : FC<{
     }
     maxSize : number
 }> = ({ setImageState, imageSize , maxSize, file })=> {
+    const setImageStateWithSize = (file: File) => {
+        
+        const newSizeName = `${file.name.split('.')[0]}_${imageSize.width}x${imageSize.height}.${file.name.split('.').pop()}`;
+        const newFile = new File([file], newSizeName, { type: file.type });
+        setImageState(newFile);
+    };
 
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
@@ -23,7 +29,7 @@ export const FileCustomInput : FC<{
                 const img = new Image();
                 img.onload = (ev: Event) => {
                     if (img.width === imageSize.width && img.height === imageSize.height) {
-                        setImageState(file);
+                        setImageStateWithSize(file);
                     } else {
                         toast.error(`Будь-ласка, завантажте постер розміром ${imageSize.width}*${imageSize.height} пікселів`);
                     }

@@ -1,4 +1,5 @@
 import {useLocation} from 'react-router-dom'
+import words from '../wordsvariable/WORDS'
 export const Header = () => {
 
     const location = useLocation()
@@ -15,11 +16,11 @@ export const Header = () => {
                     </div>
                     <div className="header_menu_box">
                         <ul className='header_menu_ul'>
-                            <li className="header_menu_li">Новини</li>
-                            <li className="header_menu_li">Стріми</li>
-                            <li className="header_menu_li">Ігри</li>
-                            <li className="header_menu_li">Chitu</li>
-                            <li className="header_menu_li">Допомога</li>
+                            <li className="header_menu_li">{words.NEWS}</li>
+                            <li className="header_menu_li">{words.STREAM}</li>
+                            <li className="header_menu_li">{words.GAMES_REVIEWS}</li>
+                            <li className="header_menu_li">{words.CHEATS}</li>
+                            <li className="header_menu_li">{words.HELP}</li>
                         </ul>
                     </div>
                     <div className="header_menu_box">

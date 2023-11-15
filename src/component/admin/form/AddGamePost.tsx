@@ -17,17 +17,17 @@ export const AddGamePost = ()=> {
     const [url_game, setUrlGame] = useState('')
     const [mark, setMark] = useState('game')
     const [datatime, setDataTime] =  useState('')
-    const [genre, setGenre] = useState<string []>([])
-    const [devoloper, setDevoloper] = useState('')
+    const [genresSet, setGenre] = useState<string []>([])
+    const [developer, setDevoloper] = useState('')
     const [publisher, setPublisher] = useState('')
-    const [platform, setPlatform] = useState<string []>([])
+    const [platformsSet, setPlatform] = useState<string []>([])
     const [ids, setIds] = useState<number []>([])
-    const [OS, setOS] = useState('')
+    const [os, setOS] = useState('')
     const [minProcessor, setMinProcessor] = useState('')
     const [maxProcessor, setMaxProcessor] = useState('')
     const [minRam, setMinRam] = useState('');
     const [maxRam, setMaxRam] = useState('')
-    const [DirectX, setDirectX] = useState('')
+    const [directX, setDirectX] = useState('')
     const [lan, setLan] = useState('');
     const [memory , setMemory] = useState('');
     const [poster_480x320, setPoster_480x320] = useState <File | undefined>(undefined);
@@ -54,24 +54,20 @@ export const AddGamePost = ()=> {
         url_game : url_game,
         mark : mark,
         datatime : datatime,
-        genre : {
-            id : genre,
-        },
-        devoloper : {
-            id : devoloper,
+        // genresSet : genre,
+        developer : {
+            id : developer,
         },
         publisher : {
             id : publisher,
         },
-        platform : {
-            id : platform,
-        },
-        OS : OS,
+        // platformsSet : platform,
+        os : os,
         minProcessor : minProcessor,
         maxProcessor : maxProcessor,
         minRam : minRam,
         maxRam : maxRam,
-        DirectX : DirectX,
+        directX : directX,
         lan : lan,
         memory : memory,
     }
@@ -88,10 +84,22 @@ export const AddGamePost = ()=> {
     setDataTime(datetime); // обновляем состояние
   }
 
-  const handleSubmit = (e : React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    submitArticle(gamepost, posterPhoto_horizontal, ids, BASE_URL+GAMEPOST+ADD, poster_300x300)
-  }
+    
+    // Предполагаем, что submitArticle возвращает промис.
+    submitArticle(gamepost, posterPhoto_horizontal, ids, BASE_URL + GAMEPOST + ADD, poster_300x300, genresSet, platformsSet)
+        .then(() => {
+            // Обработка успешной отправки
+            console.log('Статья успешно отправлена');
+            window.location.reload();
+        })
+        .catch((error) => {
+            // Обработка ошибок отправки
+            console.error('Ошибка при отправке статьи:', error);
+        });
+};
+
 
     return (
        <section className="addGamePost_container">
@@ -171,7 +179,7 @@ export const AddGamePost = ()=> {
             />
             </div>
             <div>
-            <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL+GAMEPOST_DES_URL} url_delete={BASE_URL+GAMEPOST_DES_URL}/>
+            <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL+GAMEPOST_DES_URL} url_delete={BASE_URL+GAMEPOST_DES_URL} />
             </div>
             </div>
             <div className="addGamePostBoxSection">
@@ -241,8 +249,8 @@ export const AddGamePost = ()=> {
                     <div className='addGamePostBox_bottom_input'>
                         <input
                         type='text'
-                        value={OS}
-                        name={OS}
+                        value={os}
+                        name={os}
                         placeholder='Написати Опер. Систему'
                         onChange={(e)=> setOS(e.target.value)}
                         minLength={4}
@@ -308,8 +316,8 @@ export const AddGamePost = ()=> {
                     <div className='addGamePostBox_bottom_input'>
                         <input
                         type='text'
-                        value={DirectX}
-                        name={DirectX}
+                        value={directX}
+                        name={directX}
                         placeholder='Написати потрібні драйвера'
                         onChange={(e)=> setDirectX(e.target.value)}
                         minLength={4}

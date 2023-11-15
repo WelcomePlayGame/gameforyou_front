@@ -24,26 +24,22 @@ interface Base {
  interface GamePost extends Base {
     url_game : string,
     datatime : string,
-    OS : string,
+    os : string,
     minProcessor : string,
     maxProcessor : string,
     minRam : string,
     maxRam : string,
-    DirectX : string,
+    directX : string,
     lan : string,
     memory : string,
-    genre : {
-        id : string []
-    };
-    devoloper : {
+    // genresSet : string [];
+    developer : {
         id : string
     };
     publisher : {
         id : string
     };
-    platform : {
-        id : string []
-    };
+    // platformsSet : string [];
 
 }
 
@@ -58,6 +54,7 @@ export const addCategory: DataPostCatagory<string, ResponseDataCategory> = async
         if (response.status !== 200) {
             throw new Error(`Server responded with status code ${response.status}`);
         }
+    
         return response.data;
     } catch (error) {
         console.error('Error:', error);
@@ -65,7 +62,7 @@ export const addCategory: DataPostCatagory<string, ResponseDataCategory> = async
     }
 };
 
-export const submitArticle = async (article: Article | GamePost, posterPhoto: File[],  ids: number[], url: string, posterPhotoVertical?: File ) => {
+export const submitArticle = async (article: Article | GamePost, posterPhoto: File[],  ids: number[], url: string, posterPhotoVertical?: File, genresSet?: string [], platformsSet?: string [] ) => {
     const formData = new FormData();
     formData.append('article', new Blob([JSON.stringify(article)], {type: "application/json"}));
     posterPhoto.forEach((file) => {
@@ -76,6 +73,8 @@ export const submitArticle = async (article: Article | GamePost, posterPhoto: Fi
     
     }
     formData.append('ids', new Blob([JSON.stringify(ids)], {type: "application/json"}));
+    formData.append('genresSet', new Blob([JSON.stringify(genresSet)], {type: "application/json"}));
+    formData.append('platformsSet', new Blob([JSON.stringify(platformsSet)], {type: "application/json"}));
     try {
         const response = await axios.post(url, formData); // Без явного указания заголовка Content-Type
         if (response.status !== 200) {
