@@ -1,5 +1,5 @@
-
-export const UA_WORDS = {
+import {WORDS_Tem} from './WORDS'
+export const UA_WORDS : WORDS_Tem = {
     PROFILE : "Профіль",
     DEVOLOPER : "Розробник",
     SITE : "Перейти на сайт",
@@ -12,6 +12,7 @@ export const UA_WORDS = {
     LIST_PUBLISHER : "Список Видавців",
     ADD_GENRE : 'Додати Жанр',
     LIST_GENRE : 'Список Жанрів',
+    PLATFORM : 'Платформа',
     ADD_PLATFORM : 'Додати Платформу',
     LIST_PLATFORM : 'Список Платформ',
     NEWS : 'Новини',
@@ -22,4 +23,24 @@ export const UA_WORDS = {
     CATEGORY : 'Категорія',
     ADD_CATEGORY : 'Додати Катогорію',
     LIST_CATEGORY : 'Список Категорію',
+    SAVE_ARTICLE : 'Зберегти статью',
+    TITLE_ARTICLE : 'Назва статьї',
+    SELECT_CATEGORY : 'Обрати Категоію',
+    TITLE_SEO_ARTICLE : 'Назва статьї SEO',
+    DES_SEO_ARTICLE : 'Опис статьї SEO',
+    TITLE_GAME : 'Назва Ігри',
+    CHOOSE_GENRES : 'Обрати Жанр(и)',
+    CHOOSE_DEVELOPER : 'Обрати Розробника',
+    CHOOSE_PUBLISHER : 'Обрати Видавця',
+    CHOOSE_PLATFORMS : 'Обрати Платформу(и)',
+    URL_PUBLISHER : 'Сайт Видавця',
+    OS : 'Операційна Система',
+    MIN_CPU : 'Мінімальні вимоги для процесора',
+    MAX_CPU : 'Максимальні вимоги для процесора',
+    MIN_RAM : "Мінімальна Оперативна Пам'ять",
+    MAX_RAM : "Рекомендована Оперативна Пам'ять",
+    DRIVERS : "Драйвера",
+    NETWORK : "Мережа",
+    SPACE_DISK : 'Місце на Диску',
+    ADD_HELMET_GAMEPOST : 'Додати статью на ігрову тему',
 }

@@ -3,9 +3,11 @@ import {Helmet} from 'react-helmet'
 import {QuilEditor} from '../../QuilEditor/QuilEditor'
 import { SelectCategory } from '../Category/SelectCategory'
 import {submitArticle} from "../../../helper/MethodPost"
-import {BASE_URL, ARTICLE, ADD, ARTICLE_DES_URL} from '../../../helper/conf';
+import {URL_FOR_BACK} from '../../../helper/URL'
 import { FileCustomInput } from '../../QuilEditor/FileCustomInput';
 import { SelectGame } from '../../GamePost/SelectGame'
+import words from '../../../wordsvariable/WORDS'
+
 export const AddArticle = ()=> {
 
     const [title, setTitle] = useState('')
@@ -50,14 +52,14 @@ export const AddArticle = ()=> {
 
    const  handlSubmit = (event : React.FormEvent)=> {
     event.preventDefault();
-    submitArticle(article,posterPhoto, ids, BASE_URL+ARTICLE+ADD);
+    submitArticle(article,posterPhoto, ids, URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE+URL_FOR_BACK.COUNTRY+URL_FOR_BACK.ADD);
     }
 
 
     return (
      <section className='addcategory'>
         <Helmet>
-            <title>Додати категорію</title>
+            <title>{words.SELECT_CATEGORY}</title>
             <meta name='Сторнінка для додавання категорії' />
         </Helmet>
         <form className='addArticle' onSubmit={handlSubmit}>
@@ -96,7 +98,7 @@ export const AddArticle = ()=> {
                 name='title'
                 value={title}
                 onChange={(e)=>setTitle(e.target.value)}
-                placeholder='Назва посту'
+                placeholder={words.TITLE_ARTICLE}
                 id='title'
                 className='addArticle_box_input'
                 min={5}
@@ -105,7 +107,12 @@ export const AddArticle = ()=> {
             />
             </div>
             <div>
-                <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL+ARTICLE_DES_URL} url_delete={BASE_URL+ARTICLE_DES_URL}/>
+                <QuilEditor 
+                description={des}
+                 setDescription={setDes} 
+                 onIdsUpdate={handleIdsUpdate} 
+                 url={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE_DES_URL+URL_FOR_BACK.COUNTRY} 
+                 url_delete={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE_DES_URL+URL_FOR_BACK.COUNTRY}/>
             </div>
         </div>
         <div className="addCategory_box_secton">
@@ -122,7 +129,7 @@ export const AddArticle = ()=> {
         <div>
             <input
             type="text"
-            placeholder='Назва статьї для SEO'
+            placeholder={words.TITLE_SEO_ARTICLE}
             name={seo_title}
             value={seo_title}
             minLength={65}
@@ -135,7 +142,7 @@ export const AddArticle = ()=> {
         <div>
             <input
             type="text"
-            placeholder='Опис статьї для SEO' 
+            placeholder={words.DES_SEO_ARTICLE} 
             name={seo_des}
             value={seo_des}
             minLength={135}
@@ -145,7 +152,7 @@ export const AddArticle = ()=> {
             className='input_seo'
              />
         </div>
-        <button type='submit' className='addArticle_btn'>Зберегти статью</button>
+        <button type='submit' className='addArticle_btn'>{words.SAVE_ARTICLE}</button>
         </div>
        </div>
         </form>

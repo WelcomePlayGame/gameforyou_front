@@ -2,6 +2,7 @@ import { useRef, useEffect, FC, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
+import { url } from 'inspector';
 
 interface QuilEditorProps {
     url : string;
@@ -28,7 +29,8 @@ export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription, o
                 const formData = new FormData();
                 formData.append('photo', file);
                 try {
-                    const response = await axios.post(`${url}/add`, formData, {
+            
+                    const response = await axios.post(`${url}`, formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                         }

@@ -1,18 +1,20 @@
 import {useState, useEffect, ChangeEvent } from 'react'
 import {getAllCategory, ResponseDataCategory} from './../../helper/MethodGet'
-import {BASE_URL, PUBLISHER} from "../../helper/conf"
+import words from '../../wordsvariable/WORDS'
+import { URL_FOR_BACK } from '../../helper/URL'
+
 export const SelectPublishers = ({onChange} : {onChange : (event : ChangeEvent<HTMLSelectElement>) => void})=> {
 const [publishers, setPublishers] = useState <ResponseDataCategory [] >([])
 
 
 useEffect(()=> {
-    getAllCategory(BASE_URL+PUBLISHER)
+    getAllCategory(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.PUBLISHER+URL_FOR_BACK.COUNTRY)
     .then((data)=> setPublishers(data))
 }, [])
 
     return (
         <section className='selectCategory_container'>
-            <span>Обрати Видавця</span>
+            <span>{words.CHOOSE_PUBLISHER}</span>
             <select onChange={onChange} className='selectCategory_select'>
                 {
                     publishers.map((publish)=> (

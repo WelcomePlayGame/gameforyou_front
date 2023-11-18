@@ -1,13 +1,12 @@
 import React, { ChangeEvent, useEffect, useState } from "react"
 import {getAllPostGame, ResponseDataCategory} from '../../helper/MethodGet'
-import {BASE_URL, GAMEPOST} from '../../helper/conf'
-
+import { URL_FOR_BACK } from "../../helper/URL"
 export const SelectGame = ({onChange} : {onChange : (event : ChangeEvent<HTMLSelectElement>) => void})=> {
 
     const [games, setGames] = useState<ResponseDataCategory []>([]);
 
     useEffect(() => {
-        getAllPostGame(BASE_URL+GAMEPOST)
+        getAllPostGame(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.GAMEPOST+URL_FOR_BACK.COUNTRY)
         .then((data) => setGames(data) )
     }, [])
  

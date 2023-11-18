@@ -1,15 +1,18 @@
 import {Helmet} from 'react-helmet'
 import { QuilEditor } from '../../QuilEditor/QuilEditor'
-import { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { FileCustomInput } from '../../QuilEditor/FileCustomInput'
 import { SelectGenres } from '../../Genres/SelectGenres'
 import { SelectDevolopers } from '../../Devoloper/SelectDevolopers'
 import { SelectPublishers } from '../../Publisher/SelectPublishers'
 import { SelectPlatforms } from '../../Platforms/SelectPlatforms'
-import {BASE_URL, GAMEPOST, GAMEPOST_DES_URL, ADD} from '../../../helper/conf'
 import {submitArticle} from '../../../helper/MethodPost'
+import {URL_FOR_BACK} from '../../../helper/URL'
+import words from '../../../wordsvariable/WORDS'
 
 export const AddGamePost = ()=> {
+    const [currentLanguage, setCurrentLanguage] = useState<string>('/ru')
+    const [postUrl, setPostUrl] = useState('');
     const [title, setTitle] = useState('')
     const [des, setDes] = useState('')
     const [seo_title, setSeoTitle] = useState('')
@@ -34,6 +37,7 @@ export const AddGamePost = ()=> {
     const [poster_1024x768, setPoster_1024x768] = useState<File | undefined>(undefined);
     const [poster_1440x900, setPoster_1440x900] = useState<File | undefined>(undefined);
     const [poster_300x300, setPoster_300x300] = useState <File | undefined>(undefined);
+
     const posterPhoto_horizontal : File [] = [];
     if(poster_1440x900) {
         posterPhoto_horizontal.push(poster_1440x900)
@@ -86,26 +90,29 @@ export const AddGamePost = ()=> {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    let url = URL_FOR_BACK.URL_BASE + URL_FOR_BACK.GAMEPOST+"/"+currentLanguage+ URL_FOR_BACK.ADD
     
-    // Предполагаем, что submitArticle возвращает промис.
-    submitArticle(gamepost, posterPhoto_horizontal, ids, BASE_URL + GAMEPOST + ADD, poster_300x300, genresSet, platformsSet)
+    submitArticle(gamepost, posterPhoto_horizontal, ids,url, poster_300x300, genresSet, platformsSet)
         .then(() => {
-            // Обработка успешной отправки
+            
             console.log('Статья успешно отправлена');
             window.location.reload();
         })
         .catch((error) => {
-            // Обработка ошибок отправки
             console.error('Ошибка при отправке статьи:', error);
         });
 };
+
+const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) => {
+    setCurrentLanguage(event.target.value);
+}
 
 
     return (
        <section className="addGamePost_container">
         <Helmet>
-        <title>Додати Ігру</title>
-            <meta name='Сторнінка для додавання ігри' />
+        <title>{words.ADD_HELMET_GAMEPOST}</title>
+            <meta name={words.ADD_HELMET_GAMEPOST} />
         </Helmet>
         <form className='addGamePost' onSubmit={handleSubmit}>
         <div className="addGamePostBox">
@@ -166,6 +173,7 @@ export const AddGamePost = ()=> {
             </div>
             </div>
             <div className="addGamePostBoxSection">
+            <div className='addGamePostBoxSection_top'>
             <div>
             <input
             type='text'
@@ -173,13 +181,28 @@ export const AddGamePost = ()=> {
             onChange={(e)=> setTitle(e.target.value)}
             minLength={4}
             maxLength={75}
-            placeholder='Назва ігри'
+            placeholder={words.TITLE_GAME}
             required
             className='addArticle_box_input'
             />
             </div>
             <div>
-            <QuilEditor description={des} setDescription={setDes} onIdsUpdate={handleIdsUpdate} url={BASE_URL+GAMEPOST_DES_URL} url_delete={BASE_URL+GAMEPOST_DES_URL} />
+            <label htmlFor="language-select">Choose push language: </label>
+            <select id="language-select" value={currentLanguage} onChange={handleSelectLanguage}>
+                <option value="/ru">Русский</option>
+                <option value="/pl">Польский</option>
+                <option value="/en">Английский</option>
+                <option value="/ua">Украинский</option>
+            </select>
+            </div>
+            <div>Current language: {`${currentLanguage.substring(1)}`}</div>
+            </div>
+            <div>
+            <QuilEditor description={des} 
+            setDescription={setDes}
+             onIdsUpdate={handleIdsUpdate} 
+             url={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.POST_DES_URL+currentLanguage+URL_FOR_BACK.ADD} 
+             url_delete={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.POST_DES_URL+currentLanguage} />
             </div>
             </div>
             <div className="addGamePostBoxSection">
@@ -200,7 +223,7 @@ export const AddGamePost = ()=> {
                     type='text'
                     value={seo_title}
                     onChange={(e)=>setSeoTitle(e.target.value)}
-                    placeholder='Написати назву для SEO'
+                    placeholder={words.TITLE_SEO_ARTICLE}
                     minLength={65}
                     maxLength={75}
                     required
@@ -212,7 +235,7 @@ export const AddGamePost = ()=> {
                     type='text'
                     value={seo_des}
                     onChange={(e)=>setSeoDes(e.target.value)}
-                    placeholder='Написати опис для SEO'
+                    placeholder={words.DES_SEO_ARTICLE}
                     required
                     minLength={135}
                     maxLength={165}
@@ -224,7 +247,7 @@ export const AddGamePost = ()=> {
                     type='text'
                     value={url_game}
                     onChange={(e)=> setUrlGame(e.target.value)}
-                    placeholder='Написати сайт видавця'
+                    placeholder={words.URL_PUBLISHER}
                     required
                     minLength={3}
                     maxLength={40}
@@ -251,7 +274,7 @@ export const AddGamePost = ()=> {
                         type='text'
                         value={os}
                         name={os}
-                        placeholder='Написати Опер. Систему'
+                        placeholder={words.OS}
                         onChange={(e)=> setOS(e.target.value)}
                         minLength={4}
                         maxLength={20}
@@ -264,7 +287,7 @@ export const AddGamePost = ()=> {
                         type='text'
                         value={minProcessor}
                         name={minProcessor}
-                        placeholder='Написати мінімальні потреби для процессору'
+                        placeholder={words.MIN_CPU}
                         onChange={(e)=> setMinProcessor(e.target.value)}
                         minLength={4}
                         maxLength={20}
@@ -277,7 +300,7 @@ export const AddGamePost = ()=> {
                         type='text'
                         value={maxProcessor}
                         name={maxProcessor}
-                        placeholder='Написати максимальні потреби для процессору'
+                        placeholder={words.MAX_CPU}
                         onChange={(e)=> setMaxProcessor(e.target.value)}
                         minLength={4}
                         maxLength={20}
@@ -290,7 +313,7 @@ export const AddGamePost = ()=> {
                         type='text'
                         value={minRam}
                         name={minRam}
-                        placeholder='Написати мінімальні потреби для процессору'
+                        placeholder={words.MIN_RAM}
                         onChange={(e)=> setMinRam(e.target.value)}
                         minLength={4}
                         maxLength={20}
@@ -305,7 +328,7 @@ export const AddGamePost = ()=> {
                         type='text'
                         value={maxRam}
                         name={maxRam}
-                        placeholder='Написати рекомендовані потреби для процессору'
+                        placeholder={words.MAX_RAM}
                         onChange={(e)=> setMaxRam(e.target.value)}
                         minLength={4}
                         maxLength={20}
@@ -318,7 +341,7 @@ export const AddGamePost = ()=> {
                         type='text'
                         value={directX}
                         name={directX}
-                        placeholder='Написати потрібні драйвера'
+                        placeholder={words.DRIVERS}
                         onChange={(e)=> setDirectX(e.target.value)}
                         minLength={4}
                         maxLength={20}
@@ -331,7 +354,7 @@ export const AddGamePost = ()=> {
                         type='text'
                         value={lan}
                         name={lan}
-                        placeholder='Яка потрібна сеть?'
+                        placeholder={words.NETWORK}
                         onChange={(e)=> setLan(e.target.value)}
                         minLength={4}
                         maxLength={20}
@@ -344,7 +367,7 @@ export const AddGamePost = ()=> {
                         type='text'
                         value={memory}
                         name={memory}
-                        placeholder='Скільки місця на жорсткому диску?'
+                        placeholder={words.SPACE_DISK}
                         onChange={(e)=> setMemory(e.target.value)}
                         minLength={4}
                         maxLength={20}
@@ -354,7 +377,7 @@ export const AddGamePost = ()=> {
                     </div>
                    </div>
         </div>
-        <button type='submit'>Зберегти</button>
+        <button type='submit'>{words.SAVE_ARTICLE}</button>
         </form>
        </section>
     )

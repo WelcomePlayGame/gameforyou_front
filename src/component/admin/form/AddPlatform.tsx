@@ -1,6 +1,6 @@
 import { useState } from "react"
 import {ResponseDataCategory, addCategory} from '../../../helper/MethodPost'
-import {BASE_URL, PLATFORM, ADD } from '../../../helper/conf'
+import {URL_FOR_BACK} from '../../../helper/URL'
 import { toast } from 'react-toastify';
 
 export const AddPlatform = ()=> {
@@ -15,7 +15,7 @@ export const AddPlatform = ()=> {
     const handleSubmit = async (event : React.FormEvent) => {
         event.preventDefault();
         try{
-            await addCategory(BASE_URL+PLATFORM+ADD, platform);
+            await addCategory(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.PLATFORM+URL_FOR_BACK.COUNTRY+URL_FOR_BACK.ADD, platform);
             setTitle('')
             toast.success("Категорія створена");
         } catch (error) {
