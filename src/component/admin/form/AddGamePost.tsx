@@ -11,8 +11,7 @@ import {URL_FOR_BACK} from '../../../helper/URL'
 import words from '../../../wordsvariable/WORDS'
 
 export const AddGamePost = ()=> {
-    const [currentLanguage, setCurrentLanguage] = useState<string>('/ru')
-    const [postUrl, setPostUrl] = useState('');
+    const [currentLanguage, setCurrentLanguage] = useState<string>('/en')
     const [title, setTitle] = useState('')
     const [des, setDes] = useState('')
     const [seo_title, setSeoTitle] = useState('')
@@ -84,19 +83,18 @@ export const AddGamePost = ()=> {
     const date = e.target.value; // получаем дату в формате YYYY-MM-DD
     const time = 'T00:00:00Z'; // добавляем время и часовой пояс UTC
     const datetime = date + time; // соединяем дату со временем
-    console.log(datatime);
     setDataTime(datetime); // обновляем состояние
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let url = URL_FOR_BACK.URL_BASE + URL_FOR_BACK.GAMEPOST+"/"+currentLanguage+ URL_FOR_BACK.ADD
+    let url = URL_FOR_BACK.URL_BASE + URL_FOR_BACK.GAMEPOST+currentLanguage+ URL_FOR_BACK.ADD
     
     submitArticle(gamepost, posterPhoto_horizontal, ids,url, poster_300x300, genresSet, platformsSet)
         .then(() => {
             
-            console.log('Статья успешно отправлена');
-            window.location.reload();
+            
+        
         })
         .catch((error) => {
             console.error('Ошибка при отправке статьи:', error);
@@ -127,7 +125,7 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
                         height: 300,
                        }
                     }
-                    maxSize = {0.1}
+                    maxSize = {0.5}
                 />
             </div>
             </div>
@@ -142,7 +140,7 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
                         height: 900,
                        }
                     }
-                    maxSize = {0.4}
+                    maxSize = {0.5}
                 />
             </div>
             <div>
@@ -155,7 +153,7 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
                         height: 768,
                        }
                     }
-                    maxSize = {0.3}
+                    maxSize = {0.5}
                 />
             </div>
             <div>
@@ -168,7 +166,7 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
                         height: 320,
                        }
                     }
-                    maxSize = {0.2}
+                    maxSize = {0.5}
                 />
             </div>
             </div>
@@ -202,7 +200,9 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
             setDescription={setDes}
              onIdsUpdate={handleIdsUpdate} 
              url={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.POST_DES_URL+currentLanguage+URL_FOR_BACK.ADD} 
-             url_delete={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.POST_DES_URL+currentLanguage} />
+             url_delete={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.POST_DES_URL+currentLanguage}
+             currentLanguage={currentLanguage}
+             />
             </div>
             </div>
             <div className="addGamePostBoxSection">

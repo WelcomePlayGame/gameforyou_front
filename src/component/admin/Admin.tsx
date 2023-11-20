@@ -26,7 +26,7 @@ export const Admin = ()=> {
         <Route path='/addgenre' element={<AddGenres/>}/>
         <Route path='/addplatform' element={<AddPlatform/>}/>
         <Route path='/addpublisher' element={<AddPublisher/>}/>
-        <Route path='/adddevoloper' element={<AddDevoloper/>}/>
+        <Route path='/adddeveloper' element={<AddDevoloper/>}/>
         </Routes>
         </>
     )

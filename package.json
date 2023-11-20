@@ -30,14 +30,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:ua": "cross-env REACT_APP_LANGUAGE=UA react-scripts build",
-    "build:ru": "cross-env REACT_APP_LANGUAGE=RU react-scripts build",
-    "build:en": "cross-env REACT_APP_LANGUAGE=EN react-scripts build",
-    "build:pl": "cross-env REACT_APP_LANGUAGE=PL react-scripts build",
-    "start:ua": "cross-env REACT_APP_LANGUAGE=UA react-scripts start",
-    "start:ru": "cross-env REACT_APP_LANGUAGE=RU react-scripts start",
-    "start:en": "cross-env REACT_APP_LANGUAGE=EN react-scripts start",
-    "start:pl": "cross-env REACT_APP_LANGUAGE=PL react-scripts start"
+    "build:ua": "cross-env REACT_APP_LANGUAGE=UA PUBLIC_URL=https://gameforyou.online/ua react-scripts build",
+    "build:ru": "cross-env REACT_APP_LANGUAGE=RU PUBLIC_URL=https://gameforyou.online/ru react-scripts build",
+    "build:en": "cross-env REACT_APP_LANGUAGE=EN PUBLIC_URL=https://gameforyou.online/en react-scripts build",
+    "build:pl": "cross-env REACT_APP_LANGUAGE=PL PUBLIC_URL=https://gameforyou.online/pl react-scripts build",
+    "start:ua": "cross-env REACT_APP_LANGUAGE=UA PUBLIC_URL=https://gameforyou.online/ua react-scripts start",
+    "start:ru": "cross-env REACT_APP_LANGUAGE=RU PUBLIC_URL=https://gameforyou.online/ru react-scripts start",
+    "start:en": "cross-env REACT_APP_LANGUAGE=EN PUBLIC_URL=https://gameforyou.online/en react-scripts start",
+    "start:pl": "cross-env REACT_APP_LANGUAGE=PL PUBLIC_URL=https://gameforyou.online/pl react-scripts start"
   },
   "eslintConfig": {
     "extends": [

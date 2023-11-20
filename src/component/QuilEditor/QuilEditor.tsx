@@ -2,17 +2,17 @@ import { useRef, useEffect, FC, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
-import { url } from 'inspector';
 
 interface QuilEditorProps {
     url : string;
     url_delete : string;
     description: string;
+    currentLanguage : string;
     setDescription: (text: string) => void;
     onIdsUpdate: (ids : number []) => void;
 }
 
-export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription, onIdsUpdate, url, url_delete}) => {
+export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription, onIdsUpdate, url, url_delete, currentLanguage}) => {
     const quillRef = useRef<ReactQuill | null>(null);
     const [images, setImages] = useState<{ [url: string]: number }>({});
 
@@ -99,8 +99,7 @@ export const QuilEditor: FC<QuilEditorProps> = ({ description, setDescription, o
             };
             
         }
-    }, [images]);
-    
+    }, [images, url, url_delete]);
 
     const toolbarOptions = [
         ['bold', 'italic', 'underline', 'strike'],

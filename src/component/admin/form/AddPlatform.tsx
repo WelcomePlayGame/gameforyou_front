@@ -4,7 +4,7 @@ import {URL_FOR_BACK} from '../../../helper/URL'
 import { toast } from 'react-toastify';
 
 export const AddPlatform = ()=> {
-
+    const [currentLanguage, setCurrentLanguage] = useState<string>('/en')
     const [title, setTitle] = useState('');
 
     const platform : ResponseDataCategory  = {
@@ -15,7 +15,7 @@ export const AddPlatform = ()=> {
     const handleSubmit = async (event : React.FormEvent) => {
         event.preventDefault();
         try{
-            await addCategory(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.PLATFORM+URL_FOR_BACK.COUNTRY+URL_FOR_BACK.ADD, platform);
+            await addCategory(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.PLATFORM+currentLanguage+URL_FOR_BACK.ADD, platform);
             setTitle('')
             toast.success("Категорія створена");
         } catch (error) {

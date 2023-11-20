@@ -9,7 +9,7 @@ import { SelectGame } from '../../GamePost/SelectGame'
 import words from '../../../wordsvariable/WORDS'
 
 export const AddArticle = ()=> {
-
+    const [currentLanguage, setCurrentLanguage] = useState<string>('/ru')
     const [title, setTitle] = useState('')
     const [des,  setDes] = useState('')
     const [seo_des, setSeo_des] = useState('');
@@ -53,6 +53,7 @@ export const AddArticle = ()=> {
    const  handlSubmit = (event : React.FormEvent)=> {
     event.preventDefault();
     submitArticle(article,posterPhoto, ids, URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE+URL_FOR_BACK.COUNTRY+URL_FOR_BACK.ADD);
+    window.location.reload();
     }
 
 
@@ -112,7 +113,9 @@ export const AddArticle = ()=> {
                  setDescription={setDes} 
                  onIdsUpdate={handleIdsUpdate} 
                  url={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE_DES_URL+URL_FOR_BACK.COUNTRY} 
-                 url_delete={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE_DES_URL+URL_FOR_BACK.COUNTRY}/>
+                 url_delete={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE_DES_URL+URL_FOR_BACK.COUNTRY}
+                 currentLanguage={currentLanguage}
+                 />
             </div>
         </div>
         <div className="addCategory_box_secton">

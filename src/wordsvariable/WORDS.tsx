@@ -46,8 +46,28 @@ export interface WORDS_Tem {
     NETWORK : string,
     SPACE_DISK : string,
     ADD_HELMET_GAMEPOST : string,
-
+    CREATE_CATEGORY : string,
+    SAVE_CATEGORY :string,
+    WRITE_NAME_CATEGORY : string,
+    CREATE_DEVELOPER : string,
+    SAVE_DEVELOPER : string,
+    WRITE_NAME_DEVELOPER : string,
+    CREATE_GENRE : string,
+    SAVE_GENRE : string,
+    WRITE_NAME_GENRE : string,
+    CREATE_PUBLISHER : string,
+    SAVE_PUBLISHER : string,
+    WRITE_PUBLISHER : string,
+    TITLE_SEO : string,
+    DESCRIPTION_SEO: string,
+    YOU_FIND_US : string,
+    MORE : string,
+    US_INTERESTING : string,
+    LATEST_BLOGS : string,
+    LatestGamingNews : string,
+    
 }
+
 let words : WORDS_Tem
 if( process.env.REACT_APP_LANGUAGE === 'UA') {
     words = UA_WORDS;

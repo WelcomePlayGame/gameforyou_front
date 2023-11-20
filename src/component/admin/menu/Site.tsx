@@ -7,7 +7,7 @@ export const Site = ()=> {
 
       <div>
         <span className="menu_link">
-        <a href="/" target="_blank" className="menu_link_a">{words.SITE}</a>
+        <a href={`${process.env.PUBLIC_URL}`} target="_blank" className="menu_link_a">{words.SITE}</a>
         </span>
       </div>
     )

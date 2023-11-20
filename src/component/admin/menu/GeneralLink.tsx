@@ -31,7 +31,7 @@ export const GeneralLink = ()=> {
                                 </a>
                             </span>
                             <span className="menu_link general_link">
-                                <a href="/admin/adddevoloper" className="menu_link general_link_dev">
+                                <a href="/admin/adddeveloper" className="menu_link general_link_dev">
                                 {words.ADD_DEVOLOPER}
                                 </a>
                             </span>
