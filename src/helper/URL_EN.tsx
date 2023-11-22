@@ -17,7 +17,7 @@ const URL_EN:URL_Tem = {
     ADD : '/add',
     DELETE : '/delete',
     ARTICLE_DES_URL : '/article_des_url',
-    
+   
 }
 
 export default URL_EN; 

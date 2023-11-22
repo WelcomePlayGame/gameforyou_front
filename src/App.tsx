@@ -8,6 +8,9 @@ import { Admin } from './component/admin/Admin';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { NotFound } from './component/404/NotFound';
+import { ListGame } from './list/ListGame';
+import { Game } from './component/Game';
+import { PageGame } from './pages/PageGame';
 
 function App() {
   const basenameMap = {
@@ -37,9 +40,11 @@ const getBasename = (lang: string | undefined)=> {
       <AdminMenu/>
 <Routes>
 <Route path='/' element={<Body/>}/>
+<Route path='/games' element={<ListGame/>}/>
 <Route path='/admin/*' element={<Admin/>}/>
 <Route path='*' element={<Navigate to="/404"/>} /> 
 <Route path='/404' element={<NotFound/>}/>
+<Route path='/game/:id' element={<PageGame/>}/>
 </Routes>
   </BrowserRouter>
 

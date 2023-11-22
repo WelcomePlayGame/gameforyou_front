@@ -92,9 +92,7 @@ export const AddGamePost = ()=> {
     
     submitArticle(gamepost, posterPhoto_horizontal, ids,url, poster_300x300, genresSet, platformsSet)
         .then(() => {
-            
-            
-        
+            window.location.reload();
         })
         .catch((error) => {
             console.error('Ошибка при отправке статьи:', error);
@@ -315,7 +313,7 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
                         name={minRam}
                         placeholder={words.MIN_RAM}
                         onChange={(e)=> setMinRam(e.target.value)}
-                        minLength={4}
+                        minLength={2}
                         maxLength={20}
                         required
                         className='input_seo input_bottom'
@@ -330,7 +328,7 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
                         name={maxRam}
                         placeholder={words.MAX_RAM}
                         onChange={(e)=> setMaxRam(e.target.value)}
-                        minLength={4}
+                        minLength={2}
                         maxLength={20}
                         required
                         className='input_seo input_bottom'

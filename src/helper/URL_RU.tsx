@@ -16,6 +16,7 @@ const URL_RU : URL_Tem = {
     COUNTRY : '/ru',
     ADD : '/add',
     DELETE : '/delete',
-    ARTICLE_DES_URL : '/article_des_url'
+    ARTICLE_DES_URL : '/article_des_url',
+    
 }
 export default URL_RU;

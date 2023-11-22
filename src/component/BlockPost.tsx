@@ -32,7 +32,7 @@ export const BlockPost = () => {
                                 </a>
                             </li>
                             <li className="subcribe_li">
-                                <a href="https://www.facebook.com/GameVadymPetrovich/" target="_blank">
+                                <a href="https://discord.gg/RFgrFhXJzk" target="_blank">
                                     <img src={`${process.env.PUBLIC_URL}/icons/discord.png`} alt="discord" className="soc_icons_img"/>
                                 </a>
                             </li>

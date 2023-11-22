@@ -60,7 +60,7 @@ export const FileCustomInput : FC<{
             />
             <label htmlFor={`fileInput-${imageSize.width}x${imageSize.height}`} className="file-label">
                 <div className="image-hint">
-                    <img src="/icons/upload.png" alt="Подсказка" className='image_upload' />
+                    <img src={`${process.env.PUBLIC_URL}/icons/upload.png`} alt="Подсказка" className='image_upload' />
                 </div>
                 <div>
                 <span>{`${imageSize.width}x${imageSize.height}`}</span>

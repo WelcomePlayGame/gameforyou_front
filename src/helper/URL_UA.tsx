@@ -16,7 +16,8 @@ const URL_UA : URL_Tem = {
     COUNTRY : '/ua',
     ADD : '/add',
     DELETE : '/delete',
-    ARTICLE_DES_URL : '/article_des_url'
+    ARTICLE_DES_URL : '/article_des_url',
+   
     
 }
 

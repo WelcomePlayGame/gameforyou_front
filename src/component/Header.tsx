@@ -41,7 +41,11 @@ export const Header = () => {
                         <ul className='header_menu_ul'>
                             <li className="header_menu_li">{words.NEWS}</li>
                             <li className="header_menu_li">{words.STREAM}</li>
-                            <li className="header_menu_li">{words.GAMES_REVIEWS}</li>
+                            <li className="header_menu_li">
+                                <a href={`${process.env.PUBLIC_URL}/games`} className='header_menu_li_a'>
+                                {words.GAMES_REVIEWS}
+                                </a>
+                            </li>
                             <li className="header_menu_li">{words.CHEATS}</li>
                             <li className="header_menu_li">{words.HELP}</li>
                         </ul>

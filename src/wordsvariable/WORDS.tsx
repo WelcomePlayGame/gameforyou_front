@@ -65,8 +65,19 @@ export interface WORDS_Tem {
     US_INTERESTING : string,
     LATEST_BLOGS : string,
     LatestGamingNews : string,
-    
-}
+    DETAILS : string,
+    DATA_RELASE : string,
+    SITE_GAME : string,
+    USER_RATING : string,
+    WRITE_A_REVIEW : string,
+    MY_RATING : string,
+    TITLE_OPTIONAL : string,
+    DES_OPTIONAL : string,
+    POSITIVE_TITLE : string,
+    NEGATIVE_TITLE : string,
+    SEND_COMMENT : string,
+
+}   
 
 let words : WORDS_Tem
 if( process.env.REACT_APP_LANGUAGE === 'UA') {

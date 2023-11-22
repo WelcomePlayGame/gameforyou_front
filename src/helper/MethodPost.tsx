@@ -32,14 +32,13 @@ interface Base {
     directX : string,
     lan : string,
     memory : string,
-    // genresSet : string [];
     developer : {
         id : string
     };
     publisher : {
         id : string
     };
-    // platformsSet : string [];
+
 
 }
 
@@ -76,13 +75,10 @@ export const submitArticle = async (article: Article | GamePost, posterPhoto: Fi
     formData.append('genresSet', new Blob([JSON.stringify(genresSet)], {type: "application/json"}));
     formData.append('platformsSet', new Blob([JSON.stringify(platformsSet)], {type: "application/json"}));
     try {
-        const response = await axios.post(url, formData); // Без явного указания заголовка Content-Type
+        const response = await axios.post(url, formData); 
         if (response.status !== 200) {
             throw new Error(`Server responded with status code ${response.status}`);
         }
-        for (let [key, value] of formData.entries()) {
-            console.log(`${key}:`, value);
-          }
           
         return response.data;
     } catch (error) {
@@ -90,3 +86,33 @@ export const submitArticle = async (article: Article | GamePost, posterPhoto: Fi
         toast.error("Проблема з сервером");
     }
 };
+
+export interface IComment {
+    title_comment : string;
+    des_comment : string;
+    positiveInputs : string [];
+    negativeInputs : string [];
+    rating :  number;
+    id_post : number
+}
+
+type TComment = ( url : string, comment : IComment) => Promise<IComment>
+export const addComment : TComment = async ( url, comment) => {
+
+    try {
+        const response = await axios.post<IComment>(url, comment, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        if (response.status !== 200) {
+            throw new Error(`Server responded with status code ${response.status}`);
+        }
+    
+        return response.data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+
+}
