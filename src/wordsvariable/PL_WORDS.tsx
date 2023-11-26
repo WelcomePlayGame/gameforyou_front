@@ -73,4 +73,11 @@ export const PL_WORDS : WORDS_Tem = {
     POSITIVE_TITLE : 'Zalety',
     NEGATIVE_TITLE : 'Wady',
     SEND_COMMENT : 'Prześlij komentarz',
+    CHOOSE_CATEGORY : 'Wybierz kategorię',
+    CHOOSE_TAG : 'Wybierz Etykietę',
+    CREATE_TAG : 'Utwórz tag',
+    WRITE_NAME_TAG : 'Napisz tag',
+    SAVE_TAG : 'Zapisz znacznik',
+    DES_LIST_ARTICLE_SEO : 'Aktualności ze świata gier: Bądź na bieżąco z najnowszymi wydarzeniami, recenzjami i ogłoszeniami ze świata gier. Odkrywaj najgorętsze trendy w branży gamingowej na jednej platformie.',
+    TITLE_LIST_ARTICLE_SEO : 'Aktualności ze świata gier: Gorące trendy, recenzje i ogłoszenia w świecie gier',
 }

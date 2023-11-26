@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import {getAllCategory, ResponseDataCategory} from '../../../helper/MethodGet'
-import {BASE_URL, CATEGORY} from '../../../helper/conf'
-import { error } from "console"
+import { URL_FOR_BACK } from "../../../helper/URL"
+
 export const Category = ()=> {
 
     const [categororyList , setCategoryList] = useState <ResponseDataCategory []> ([])
 
     useEffect(()=> {
-        getAllCategory(BASE_URL+CATEGORY)
+        getAllCategory(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.CATEGORY+URL_FOR_BACK.COUNTRY)
         .then((data)=> setCategoryList(data))
     }, [])
     

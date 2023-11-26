@@ -11,6 +11,8 @@ import { NotFound } from './component/404/NotFound';
 import { ListGame } from './list/ListGame';
 import { Game } from './component/Game';
 import { PageGame } from './pages/PageGame';
+import { Article } from './component/admin/article/Article';
+import { ListArticle } from './component/admin/article/ListArticle';
 
 function App() {
   const basenameMap = {
@@ -41,10 +43,12 @@ const getBasename = (lang: string | undefined)=> {
 <Routes>
 <Route path='/' element={<Body/>}/>
 <Route path='/games' element={<ListGame/>}/>
+<Route path='/article' element={<ListArticle/>}/>
 <Route path='/admin/*' element={<Admin/>}/>
 <Route path='*' element={<Navigate to="/404"/>} /> 
 <Route path='/404' element={<NotFound/>}/>
 <Route path='/game/:id' element={<PageGame/>}/>
+<Route path='/article/:id' element={<Article/>}/>
 </Routes>
   </BrowserRouter>
 

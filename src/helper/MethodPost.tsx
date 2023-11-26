@@ -61,7 +61,7 @@ export const addCategory: DataPostCatagory<string, ResponseDataCategory> = async
     }
 };
 
-export const submitArticle = async (article: Article | GamePost, posterPhoto: File[],  ids: number[], url: string, posterPhotoVertical?: File, genresSet?: string [], platformsSet?: string [] ) => {
+export const submitGamePost= async (article: GamePost, posterPhoto: File[],  ids: number[], url: string, posterPhotoVertical?: File, genresSet?: string [], platformsSet?: string [] ) => {
     const formData = new FormData();
     formData.append('article', new Blob([JSON.stringify(article)], {type: "application/json"}));
     posterPhoto.forEach((file) => {
@@ -86,6 +86,25 @@ export const submitArticle = async (article: Article | GamePost, posterPhoto: Fi
         toast.error("Проблема з сервером");
     }
 };
+
+export const submitArticle = async (article : Article, posterPhoto: File[], ids: number[], url: string, tagSet?: string [])=> {
+    const formData = new FormData();
+    formData.append('article', new Blob([JSON.stringify(article)], {type: "application/json"}));
+    posterPhoto.forEach((file) => {
+        formData.append('posterPhoto', file)
+    });
+    formData.append('ids', new Blob([JSON.stringify(ids)], {type: "application/json"}));
+    formData.append('tagSet', new Blob([JSON.stringify(tagSet)], {type: "application/json"}));
+    try {
+        const response = await axios.post(url, formData);
+        if (response.status !== 200) {
+            throw new Error(`Server responded with status code ${response.status}`);
+        }
+    return response.data;    
+    } catch (error) {
+        toast.error("Problem with server")
+    }
+}
 
 export interface IComment {
     title_comment : string;

@@ -4,18 +4,18 @@ import { toast } from 'react-toastify';
 import {URL_FOR_BACK} from '../../../helper/URL'
 import words from "../../../wordsvariable/WORDS";
 
-export const AddCategory = () => {
+export const AddTag = () => {
     const [currentLanguage, setCurrentLanguage] = useState<string>('/en')
     const [title , setTitle] = useState('');
-    const category: ResponseDataCategory = {
+    const tag: ResponseDataCategory = {
         title: title
     };
 
     const handleSubmit = async (event : React.FormEvent) => {
         event.preventDefault();
-        let url = URL_FOR_BACK.URL_BASE + URL_FOR_BACK.CATEGORY+currentLanguage+ URL_FOR_BACK.ADD
+        let url = URL_FOR_BACK.URL_BASE + URL_FOR_BACK.TAG+currentLanguage+ URL_FOR_BACK.ADD
         try{
-            await addCategory(url, category);
+            await addCategory(url, tag);
             setTitle('')
             toast.success("Категорія створена");
         } catch (error) {
@@ -25,20 +25,21 @@ export const AddCategory = () => {
     const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) => {
         setCurrentLanguage(event.target.value);
     }
+    
 
     return (
         <section>
             <div className="category_form_top">
-                <div><h4>{words.CREATE_CATEGORY}</h4></div>
-            <div>
-            <label htmlFor="language-select">Choose push language: </label>
+                <div><h4>{words.CREATE_TAG}</h4></div>
+                <div>
+                <label htmlFor="language-select">Choose push language: </label>
             <select id="language-select" value={currentLanguage} onChange={handleSelectLanguage}>
                 <option value="/ru">Русский</option>
                 <option value="/pl">Польский</option>
                 <option value="/en">Английский</option>
                 <option value="/ua">Украинский</option>
             </select>
-            </div>
+                </div>
                 <div>Current Language : {currentLanguage.substring(1)}</div>
             </div>
             <form className="category_form" onSubmit={handleSubmit}>
@@ -47,7 +48,7 @@ export const AddCategory = () => {
                 <input
                     value={title}
                     onChange={e => setTitle(e.target.value)}
-                    placeholder={words.WRITE_NAME_CATEGORY}
+                    placeholder={words.WRITE_NAME_TAG}
                     minLength={4}
                     maxLength={75}
                     required 
@@ -56,7 +57,7 @@ export const AddCategory = () => {
                 />
                 </div>
                 <div className="category_form_box_bottom">
-                <button type="submit" className="category_form_box_bottom_button">{words.SAVE_CATEGORY}</button>
+                <button type="submit" className="category_form_box_bottom_button">{words.SAVE_TAG}</button>
                 </div>
             </div>
             </form>

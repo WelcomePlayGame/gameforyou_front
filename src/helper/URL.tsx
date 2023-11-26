@@ -19,7 +19,8 @@ export interface URL_Tem {
     COUNTRY : string,
     ADD : string,
     DELETE : string,
-    ARTICLE_DES_URL : string
+    ARTICLE_DES_URL : string,
+
 }
 
 let url : URL_Tem; 

@@ -76,7 +76,13 @@ export interface WORDS_Tem {
     POSITIVE_TITLE : string,
     NEGATIVE_TITLE : string,
     SEND_COMMENT : string,
-
+    CHOOSE_CATEGORY : string,
+    CHOOSE_TAG : string,
+    CREATE_TAG : string,
+    WRITE_NAME_TAG : string,
+    SAVE_TAG : string,
+    DES_LIST_ARTICLE_SEO : string,
+    TITLE_LIST_ARTICLE_SEO : string,
 }   
 
 let words : WORDS_Tem

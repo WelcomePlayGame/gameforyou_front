@@ -6,7 +6,7 @@ import { URL_FOR_BACK } from "../helper/URL";
 import { Helmet } from "react-helmet";
 import { CommentGame } from "./comments/CommentGame";
 import { ButtonComment } from "./comments/ButtonComment";
-import { NotFound } from "./404/NotFound";
+
 export const Game = ()=> {
     const [isClose, setIsClose] = useState(false)
   
@@ -83,23 +83,23 @@ export const Game = ()=> {
                     <picture>
                         <source
                         media="(min-width:1440px)"
-                        srcSet={`${URL_FOR_BACK.URL_BASE}${game?.posterHorizontal_uls?.poster_1440x900}`}
+                        srcSet={`${game?.posterHorizontal_uls?.poster_1440x900}`}
                         type="image/webp" 
                        
                         />
                         <source 
                         media="(min-width:991px)"
-                        srcSet={`${URL_FOR_BACK.URL_BASE}${game?.posterHorizontal_uls?.poster_1024x768}`} 
+                        srcSet={`${game?.posterHorizontal_uls?.poster_1024x768}`} 
                         type="image/webp"
                     
                         />
                         <source
                         media="(max-width:767px)"
-                        srcSet={`${URL_FOR_BACK.URL_BASE}${game?.posterHorizontal_uls?.poster_480x320}`}
+                        srcSet={`${game?.posterHorizontal_uls?.poster_480x320}`}
                         type="image/webp" 
                         />
                         <img
-                        src={`${URL_FOR_BACK.URL_BASE}${game?.posterHorizontal_uls?.poster_1024x768}`}
+                        src={`${game?.posterHorizontal_uls?.poster_1024x768}`}
                         alt={game?.title} 
                         loading="lazy"
                         className="game_header_img"

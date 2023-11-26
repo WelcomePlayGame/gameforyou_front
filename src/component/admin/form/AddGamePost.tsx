@@ -6,7 +6,7 @@ import { SelectGenres } from '../../Genres/SelectGenres'
 import { SelectDevolopers } from '../../Devoloper/SelectDevolopers'
 import { SelectPublishers } from '../../Publisher/SelectPublishers'
 import { SelectPlatforms } from '../../Platforms/SelectPlatforms'
-import {submitArticle} from '../../../helper/MethodPost'
+import {submitGamePost} from '../../../helper/MethodPost'
 import {URL_FOR_BACK} from '../../../helper/URL'
 import words from '../../../wordsvariable/WORDS'
 
@@ -18,7 +18,7 @@ export const AddGamePost = ()=> {
     const [seo_des, setSeoDes] = useState('')
     const [url_game, setUrlGame] = useState('')
     const [mark, setMark] = useState('game')
-    const [datatime, setDataTime] =  useState('')
+    const [datatime, setDataTime] =  useState<string>('')
     const [genresSet, setGenre] = useState<string []>([])
     const [developer, setDevoloper] = useState('')
     const [publisher, setPublisher] = useState('')
@@ -36,7 +36,6 @@ export const AddGamePost = ()=> {
     const [poster_1024x768, setPoster_1024x768] = useState<File | undefined>(undefined);
     const [poster_1440x900, setPoster_1440x900] = useState<File | undefined>(undefined);
     const [poster_300x300, setPoster_300x300] = useState <File | undefined>(undefined);
-
     const posterPhoto_horizontal : File [] = [];
     if(poster_1440x900) {
         posterPhoto_horizontal.push(poster_1440x900)
@@ -57,14 +56,12 @@ export const AddGamePost = ()=> {
         url_game : url_game,
         mark : mark,
         datatime : datatime,
-        // genresSet : genre,
         developer : {
             id : developer,
         },
         publisher : {
             id : publisher,
         },
-        // platformsSet : platform,
         os : os,
         minProcessor : minProcessor,
         maxProcessor : maxProcessor,
@@ -79,20 +76,21 @@ export const AddGamePost = ()=> {
     setIds(id);
   } 
 
-  const handleDateChange = (e:ChangeEvent<HTMLInputElement>)=> {
+  const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     const date = e.target.value; // получаем дату в формате YYYY-MM-DD
-    const time = 'T00:00:00Z'; // добавляем время и часовой пояс UTC
-    const datetime = date + time; // соединяем дату со временем
-    setDataTime(datetime); // обновляем состояние
-  }
+    setDataTime(date); // обновляем состояние
+};
+
+
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     let url = URL_FOR_BACK.URL_BASE + URL_FOR_BACK.GAMEPOST+currentLanguage+ URL_FOR_BACK.ADD
     
-    submitArticle(gamepost, posterPhoto_horizontal, ids,url, poster_300x300, genresSet, platformsSet)
+    submitGamePost(gamepost, posterPhoto_horizontal, ids,url, poster_300x300, genresSet, platformsSet)
         .then(() => {
-            window.location.reload();
+            // window.location.reload();
         })
         .catch((error) => {
             console.error('Ошибка при отправке статьи:', error);
@@ -253,15 +251,15 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
                     />
                 </div>
             <div>
-                <input
-                type='date'
-                value={datatime.substring(0,10)}
-                onChange={handleDateChange}
-                name='datatime'
-                id='datatime'
-                className='input_seo'
-                required
-                />
+            <input
+    type='date'
+    value={datatime ? new Date(datatime).toISOString().substring(0, 10) : ''}
+    onChange={handleDateChange}
+    name='datatime'
+    id='datatime'
+    className='input_seo'
+    required
+/>
             </div>
             </div>
         </div>

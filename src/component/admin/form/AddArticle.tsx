@@ -7,9 +7,10 @@ import {URL_FOR_BACK} from '../../../helper/URL'
 import { FileCustomInput } from '../../QuilEditor/FileCustomInput';
 import { SelectGame } from '../../GamePost/SelectGame'
 import words from '../../../wordsvariable/WORDS'
+import { SelectTag } from '../../Tag/SelectTag'
 
 export const AddArticle = ()=> {
-    const [currentLanguage, setCurrentLanguage] = useState<string>('/ru')
+    const [currentLanguage, setCurrentLanguage] = useState<string>('/en')
     const [title, setTitle] = useState('')
     const [des,  setDes] = useState('')
     const [seo_des, setSeo_des] = useState('');
@@ -17,6 +18,7 @@ export const AddArticle = ()=> {
     const [mark, setMark] = useState('news')
     const [category, setCategory] = useState('')
     const [gamePost, setGamePost] = useState('')
+    const [tagSet, setTagset] = useState<string []>([])
     const [poster_480x320, setPoster_480x320] = useState <File | undefined>(undefined);
     const [poster_1024x768, setPoster_1024x768] = useState<File | undefined>(undefined);
     const [poster_1440x900, setPoster_1440x900] = useState<File | undefined>(undefined);
@@ -52,15 +54,18 @@ export const AddArticle = ()=> {
 
    const  handlSubmit = (event : React.FormEvent)=> {
     event.preventDefault();
-    submitArticle(article,posterPhoto, ids, URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE+URL_FOR_BACK.COUNTRY+URL_FOR_BACK.ADD);
-    window.location.reload();
+    submitArticle(article,posterPhoto, ids, URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE+currentLanguage+URL_FOR_BACK.ADD, tagSet);
+    
     }
 
+    const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) => {
+        setCurrentLanguage(event.target.value);
+    }
 
     return (
      <section className='addcategory'>
         <Helmet>
-            <title>{words.SELECT_CATEGORY}</title>
+            <title>{words.ADD_CATEGORY}</title>
             <meta name='Сторнінка для додавання категорії' />
         </Helmet>
         <form className='addArticle' onSubmit={handlSubmit}>
@@ -71,7 +76,7 @@ export const AddArticle = ()=> {
         setImageState={setPoster_1440x900}
         file={poster_1440x900}
         imageSize={{width : 1440, height : 900}}
-        maxSize={0.4}
+        maxSize={0.5}
         />
         </div>
         <div>
@@ -79,7 +84,7 @@ export const AddArticle = ()=> {
         setImageState={setPoster_1024x768}
         file={poster_1024x768}
         imageSize={{width : 1024, height : 768}}
-        maxSize={0.3}
+        maxSize={0.5}
         />
         </div>
         <div>
@@ -87,13 +92,14 @@ export const AddArticle = ()=> {
         setImageState={setPoster_480x320}
         file={poster_480x320}
         imageSize={{width : 480, height : 320}}
-        maxSize={0.2}
+        maxSize={0.5}
         />
         </div>
 
         </div>
         <div className="addArticle_box_secton">
-            <div>
+        <div className='article_title_box'>
+        <div>
             <input
                 type="text"
                 name='title'
@@ -108,11 +114,22 @@ export const AddArticle = ()=> {
             />
             </div>
             <div>
+            <label htmlFor="language-select">Choose push language: </label>
+            <select id="language-select" value={currentLanguage} onChange={handleSelectLanguage}>
+                <option value="/ru">Русский</option>
+                <option value="/pl">Польский</option>
+                <option value="/en">Английский</option>
+                <option value="/ua">Украинский</option>
+            </select>
+            </div>
+            <div>Current language: {`${currentLanguage.substring(1)}`}</div>
+        </div>
+            <div>
                 <QuilEditor 
                 description={des}
                  setDescription={setDes} 
                  onIdsUpdate={handleIdsUpdate} 
-                 url={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE_DES_URL+URL_FOR_BACK.COUNTRY} 
+                 url={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE_DES_URL+URL_FOR_BACK.COUNTRY+URL_FOR_BACK.ADD} 
                  url_delete={URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE_DES_URL+URL_FOR_BACK.COUNTRY}
                  currentLanguage={currentLanguage}
                  />
@@ -120,6 +137,9 @@ export const AddArticle = ()=> {
         </div>
         <div className="addCategory_box_secton">
         <div className='addCategory_box_secton_right'>
+        <SelectTag
+            onChange={(e)=> setTagset(e)}
+        />
         <SelectCategory
             onChange={(e)=> setCategory(e.target.value) }
         />

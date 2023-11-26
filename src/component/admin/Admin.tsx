@@ -9,6 +9,7 @@ import { AddGenres } from './form/AddGenres'
 import { AddPlatform } from './form/AddPlatform'
 import { AddPublisher } from './form/AddPublisher'
 import { AddDevoloper } from './form/AddDevoloper'
+import { AddTag } from './form/AddTag'
 
 export const Admin = ()=> {
 
@@ -27,6 +28,7 @@ export const Admin = ()=> {
         <Route path='/addplatform' element={<AddPlatform/>}/>
         <Route path='/addpublisher' element={<AddPublisher/>}/>
         <Route path='/adddeveloper' element={<AddDevoloper/>}/>
+        <Route path='/addtag' element={<AddTag/>}/>
         </Routes>
         </>
     )

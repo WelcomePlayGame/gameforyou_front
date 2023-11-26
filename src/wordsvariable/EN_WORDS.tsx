@@ -73,4 +73,11 @@ export const EN_WORDS : WORDS_Tem= {
     POSITIVE_TITLE : 'Advantages',
     NEGATIVE_TITLE : 'Flaws',
     SEND_COMMENT : 'Submit Comment',
+    CHOOSE_CATEGORY : 'Select Category',
+    CHOOSE_TAG : 'Select Tag',
+    CREATE_TAG : 'Create Tag',
+    WRITE_NAME_TAG : 'Write a tag',
+    SAVE_TAG : 'Save Tag',
+    DES_LIST_ARTICLE_SEO : 'Gaming news: Stay ahead with the latest events, reviews, and announcements in the world of gaming. Explore all the hottest trends in the gaming industry on one platform.',
+    TITLE_LIST_ARTICLE_SEO : 'Gaming News: Hot trends, reviews, and announcements in the world of games',
 }

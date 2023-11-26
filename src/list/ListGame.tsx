@@ -15,7 +15,7 @@ export const ListGame = ()=> {
 
 
     useEffect(()=> {
-        getAllCategory(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.GAMEPOST+URL_FOR_BACK.COUNTRY)
+        getAllCategory(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.GAMEPOST+URL_FOR_BACK.COUNTRY+"/")
         .then((data)=> setGames(data))
     }, [])
 

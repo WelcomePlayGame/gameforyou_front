@@ -6,7 +6,7 @@ export const SelectGame = ({onChange} : {onChange : (event : ChangeEvent<HTMLSel
     const [games, setGames] = useState<ResponseDataCategory []>([]);
 
     useEffect(() => {
-        getAllPostGame(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.GAMEPOST+URL_FOR_BACK.COUNTRY)
+        getAllPostGame(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.GAMEPOST+URL_FOR_BACK.COUNTRY+'/')
         .then((data) => setGames(data) )
     }, [])
  
@@ -17,10 +17,10 @@ export const SelectGame = ({onChange} : {onChange : (event : ChangeEvent<HTMLSel
        
     <section className="selectGame_container">
          <>
-        <select onChange={onChange} className='selectGame_select'>
+        <select onChange={onChange} className='selectGame_select' multiple>
             {
                  games.map((game) => (
-                    <option key={game.id} value={game.title}>
+                    <option key={game.id} value={game.id}>
                         {game.title}
                     </option>
                     ))

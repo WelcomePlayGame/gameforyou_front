@@ -39,7 +39,7 @@ export const Header = () => {
                     </div>
                     <div className="header_menu_box">
                         <ul className='header_menu_ul'>
-                            <li className="header_menu_li">{words.NEWS}</li>
+                            <li className="header_menu_li"><a href={`${process.env.PUBLIC_URL}/article`} className='header_menu_li_a'>{words.NEWS}</a></li>
                             <li className="header_menu_li">{words.STREAM}</li>
                             <li className="header_menu_li">
                                 <a href={`${process.env.PUBLIC_URL}/games`} className='header_menu_li_a'>
