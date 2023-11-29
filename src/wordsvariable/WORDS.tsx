@@ -83,6 +83,10 @@ export interface WORDS_Tem {
     SAVE_TAG : string,
     DES_LIST_ARTICLE_SEO : string,
     TITLE_LIST_ARTICLE_SEO : string,
+    BREADCRUMBS_HOME : string,
+    BREADCRUMBS_LIST_ARTICLE : string,
+    SET_TAG_FOR_ARTICLE : string,
+    ADD_ARTICLE : string,
 }   
 
 let words : WORDS_Tem

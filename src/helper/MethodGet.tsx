@@ -1,5 +1,4 @@
 import axios from "axios"
-import { type } from "os";
 import { toast } from 'react-toastify';
 
 export type ResponseDataCategory = {
@@ -122,10 +121,34 @@ export interface ResponseArticle {
         posterUrl1024x768 : string,
         posterUrl1440x900 : string,
     }
-    tagSet : [ {
+    tagSet :  {
         id : number,
         title : string,
-    }],
+    }[],
+    gamePost : {
+        id : string,
+        title : string,
+        datatime :string,
+        posterVertical_urs : {
+            id : number,
+            poster_300x300 : string,
+        }
+        platformsSet : {
+            id : string,
+            title : string,
+        } [],
+        genresSet : {
+            id : number,
+            title : string,
+        } [],
+    },
+    statistics : {
+        id : number,
+        action : number,
+        more15 : number,
+        more30 : number,
+        more45 : number, 
+    },
 
 }
 
@@ -176,6 +199,42 @@ export const getAllTag : DateTag<string> = async (url)=> {
         } else {
             toast.error("No Connect");
             return [];
+        }
+    }
+}
+interface ResponseComment {
+    id : number,
+    title : string,
+    des : string,
+    rating : number,
+}
+type DateComment<U> = (url : U) => Promise<ResponseComment []>
+export const getAllComment : DateComment<string> = async (url)=> {
+    try {
+        const response = await axios.get<ResponseComment []>(url)
+        return response.data;
+    }  catch (error : any) {
+        if (error.response && error.response.status === 404) {
+            throw Error('Not Found')
+        } else {
+            toast.error("No Connect");
+            return [];
+        }
+    }
+}
+
+type DateCommentById<T,U> = (url:T , id: U ) => Promise<ResponseComment>
+export const getCommnetById: DateCommentById<string, string> = async (url, id)=> {
+
+    try {
+        const response = await axios.get<ResponseComment>(`${url}${id}`)
+        return response.data;
+    } catch(error : any) {
+        if (error.response && error.response.status === 404) {
+            throw Error('Not Found')
+        } else {
+            toast.error("No Connect");
+            return  null as unknown as ResponseComment;
         }
     }
 }

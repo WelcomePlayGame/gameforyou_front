@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import words from "../../wordsvariable/WORDS";
-import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa';
 import {addComment, IComment} from '../../helper/MethodPost'
 import { URL_FOR_BACK } from '../../helper/URL';
+import { SelectStar } from './SelectStar';
 
 interface CLose {
     id: number | undefined,
@@ -51,9 +51,6 @@ export const ButtonComment: React.FC<CLose> = ({ setIsClose, title, poster, id }
         }
     };
     
-    const handleRatingChange = (newRating: number) => {
-        setRating(newRating);
-    };
 
     const handleSubmit = (e : React.FormEvent)=> {
         e.preventDefault();
@@ -73,22 +70,7 @@ export const ButtonComment: React.FC<CLose> = ({ setIsClose, title, poster, id }
             <hr />
             <div className="my_rating_box">
                 <span className="my_rating_box_text">{words.MY_RATING}</span>
-                <span className="rating-stars">
-                  {[1, 2, 3, 4, 5,6,7,8,9,10].map((star, index) => (
-                <span
-             key={index}
-             onClick={() => handleRatingChange(star)}
-                >
-            {star <= rating ? (
-                <FaStar className="star" />
-            ) : star - 0.5 === rating ? (
-                <FaStarHalfAlt className="star" />
-            ) : (
-                <FaRegStar className="star" />
-                  )}
-                    </span>
-                  ))}
-            </span>
+                <SelectStar setRating={setRating} rating={rating}/>
             </div>
             <div className="comment_box_form">
                 <form className="box_form" onSubmit={handleSubmit}>

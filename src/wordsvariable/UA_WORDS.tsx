@@ -80,4 +80,8 @@ export const UA_WORDS : WORDS_Tem = {
     SAVE_TAG : 'Зберегти мітку',
     DES_LIST_ARTICLE_SEO : 'Ігрові новини: дізнавайтеся першими про актуальні події, огляди та анонси в світі ігор. Усі гарячі тренди геймінгу на одному ресурсі',
     TITLE_LIST_ARTICLE_SEO : 'Ігрові новини: гарячі тренди, огляди та анонси у світі ігор',
+    BREADCRUMBS_HOME : 'Головна',
+    BREADCRUMBS_LIST_ARTICLE : 'Ігрові Новини',
+    SET_TAG_FOR_ARTICLE : 'Теги',
+    ADD_ARTICLE : 'Додати Статью',
 }

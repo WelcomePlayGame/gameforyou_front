@@ -135,3 +135,52 @@ export const addComment : TComment = async ( url, comment) => {
     }
 
 }
+export interface IStatistics {
+    id : number,
+    action ?: number,
+    more15 ?: number,
+    more30 ?: number,
+    more45 ?: number,
+}
+
+type TStatistics = (url : string,statistics : IStatistics) => void;
+export const addStatistics : TStatistics = async (url, statistics)=> {
+    try {
+        const response = await axios.post<IStatistics>(url, statistics,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            if (response.status !== 200) {
+                throw new Error(`Server responded with status code ${response.status}`);
+            }
+        
+            return response.data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
+
+export const updateStatistics:TStatistics = async (url,statistics)=> {
+    
+    try {
+        const response = await axios.put<IStatistics>(url, statistics, 
+            { 
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+            );
+            if (response.status !== 200) {
+                throw new Error(`Server responded with status code ${response.status}`);
+            }
+        
+            return response.data;    
+
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}

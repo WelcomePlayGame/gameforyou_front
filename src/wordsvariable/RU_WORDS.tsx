@@ -80,4 +80,8 @@ export const RU_WORDS : WORDS_Tem = {
     SAVE_TAG : 'Сохранить метку',
     DES_LIST_ARTICLE_SEO : 'Игровые новости: узнавайте первыми об актуальных событиях, обзорах и анонсах в мире игр. Все горячие тренды игровой индустрии на одном ресурсе.',
     TITLE_LIST_ARTICLE_SEO : 'Игровые новости: горячие тренды, обзоры и анонсы в мире игр',
+    BREADCRUMBS_HOME: 'Главная',
+    BREADCRUMBS_LIST_ARTICLE: 'Игровые новости',
+    SET_TAG_FOR_ARTICLE : 'Теги',
+    ADD_ARTICLE : 'Добавить Стаью',
 } 

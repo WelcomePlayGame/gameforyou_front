@@ -20,7 +20,8 @@ export interface URL_Tem {
     ADD : string,
     DELETE : string,
     ARTICLE_DES_URL : string,
-
+    STATISTICS : string,
+    UPDATE : string,
 }
 
 let url : URL_Tem; 

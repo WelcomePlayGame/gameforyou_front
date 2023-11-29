@@ -46,7 +46,10 @@
     min-height: 900px
     max-height: 100%
     flex-direction: column
-
+.breadcrumps_a
+    text-decoration: none
+    color: var(--color-text-black)
+    font-family: 'Roboto-Light'
 .article_page_h1
     font-size: 20px
     font-family: 'Roboto-Medium'
@@ -54,6 +57,95 @@
 .article_page_des
     font-size: 16px
     font-family: 'Roboto-Light'
-    width: 1000px
     margin: 0 auto
     word-break: break-all
+    max-width: 1200px
+.crumbs_article
+    display: flex
+    justify-content: center
+    margin-top: 7px
+.breadcrumps_img
+    width: 24px
+.statistics_article
+    display: flex
+    justify-content: space-evenly
+    width: 900px
+    margin: 20px auto 10px auto
+.tag_set_article
+    display: flex
+    justify-content: unset
+    margin: 0 auto
+.tag_set_article_span
+    font-size: 16px
+    font-family: 'Roboto-Medium'
+    margin-bottom: 40px
+.tag_set_article_span_el
+    font-family: 'Roboto-Light'
+.article_for_game_box
+    background: rgba(0,0,0, 0.1)
+    border-radius: 10px
+    padding: 20px
+    margin-bottom: 30px
+.article_for_game_box
+    display: flex
+    justify-content: flex-start
+.article_for_game_box_img
+    width: 220px
+    object-fit: cover
+    border-radius: 10px
+    margin-left: 20px
+.article_for_game_box_info
+    display: flex
+    flex-direction: column
+    justify-content: start
+    align-items: start
+    margin-left: 30px
+    &::after
+        content: ''
+        height: 200px
+        width: 2px
+        background-color: #000
+        display: block
+        position: absolute
+        right: 900px
+        margin-top: 10px
+.article_for_game_box_info_h2
+    font-size: 24px
+    font-family: 'Roboto-Black'
+.article_for_game_box_info_span
+    font-size: 16px
+    font-family: 'Roboto-Medium'
+    margin-bottom: 5px
+.article_for_game_box_info_span_el
+    font-size: 14px
+    font-family: 'Roboto-Light'
+.article_for_game_box_rating
+    align-self: end
+    margin-left: 300px
+.icons_count
+    width: 30px
+.icons_count_box
+    display: flex
+    align-items: center
+.add_comment_for_article
+    width: 700px
+    margin: 0 auto
+    border-radius: 10px
+.box_comment_for_article
+    background: rgba(0,0,0, 0.1)
+    padding: 20px
+    border-radius: 10px
+.add_comment_for_article_textarea
+    width: 700px
+    min-height: 100px
+    border-radius: 10px
+.add_comment_for_article_btn
+    font-family: 'Roboto-Black'
+    margin-top: 20px
+    font-size: 18px
+    max-width: 100%
+    height: 50px
+    border-radius: 10px
+    color: var(--color-text-white)
+    background: var(--color-text-black)
+    padding: 15px

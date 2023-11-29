@@ -49,7 +49,7 @@ export const AddTag = () => {
                     value={title}
                     onChange={e => setTitle(e.target.value)}
                     placeholder={words.WRITE_NAME_TAG}
-                    minLength={4}
+                    minLength={2}
                     maxLength={75}
                     required 
                     title="Название должно содержать от 5 до 75 символов."

@@ -80,4 +80,8 @@ export const EN_WORDS : WORDS_Tem= {
     SAVE_TAG : 'Save Tag',
     DES_LIST_ARTICLE_SEO : 'Gaming news: Stay ahead with the latest events, reviews, and announcements in the world of gaming. Explore all the hottest trends in the gaming industry on one platform.',
     TITLE_LIST_ARTICLE_SEO : 'Gaming News: Hot trends, reviews, and announcements in the world of games',
+    BREADCRUMBS_HOME : 'Home',
+    BREADCRUMBS_LIST_ARTICLE: 'Game news',
+    SET_TAG_FOR_ARTICLE : 'Tags',
+    ADD_ARTICLE : 'Add Article',
 }
