@@ -84,4 +84,8 @@ export const PL_WORDS : WORDS_Tem = {
     BREADCRUMBS_LIST_ARTICLE: 'Wiadomości z gry',
     SET_TAG_FOR_ARTICLE : 'Tagi',
     ADD_ARTICLE : 'Dodaj artykuł',
+    TITLE_GAME_URL_SEO : 'url',
+    HOME : 'Dom',
+    COMMENTS : 'Uwagi',
+    BLOGS : 'Blogi',
 }

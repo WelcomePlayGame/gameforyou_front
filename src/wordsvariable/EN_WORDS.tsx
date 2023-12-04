@@ -84,4 +84,8 @@ export const EN_WORDS : WORDS_Tem= {
     BREADCRUMBS_LIST_ARTICLE: 'Game news',
     SET_TAG_FOR_ARTICLE : 'Tags',
     ADD_ARTICLE : 'Add Article',
+    TITLE_GAME_URL_SEO : 'url',
+    HOME : 'Home',
+    COMMENTS : 'Comment(s)',
+    BLOGS : 'Blog',
 }

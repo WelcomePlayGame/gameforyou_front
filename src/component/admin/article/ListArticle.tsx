@@ -25,7 +25,7 @@ export const ListArticle = ()=> {
                     articles.map((article)=> (
                         <div key={article.id} className='article_list_box_left_one'>
                             <div>
-                                <a href={`${process.env.PUBLIC_URL}/article/${article.id}`} className='article_list_box_left_one_a'>
+                                <a href={`${process.env.PUBLIC_URL}/article/${article.url_post}`} className='article_list_box_left_one_a'>
                                     <img src={ article && article.posterUrls && article.posterUrls.posterUrl480x320} alt={article && article.title} className='article_list_box_left_one_img' />
                                 </a>
                             </div>

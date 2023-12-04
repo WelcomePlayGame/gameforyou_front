@@ -8,7 +8,7 @@ import { FileCustomInput } from '../../QuilEditor/FileCustomInput';
 import { SelectGame } from '../../GamePost/SelectGame'
 import words from '../../../wordsvariable/WORDS'
 import { SelectTag } from '../../Tag/SelectTag'
-
+import { transliterate } from 'transliteration';
 export const AddArticle = ()=> {
     const [currentLanguage, setCurrentLanguage] = useState<string>('/en')
     const [title, setTitle] = useState('')
@@ -22,6 +22,7 @@ export const AddArticle = ()=> {
     const [poster_480x320, setPoster_480x320] = useState <File | undefined>(undefined);
     const [poster_1024x768, setPoster_1024x768] = useState<File | undefined>(undefined);
     const [poster_1440x900, setPoster_1440x900] = useState<File | undefined>(undefined);
+    const [url_post, setUrl_post] = useState<string>('')
     const posterPhoto  : File [] = [];
     const [ids, setIds] = useState<number []>([])
     const article = {
@@ -30,6 +31,7 @@ export const AddArticle = ()=> {
         seo_title : seo_title,
         seo_des : seo_des,
         mark : mark,
+        url_post : url_post,
         category : {
             id : category
         },
@@ -54,7 +56,13 @@ export const AddArticle = ()=> {
 
    const  handlSubmit = (event : React.FormEvent)=> {
     event.preventDefault();
-    submitArticle(article,posterPhoto, ids, URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE+currentLanguage+URL_FOR_BACK.ADD, tagSet);
+    submitArticle(article,posterPhoto, ids, URL_FOR_BACK.URL_BASE+URL_FOR_BACK.ARTICLE+currentLanguage+URL_FOR_BACK.ADD, tagSet)
+    .then(() => {
+        // window.location.reload();
+    })
+    .catch((error) => {
+        console.error('Ошибка при отправке статьи:', error);
+    });
     
     }
 
@@ -62,6 +70,11 @@ export const AddArticle = ()=> {
         setCurrentLanguage(event.target.value);
     }
 
+    const handleUrlLatin = (input: string) => {
+        const latinTitle = transliterate(input).toLocaleLowerCase().replace(/\s+/g, '_');
+        setUrl_post(latinTitle);
+      };
+      
     return (
      <section className='addcategory'>
         <Helmet>
@@ -99,20 +112,28 @@ export const AddArticle = ()=> {
         </div>
         <div className="addArticle_box_secton">
         <div className='article_title_box'>
-        <div>
+        <div className='addGamePostBoxSection_top_left'>
             <input
-                type="text"
-                name='title'
-                value={title}
-                onChange={(e)=>setTitle(e.target.value)}
-                placeholder={words.TITLE_ARTICLE}
-                id='title'
-                className='addArticle_box_input'
-                min={5}
-                maxLength={75}
-                required
+            type='text'
+            value={title}
+            onChange={(e)=> {setTitle(e.target.value); handleUrlLatin(e.target.value)}}
+            minLength={4}
+            maxLength={75}
+            placeholder={words.TITLE_GAME}
+            required
+            className='addArticle_box_input'
+            />
+            <input
+            type='text'
+            value={url_post}
+            readOnly
+            minLength={4}
+            maxLength={75}
+            placeholder={words.TITLE_GAME_URL_SEO}
+            className='addArticle_box_input'
             />
             </div>
+            <div className='addGamePostBoxSection_top_left'>
             <div>
             <label htmlFor="language-select">Choose push language: </label>
             <select id="language-select" value={currentLanguage} onChange={handleSelectLanguage}>
@@ -123,6 +144,7 @@ export const AddArticle = ()=> {
             </select>
             </div>
             <div>Current language: {`${currentLanguage.substring(1)}`}</div>
+            </div>
         </div>
             <div>
                 <QuilEditor 

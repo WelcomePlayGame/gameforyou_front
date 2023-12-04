@@ -1,13 +1,11 @@
-import { Game } from "../component/Game"
+
+import { HeaderGame } from "./HeaderGame"
 
 
 export const PageGame = ()=> {
 
 
-
-    
-
     return (
-        <><Game/></>
+        <><HeaderGame/></>
     )
 }

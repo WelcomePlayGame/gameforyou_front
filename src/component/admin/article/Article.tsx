@@ -14,14 +14,12 @@ import { WriteCommentForArticle } from '../../comments/WriteCommentForArticle'
 
 export const Article = ()=> {
 const [article, setArticle] = useState<ResponseArticle>();
-const {id} = useParams()
-const id_post = Number(id)
+const {url_post} = useParams();
 const [rating, setRating] = useState<number>(0)
 
-const [loadingTime, setLoadingTime] = useState<number>(0);
 
 useEffect(() => {
- getArticleById(URL_FOR_BACK.URL_BASE + URL_FOR_BACK.ARTICLE + URL_FOR_BACK.COUNTRY,id_post)
+ getArticleById(URL_FOR_BACK.URL_BASE + URL_FOR_BACK.ARTICLE + URL_FOR_BACK.COUNTRY,url_post as string)
  .then((data)=> setArticle(data))
 
 }, []);
@@ -114,31 +112,16 @@ const createMarkup = (html : string) => ({ __html: html });
             <title>{article?.seo_title}</title>
             <meta name="description" content={article?.seo_des} />
           </Helmet>
-        <picture>
-                        <source
-                        media="(min-width:1440px)"
-                        srcSet={`${article?.posterUrls.posterUrl1440x900}`}
-                        type="image/webp" 
-                       
-                        />
-                        <source 
-                        media="(min-width:991px)"
-                        srcSet={`${article?.posterUrls?.posterUrl1024x768}`} 
-                        type="image/webp"
-                    
-                        />
-                        <source
-                        media="(max-width:767px)"
-                        srcSet={`${article?.posterUrls?.posterUrl480x320}`}
-                        type="image/webp" 
-                        />
-                        <img
-                        src={`${article?.posterUrls.posterUrl1024x768}`}
-                        alt={article?.title} 
-                        loading="lazy"
-                        className="game_header_img"
-                    />
-                    </picture>
+          <div
+  className='article_box_header'
+  style={{
+    backgroundImage: `url(${article && article.posterUrls && article.posterUrls.posterUrl1024x768})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    height: '300px',
+  }}
+></div>
+
         <div className='article_box_inf'>
         <div className='crumbs_article'>
             <Breadcrumbs
@@ -168,25 +151,29 @@ const createMarkup = (html : string) => ({ __html: html });
             </span>
 
         </div>
-        <div className='article_for_game_box'>
-            <div>
-                <img src={article?.gamePost?.posterVertical_urs.poster_300x300} alt={article?.gamePost.title} className='article_for_game_box_img'/>
-            </div>
-            <div>
-                <div className='article_for_game_box_info'>
+        {article?.gamePost ? (
+    <div className='article_for_game_box'>
+        <div>
+            <img src={article?.gamePost?.posterVertical_urs.poster_300x300} alt={article?.gamePost.title} className='article_for_game_box_img'/>
+        </div>
+        <div>
+            <div className='article_for_game_box_info'>
                 <h2 className='article_for_game_box_info_h2'>{article?.gamePost.title}</h2>
                 <span className='article_for_game_box_info_span'>{words.PLATFORM} - {article?.gamePost.platformsSet.map((platform)=> (<span key={platform.id} className='article_for_game_box_info_span_el' >{platform.title} </span>))}</span>
                 <span className='article_for_game_box_info_span' >{words.GENRE} - {article?.gamePost.genresSet.map((genre)=> (<span key={genre.id} className='article_for_game_box_info_span_el' >{genre.title} </span>))}</span>
                 <span className='article_for_game_box_info_span'>{words.DATA_RELASE} - <span className='article_for_game_box_info_span_el'>{article?.gamePost.datatime}</span></span>
-                </div>
-            </div>
-            <div className='article_for_game_box_rating'>
-                <SelectStar setRating={setRating} rating={rating} />
             </div>
         </div>
+        <div className='article_for_game_box_rating'>
+            <SelectStar setRating={setRating} rating={rating} />
+        </div>
+    </div>
+) : null}
+
         <div>
-          <WriteCommentForArticle/>
+        <WriteCommentForArticle article={{ id: Number(article?.id) }} />
         </div>
+
         </div>
         </div>            
         </section>

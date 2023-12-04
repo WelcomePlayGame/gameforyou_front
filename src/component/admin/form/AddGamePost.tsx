@@ -1,6 +1,6 @@
 import {Helmet} from 'react-helmet'
 import { QuilEditor } from '../../QuilEditor/QuilEditor'
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { FileCustomInput } from '../../QuilEditor/FileCustomInput'
 import { SelectGenres } from '../../Genres/SelectGenres'
 import { SelectDevolopers } from '../../Devoloper/SelectDevolopers'
@@ -9,7 +9,7 @@ import { SelectPlatforms } from '../../Platforms/SelectPlatforms'
 import {submitGamePost} from '../../../helper/MethodPost'
 import {URL_FOR_BACK} from '../../../helper/URL'
 import words from '../../../wordsvariable/WORDS'
-
+import { transliterate } from 'transliteration';
 export const AddGamePost = ()=> {
     const [currentLanguage, setCurrentLanguage] = useState<string>('/en')
     const [title, setTitle] = useState('')
@@ -32,6 +32,7 @@ export const AddGamePost = ()=> {
     const [directX, setDirectX] = useState('')
     const [lan, setLan] = useState('');
     const [memory , setMemory] = useState('');
+    const [url_post, setUrl_post] = useState('')
     const [poster_480x320, setPoster_480x320] = useState <File | undefined>(undefined);
     const [poster_1024x768, setPoster_1024x768] = useState<File | undefined>(undefined);
     const [poster_1440x900, setPoster_1440x900] = useState<File | undefined>(undefined);
@@ -70,6 +71,7 @@ export const AddGamePost = ()=> {
         directX : directX,
         lan : lan,
         memory : memory,
+        url_post : url_post,
     }
 
   const  handleIdsUpdate = (id : number[]) => {
@@ -77,8 +79,8 @@ export const AddGamePost = ()=> {
   } 
 
   const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const date = e.target.value; // получаем дату в формате YYYY-MM-DD
-    setDataTime(date); // обновляем состояние
+    const date = e.target.value; 
+    setDataTime(date); 
 };
 
 
@@ -90,7 +92,7 @@ export const AddGamePost = ()=> {
     
     submitGamePost(gamepost, posterPhoto_horizontal, ids,url, poster_300x300, genresSet, platformsSet)
         .then(() => {
-            // window.location.reload();
+            window.location.reload();
         })
         .catch((error) => {
             console.error('Ошибка при отправке статьи:', error);
@@ -101,6 +103,12 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
     setCurrentLanguage(event.target.value);
 }
 
+
+const handleUrlLatin = (input: string) => {
+    const latinTitle = transliterate(input).toLocaleLowerCase().replace(/\s+/g, '_');
+    setUrl_post(latinTitle);
+  };
+  
 
     return (
        <section className="addGamePost_container">
@@ -168,18 +176,28 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
             </div>
             <div className="addGamePostBoxSection">
             <div className='addGamePostBoxSection_top'>
-            <div>
+            <div className='addGamePostBoxSection_top_left'>
             <input
             type='text'
             value={title}
-            onChange={(e)=> setTitle(e.target.value)}
+            onChange={(e)=> {setTitle(e.target.value); handleUrlLatin(e.target.value)}}
             minLength={4}
             maxLength={75}
             placeholder={words.TITLE_GAME}
             required
             className='addArticle_box_input'
             />
+            <input
+            type='text'
+            value={url_post}
+            readOnly
+            minLength={4}
+            maxLength={75}
+            placeholder={words.TITLE_GAME_URL_SEO}
+            className='addArticle_box_input'
+            />
             </div>
+            <div className='addGamePostBoxSection_top_left'>
             <div>
             <label htmlFor="language-select">Choose push language: </label>
             <select id="language-select" value={currentLanguage} onChange={handleSelectLanguage}>
@@ -190,6 +208,7 @@ const handleSelectLanguage = (event : React.ChangeEvent<HTMLSelectElement>  ) =>
             </select>
             </div>
             <div>Current language: {`${currentLanguage.substring(1)}`}</div>
+            </div>
             </div>
             <div>
             <QuilEditor description={des} 

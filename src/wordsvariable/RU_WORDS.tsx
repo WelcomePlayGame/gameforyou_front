@@ -84,4 +84,8 @@ export const RU_WORDS : WORDS_Tem = {
     BREADCRUMBS_LIST_ARTICLE: 'Игровые новости',
     SET_TAG_FOR_ARTICLE : 'Теги',
     ADD_ARTICLE : 'Добавить Стаью',
+    TITLE_GAME_URL_SEO : 'url',
+    HOME : 'Главная',
+    COMMENTS : 'Комментарии',
+    BLOGS : 'Блоги',
 } 

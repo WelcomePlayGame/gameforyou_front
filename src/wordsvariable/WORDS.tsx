@@ -87,6 +87,10 @@ export interface WORDS_Tem {
     BREADCRUMBS_LIST_ARTICLE : string,
     SET_TAG_FOR_ARTICLE : string,
     ADD_ARTICLE : string,
+    TITLE_GAME_URL_SEO : string,
+    HOME : string,
+    COMMENTS : string,
+    BLOGS : string,
 }   
 
 let words : WORDS_Tem

@@ -1,15 +1,15 @@
 import words from "../wordsvariable/WORDS"
 import {getGameById} from '../helper/MethodGet'
-import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react";
 import { URL_FOR_BACK } from "../helper/URL";
 import { Helmet } from "react-helmet";
 import { CommentGame } from "./comments/CommentGame";
 import { ButtonComment } from "./comments/ButtonComment";
+import { useParams } from "react-router-dom";
 
 export const Game = ()=> {
     const [isClose, setIsClose] = useState(false)
-  
+    const {url_post} = useParams<string>()
     interface Game {
         id: number;
         title : string,
@@ -27,6 +27,7 @@ export const Game = ()=> {
         directX?: string,
         lan?: string,
         memory?: string,
+        url_post? : string,
         posterHorizontal_uls ?: {id : number, poster_1440x900 : string, poster_1024x768 :string, poster_480x320 : string }
         posterVertical_urs ?: {id : number,poster_300x300 : string } 
         developer: {
@@ -49,18 +50,19 @@ export const Game = ()=> {
               title: string
             } [],
     }
-    const {id} = useParams<string>()
     const [game, setGame] = useState<Game | undefined>();
-    const numeric = Number(id);
 
     useEffect(()=> {
-        getGameById(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.GAMEPOST+URL_FOR_BACK.COUNTRY, numeric)
-        .then((data)=> setGame(data))
-        .catch((error)=> {
-          if(error.message === 'Not Found') {
-          return  null
-          } 
-        })
+ 
+
+          getGameById(URL_FOR_BACK.URL_BASE + URL_FOR_BACK.GAMEPOST + URL_FOR_BACK.COUNTRY, url_post!)
+            .then((data) => setGame(data))
+            .catch((error) => {
+              if (error.message === 'Not Found') {
+                return null;
+              }
+            });
+    
         
     }, []);
  
@@ -79,8 +81,8 @@ export const Game = ()=> {
             <meta name="description" content={game?.seo_des} />
           </Helmet>
               <div className="game_box_page">
-                <div className="game_box_header_img">
-                    <picture>
+                <div className="game_box_header_img"  style={{ background: `url(${game && game.posterHorizontal_uls && game.posterHorizontal_uls.poster_1024x768})` }}>
+                    {/* <picture>
                         <source
                         media="(min-width:1440px)"
                         srcSet={`${game?.posterHorizontal_uls?.poster_1440x900}`}
@@ -105,7 +107,7 @@ export const Game = ()=> {
                         className="game_header_img"
                     />
                     </picture>
-                   
+                    */}
                 </div>
           
             <div className="game_box_body">

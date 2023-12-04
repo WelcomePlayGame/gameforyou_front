@@ -13,6 +13,10 @@ import { Game } from './component/Game';
 import { PageGame } from './pages/PageGame';
 import { Article } from './component/admin/article/Article';
 import { ListArticle } from './component/admin/article/ListArticle';
+import { HeaderGame } from './pages/HeaderGame';
+import { HeaderNews } from './pages/HeaderNews';
+import { HeaderComments } from './pages/HeaderComments';
+import { HeaderBlogs } from './pages/HeaderBlogs';
 
 function App() {
   const basenameMap = {
@@ -47,8 +51,11 @@ const getBasename = (lang: string | undefined)=> {
 <Route path='/admin/*' element={<Admin/>}/>
 <Route path='*' element={<Navigate to="/404"/>} /> 
 <Route path='/404' element={<NotFound/>}/>
-<Route path='/game/:id' element={<PageGame/>}/>
-<Route path='/article/:id' element={<Article/>}/>
+<Route path='/game/:url_post' element={<HeaderGame/>}/>
+<Route path='/game/:url_post/news' element={<HeaderNews/>}/>
+<Route path='/game/:url_post/comments' element={<HeaderComments/>}/>
+<Route path='/game/:url_post/blogs' element={<HeaderBlogs/>}/>
+<Route path='/article/:url_post' element={<Article/>}/>
 </Routes>
   </BrowserRouter>
 

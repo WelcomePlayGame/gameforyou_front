@@ -20,6 +20,7 @@ export type ResponseDataCategory = {
     memory?: string,
     posterHorizontal_uls ?: {id : number, poster_1440x900 : string, poster_1024x768 :string, poster_480x320 : string }
     posterVertical_urs ?: {id : number,poster_300x300 : string } 
+    url_post : string
     developer: {
         id: number,
         title: string
@@ -42,11 +43,69 @@ export type ResponseDataCategory = {
 
     
 }
+export interface Game {
+    id: number;
+    title : string,
+    des : string,
+    seo_title ?: string,
+    seo_des ?: string,
+    url_game ?: string,
+    mark ?: string,
+    datatime ?: Date,
+    os ?: string,
+    minProcessor?: string,
+    maxProcessor?: string,
+    minRam?: string,
+    maxRam?: string,
+    directX?: string,
+    lan?: string,
+    memory?: string,
+    url_post? : string,
+    posterHorizontal_uls ?: {id : number, poster_1440x900 : string, poster_1024x768 :string, poster_480x320 : string }
+    posterVertical_urs ?: {id : number,poster_300x300 : string } 
+    developer: {
+        id: number,
+        title: string
+      },
+      publisher: {
+        id: number,
+        title: string
+      },
+      platformsSet: 
+        {
+          id: number,
+          title: string
+        } []
+      ,
+      genresSet:
+        {
+          id: number,
+          title: string
+        } [],
+        articleSet : {
+            id : number,
+            title : string,
+            url_post : string,
+            atCreate : Date,
+            posterUrls: {
+                posterUrl480x320 : string,
+                posterUrl1024x768 : string,    
+            },
+            tagSet : {
+                id : number,
+                title : string,
+            }[],
+        } [],  
+      commentSet : {
+        id : number,
+        title : string,
+      }
+
+
+}
 
 type DataGet <T> = (url : T) => Promise<ResponseDataCategory [] > 
 
-
-type DataGame<T, U> = (url: T, id: U) => Promise<ResponseDataCategory>;
 export const getAllCategory : DataGet <string>  = async (url)=> {
 
 if( typeof url === 'string') {
@@ -89,11 +148,11 @@ if (typeof url === 'string') {
 }
 }
 
-
-export const getGameById: DataGame<string, number> = async (url, id) => {
+type DataForGame<T, U> = (url: T, id: U) => Promise<Game>;
+export const getGameById: DataForGame<string, string> = async (url, url_post) => {
     if (typeof url === 'string') {
         try {
-            const response = await axios.get<ResponseDataCategory >(`${url}/${id}`);
+            const response = await axios.get<Game >(`${url}/${url_post}`);
             return response.data;
         } catch (error  : any) {
             if (error.response && error.response.status === 404) {
@@ -101,7 +160,7 @@ export const getGameById: DataGame<string, number> = async (url, id) => {
                 throw Error('Not Found')
             } else {
                 toast.error("No Connect");
-                return null as unknown as ResponseDataCategory;
+                return null as unknown as Game;
             }
         }
     } else {
@@ -116,6 +175,7 @@ export interface ResponseArticle {
     seo_title : string,
     mark : string,
     atCreate : string,
+    url_post : string,
     posterUrls : {
         posterUrl480x320 : string,
         posterUrl1024x768 : string,
@@ -169,7 +229,7 @@ export const getArticle : DateArticle<string> = async (url) =>  {
     }
 }
 
-export const getArticleById : DateArticleById<string, number> = async  (url, id)=> {
+export const getArticleById : DateArticleById<string, string> = async  (url, id)=> {
     try {
         const response = await axios.get<ResponseArticle>(`${url}/${id}`)
         return response.data;

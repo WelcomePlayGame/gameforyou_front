@@ -84,4 +84,8 @@ export const UA_WORDS : WORDS_Tem = {
     BREADCRUMBS_LIST_ARTICLE : 'Ігрові Новини',
     SET_TAG_FOR_ARTICLE : 'Теги',
     ADD_ARTICLE : 'Додати Статью',
+    TITLE_GAME_URL_SEO : 'url',
+    HOME : 'Головна',
+    COMMENTS : 'Коментарі',
+    BLOGS : 'Блог',
 }

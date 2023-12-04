@@ -3,11 +3,12 @@
 .article_list_box
     display: flex
     justify-content: space-around
+    padding-top: 50px
 .article_list_box_left
     flex-direction: column
 .article_list_box_left_one_img
-    width: 200px
-    height: 100px
+    width: 270px
+    height: auto
     border-radius: 10px
     object-fit: fill
 .article_list_box_left_one
@@ -27,22 +28,21 @@
     margin-left: 20px
 .article_list_box_left_two_span_tag
     font-family: 'Roboto-Medium'
-    margin-top: 10px
+    margin-top: 50px
 .article_list_box_left_two_date
     display: flex
     justify-content: space-between
     width: 400px
-    margin-top: 20px
+    margin-top: 50px
 .article_list_box_left_two_date_span
     font-family: 'Roboto-Medium'
 .article_list_box_left_two_date_com
     width: 40px
 .article_box_inf
-    margin-top: -900px
     background: var(--color-text-white)
     display: flex
     position: relative
-    z-index: 100
+    // z-index: 100
     min-height: 900px
     max-height: 100%
     flex-direction: column
@@ -80,7 +80,10 @@
     font-family: 'Roboto-Medium'
     margin-bottom: 40px
 .tag_set_article_span_el
+    background: rgba(0, 0, 0,0.1 )
     font-family: 'Roboto-Light'
+    padding: 10px
+    border-radius: 10px
 .article_for_game_box
     background: rgba(0,0,0, 0.1)
     border-radius: 10px
@@ -124,6 +127,7 @@
     margin-left: 300px
 .icons_count
     width: 30px
+    margin-right: 4px
 .icons_count_box
     display: flex
     align-items: center
@@ -137,8 +141,9 @@
     border-radius: 10px
 .add_comment_for_article_textarea
     width: 700px
-    min-height: 100px
+    height: 100px
     border-radius: 10px
+    overflow-y: auto
 .add_comment_for_article_btn
     font-family: 'Roboto-Black'
     margin-top: 20px
@@ -149,3 +154,12 @@
     color: var(--color-text-white)
     background: var(--color-text-black)
     padding: 15px
+.article_box_header
+    width: 100%
+    height: 300px
+    margin-bottom: 30px
+.addGamePostBoxSection_top_left
+    display: flex
+    flex-direction: column
+    margin-bottom: 10px
+    margin-right: 70px
