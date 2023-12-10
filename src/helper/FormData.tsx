@@ -1,26 +1,23 @@
-
-
- const FormDate = (instantDate : any)=> {
-
+const FormDate = (instantDate: any) => {
   const currentDate = new Date();
-  const date = new Date(instantDate*1000);
+  const date = new Date(instantDate * 1000);
 
-  const daysAgo = Math.floor((currentDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
+  const daysAgo = Math.floor(
+    (currentDate.getTime() - date.getTime()) / (1000 * 60 * 60 * 24)
+  );
   const day = date.getDate();
-  const month = date.getMonth() + 1; 
+  const month = date.getMonth() + 1;
   const year = date.getFullYear();
+  const hour = date.getHours();
+  const minutes = date.getMinutes();
 
+  if (daysAgo === 0) {
+    return `Today ${hour}:${minutes}`;
+  } else if (daysAgo === 1) {
+    return `Tomorrow ${hour}:${minutes}`;
+  }
 
-if(daysAgo === 0) {
-  return 'Today'
-} else if (daysAgo===1) {
-  return 'Tomorrow'
-}
+  return `${day}:${month}:${year}`;
+};
 
-
-  return `${day}${month}${year}`
-
-
-}
-
-export {FormDate as formDate}
+export { FormDate as formDate };

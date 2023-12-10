@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { URL_FOR_BACK } from "../helper/URL";
 import words from "../wordsvariable/WORDS";
 import {formDate} from '../helper/FormData'
+import { Helmet } from "react-helmet";
 export const HeaderNews  = () => {
     const {url_post} = useParams<string>()
     const [game, setGame] = useState<Game>();
@@ -20,27 +21,40 @@ export const HeaderNews  = () => {
 
     return (
         <section className="game_page">
-        {/* <Helmet>
-            <title>{game?.seo_title}</title>
-            <meta name="description" content={game?.seo_des} />
-        </Helmet> */}
+        <Helmet>
+            <title>{`${game?.title}: ${words.ARTICLEBYGAME}`}</title>
+            <meta name="description" content={`${game?.title}: ${words.DES_ARTICLEBYGAME}`} />
+        </Helmet>
         <div className="game_box_page">
         <div className="game_box_header_img"  style={{ background: `url(${game && game.posterHorizontal_uls && game.posterHorizontal_uls.poster_1024x768})` }}> </div>
         <ul className="header_game_ul article_list_box_for_game">
             <li>
             <Link className="header_game_a" to={`/game/${game?.url_post}`}>{words.HOME}</Link>
             </li>
-            <li>
-            <Link className="header_game_a" to={`/game/${game?.url_post}/news`}>{words.NEWS}</Link>
-            </li>
-            <li><Link className="header_game_a" to={`/game/${game?.url_post}/comments`}>{words.COMMENTS}</Link></li>
-            <li><Link className="header_game_a" to={`/game/${game?.url_post}/blogs`}>{words.BLOGS}</Link></li>
+            {
+              game?.articleSet && Object.keys(game.articleSet).length > 0  &&(
+                <li>
+                <Link className="header_game_a" to={`/game/${game?.url_post}/news`}>{words.NEWS}</Link>
+                </li>
+              )
+            }
+            {
+              game?.commentSet && Object.keys(game.commentSet).length > 0 && (
+             <li><Link className="header_game_a" to={`/game/${game.url_post}/comments`}>{words.COMMENTS}</Link></li>
+             )
+            }
+
+            {
+              game?.blogSet && Object.keys(game.blogSet).length > 0 && (
+                <li><Link className="header_game_a" to={`/game/${game?.url_post}/blogs`}>{words.BLOGS}</Link></li>
+              )
+            }
         </ul>
         <div className='article_list_box'>
                 <div className='article_list_box_left'>
                 {
                     game?.articleSet.map((article)=> (
-                        <div key={article.id} className='article_list_box_left_one'>
+                        <div  className='article_list_box_left_one' key={article.id}>
                             <div>
                                 <a href={`${process.env.PUBLIC_URL}/article/${article.url_post}`} className='article_list_box_left_one_a'>
                                     <img src={ article && article.posterUrls && article.posterUrls.posterUrl480x320} alt={article && article.title} className='article_list_box_left_one_img' />
@@ -50,7 +64,7 @@ export const HeaderNews  = () => {
                                 <span className='article_list_box_left_one_a_span'>{article.title.length > 30 ? article.title.slice(0,50)+" ..." : article.title}</span>
                                 <span className='article_list_box_left_two_span_tag'>
                                     {article.tagSet.map((tag)=> (
-                                        <span>{tag.title}</span>
+                                        <span key={tag.id}>{tag.title}</span>
                                     ))}
                                 </span>
                                 <div className='article_list_box_left_two_date'>

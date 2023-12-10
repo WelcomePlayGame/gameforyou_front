@@ -8,7 +8,7 @@ export const Rewies = () => {
 
 
     return (
-        <section className="rewies_wrapper" title="Огляд ігр">
+        <section className="rewies_wrapper" >
             <div className="container">
 
                 <div className="rewies_box">

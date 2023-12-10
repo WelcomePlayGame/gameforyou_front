@@ -88,4 +88,8 @@ export const PL_WORDS : WORDS_Tem = {
     HOME : 'Dom',
     COMMENTS : 'Uwagi',
     BLOGS : 'Blogi',
+    ARTICLEBYGAME : 'Najnowsze wiadomości, aktualizacje i ekscytujące wydarzenia dla prawdziwych fanów',
+    DES_ARTICLEBYGAME : 'Dowiedz się o wszystkich najnowszych wydarzeniach i aktualizacjach w świecie. Ważne wiadomości, ekscytujące aktualizacje i fascynujące wydarzenia czekają na ciebie!',
+    TITLE_COMMENTS_BY_GAME : 'Zbiór recenzji - Zapoznaj się z opiniami graczy i ekspertów, aby pełniej doświadczyć gry',
+    DES_COMMENTS_BY_GAME : 'Najlepsze recenzje od graczy i ekspertów, aby w pełni zanurzyć się w świat gry.',
 }

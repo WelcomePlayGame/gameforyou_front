@@ -4,9 +4,12 @@
     grid-template-columns: 314px 1fr
     background: var(--main-background-body)
     border-radius: 16px
+    margin-bottom: 50px
+    padding: 20px
 .block_post_ul
     display: grid
     grid-template-columns: 1fr 1fr
+    list-style: none
 .block_box_aside
     max-height: calc( 100vh - 72px )
     position: sticky
@@ -46,19 +49,21 @@
     display: grid
     justify-content: left
     margin: 20px 20px 20px 50px
+    padding-top: 20px
 .block_post_li
     list-style: none
+    &:nth-child(2n)
+        border-right: none
 .block_post_a
     display: grid
     grid-template-columns: 126px 1fr
     grid-column-gap: 16px
     grid-row-gap: 8px
-    border-bottom: 1px solid
-    border-right: 1px solid
-    padding: 24px 32px 24px 0px
-    &:nth-child(even)
-        padding-left: 20px
-        border-right: none
+    border-bottom: 1px rgba(var(--main-black),0.2) solid
+    border-right: 1px rgba(var(--main-black),0.2) solid
+    padding: 24px 32px 24px 24px
+    text-decoration: none
+    align-items: center
 
 .block_post_picture
     grid-row: 1/span 2
@@ -70,3 +75,15 @@
     margin-bottom: 20px
 .desire_ul
     list-style: none
+.block_post_li_box_right
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+.block_post_li_box_right_title
+    text-align: left
+    margin-top: 10px
+    font-family: 'Roboto-Light'
+    color: var(--color-text-black)
+.block_post_li_box_right_date
+    font-family: 'Roboto-Medium'
+    color: var(--color-text-black)

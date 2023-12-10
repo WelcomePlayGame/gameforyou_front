@@ -91,6 +91,10 @@ export interface WORDS_Tem {
     HOME : string,
     COMMENTS : string,
     BLOGS : string,
+    ARTICLEBYGAME : string,
+    DES_ARTICLEBYGAME : string,
+    TITLE_COMMENTS_BY_GAME : string,
+    DES_COMMENTS_BY_GAME : string,
 }   
 
 let words : WORDS_Tem

@@ -53,8 +53,13 @@ export const ButtonComment: React.FC<CLose> = ({ setIsClose, title, poster, id }
     
 
     const handleSubmit = (e : React.FormEvent)=> {
+       try {
         e.preventDefault();
         addComment(URL_FOR_BACK.URL_BASE+URL_FOR_BACK.COMMENT+URL_FOR_BACK.COUNTRY+URL_FOR_BACK.ADD, comment )
+        handleClose();
+       } catch (error ) {
+
+       }
     }
     return (
         <section className="pop_comment">

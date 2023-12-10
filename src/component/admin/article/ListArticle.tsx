@@ -33,7 +33,7 @@ export const ListArticle = ()=> {
                                 <span className='article_list_box_left_one_a_span'>{article.title.length > 30 ? article.title.slice(0,50)+" ..." : article.title}</span>
                                 <span className='article_list_box_left_two_span_tag'>
                                     {article.tagSet.map((tag)=> (
-                                        <span>{tag.title}</span>
+                                        <span key={tag.id}>{tag.title}</span>
                                     ))}
                                 </span>
                                 <div className='article_list_box_left_two_date'>
