@@ -24,7 +24,7 @@ export const SlideFirstSectiont = () => {
               >
                 <picture>
                   <img
-                    src={articles[0]?.posterUrls.posterUrl480x320}
+                    src={articles[0]?.posterUrls?.posterUrl480x320}
                     alt={articles[0]?.title}
                     className="slide_top_img"
                     loading="lazy"
@@ -38,7 +38,7 @@ export const SlideFirstSectiont = () => {
                       className="article_list_box_left_two_date_com"
                       alt="comment"
                     />
-                    {articles[0]?.commentSet.length}
+                    {articles[0]?.commentSet?.length}
                   </span>
                 </div>
               </Link>
@@ -50,7 +50,7 @@ export const SlideFirstSectiont = () => {
               >
                 <picture>
                   <img
-                    src={articles[1]?.posterUrls.posterUrl480x320}
+                    src={articles[1]?.posterUrls?.posterUrl480x320}
                     alt={articles[1]?.title}
                     className="slide_top_img"
                     loading="lazy"
@@ -64,7 +64,7 @@ export const SlideFirstSectiont = () => {
                       className="article_list_box_left_two_date_com"
                       alt="comment"
                     />
-                    {articles[1]?.commentSet.length}
+                    {articles[1]?.commentSet?.length}
                   </span>
                 </div>
               </Link>
@@ -78,7 +78,7 @@ export const SlideFirstSectiont = () => {
               >
                 <picture>
                   <img
-                    src={articles[2]?.posterUrls.posterUrl1024x768}
+                    src={articles[2]?.posterUrls?.posterUrl480x320}
                     alt={articles[2]?.title}
                     className="slide_bottom_img"
                     loading="lazy"
@@ -92,7 +92,7 @@ export const SlideFirstSectiont = () => {
                       className="article_list_box_left_two_date_com"
                       alt="comment"
                     />
-                    {articles[2]?.commentSet.length}
+                    {articles[2]?.commentSet?.length}
                   </span>
                 </div>
               </Link>
@@ -104,7 +104,7 @@ export const SlideFirstSectiont = () => {
               >
                 <picture>
                   <img
-                    src={articles[3]?.posterUrls.posterUrl1024x768}
+                    src={articles[3]?.posterUrls?.posterUrl480x320}
                     alt={articles[3]?.title}
                     className="slide_bottom_img"
                     loading="lazy"
@@ -118,7 +118,7 @@ export const SlideFirstSectiont = () => {
                       className="article_list_box_left_two_date_com"
                       alt="comment"
                     />
-                    {articles[3]?.commentSet.length}
+                    {articles[3]?.commentSet?.length}
                   </span>
                 </div>
               </Link>
@@ -130,7 +130,7 @@ export const SlideFirstSectiont = () => {
               >
                 <picture>
                   <img
-                    src={articles[4]?.posterUrls.posterUrl1024x768}
+                    src={articles[4]?.posterUrls?.posterUrl480x320}
                     alt={articles[4]?.title}
                     className="slide_bottom_img"
                     loading="lazy"
@@ -144,7 +144,7 @@ export const SlideFirstSectiont = () => {
                       className="article_list_box_left_two_date_com"
                       alt="comment"
                     />
-                    {articles[4]?.commentSet.length}
+                    {articles[4]?.commentSet?.length}
                   </span>
                 </div>
               </Link>

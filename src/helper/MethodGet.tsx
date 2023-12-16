@@ -187,7 +187,6 @@ export interface ResponseArticle {
   posterUrls: {
     posterUrl480x320: string;
     posterUrl1024x768: string;
-    posterUrl1440x900: string;
   };
   tagSet: {
     id: number;
@@ -250,7 +249,7 @@ export const getArticleById: DateArticleById<string, string> = async (
     return response.data;
   } catch (error: any) {
     if (error.response && error.response.status === 404) {
-      window.location.href = `${process.env.PUBLIC_URL}/404`;
+      // window.location.href = `${process.env.PUBLIC_URL}/404`;
       throw Error("Not Found");
     } else {
       toast.error("No Connect");
@@ -312,6 +311,25 @@ export const getCommnetById: DateCommentById<string, string> = async (
     } else {
       toast.error("No Connect");
       return null as unknown as ResponseComment;
+    }
+  }
+};
+
+export interface IGeneral {
+  id: number;
+  title: string;
+}
+type TGeneral<U> = (url: U) => Promise<IGeneral[]>;
+export const getAllGeneral: TGeneral<string> = async (url) => {
+  try {
+    const response = await axios.get<IGeneral[]>(url);
+    return response.data;
+  } catch (error: any) {
+    if (error.response && error.response.status === 404) {
+      throw Error("Not Found");
+    } else {
+      toast.error("No Connect");
+      return [];
     }
   }
 };

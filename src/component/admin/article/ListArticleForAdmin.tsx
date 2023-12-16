@@ -1,14 +1,18 @@
-import { URL_FOR_BACK } from "../../helper/URL";
-import words from "../../wordsvariable/WORDS";
 import { useEffect, useState } from "react";
-import { getAllCategory, ResponseDataCategory } from "../../helper/MethodGet";
-export const ListGamePost = () => {
+import {
+  getAllCategory,
+  ResponseDataCategory,
+} from "../../../helper/MethodGet";
+import { URL_FOR_BACK } from "../../../helper/URL";
+import words from "../../../wordsvariable/WORDS";
+import { Link } from "react-router-dom";
+export const ListArticleForAdmin = () => {
+  const [listArticle, setListArticle] = useState<ResponseDataCategory[]>([]);
   const [currentLanguage, setCurrentLanguage] = useState<string>("/en");
-  const [listGame, setListGame] = useState<ResponseDataCategory[]>([]);
   useEffect(() => {
     getAllCategory(
-      URL_FOR_BACK.URL_BASE + URL_FOR_BACK.GAMEPOST + currentLanguage + `/`
-    ).then((data) => setListGame(data));
+      URL_FOR_BACK.URL_BASE + URL_FOR_BACK.ARTICLE + currentLanguage + "/"
+    ).then((data) => setListArticle(data));
   }, [currentLanguage]);
   const handleSelectLanguage = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -37,37 +41,23 @@ export const ListGamePost = () => {
         <div>Current Language : {currentLanguage.substring(1)}</div>
       </div>
       <table className="list_developer_table">
-        <thead className="list_developer_thead">
-          <tr>
-            <td>№</td>
-            <td>Title</td>
-            <td>Language</td>
-            <td>Update post for game</td>
-            <td>Delete this game</td>
-          </tr>
-        </thead>
+        <thead></thead>
         <tbody>
-          {listGame.map((game) => (
-            <tr key={game.id}>
-              <td>{game.id}</td>
+          {listArticle.map((article) => (
+            <tr key={article.id}>
+              <td>{article.title}</td>
               <td>
-                <a
-                  href={`${currentLanguage}/game/${game.url_post}`}
-                  target="_blanck"
-                >
-                  {game.title}
+                <a href={`${currentLanguage}/article/${article.url_post}`}>
+                  link
                 </a>
               </td>
-              <td>{currentLanguage.substring(1)}</td>
               <td>
-                <a
-                  href={`${process.env.PUBLIC_URL}/admin/updategame/${game.id}`}
+                <Link
+                  to={`/admin/updateartilce/${article.url_post}`}
+                  target="_blank"
                 >
                   Update
-                </a>
-              </td>
-              <td>
-                <button>Delete</button>
+                </Link>
               </td>
             </tr>
           ))}

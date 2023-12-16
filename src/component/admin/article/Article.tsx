@@ -143,7 +143,7 @@ export const Article = () => {
                 alt="comment by article"
                 className="icons_count"
               />
-              {article?.commentSet.length}
+              {article?.commentSet?.length}
             </span>
             <span className="icons_count_box">
               <img
@@ -158,10 +158,16 @@ export const Article = () => {
           <div className="article_page_des">
             <div
               dangerouslySetInnerHTML={
-                typeof article?.des === "string"
-                  ? createMarkup(article.des)
+                article?.des
+                  ? {
+                      __html: article.des.replace(
+                        /<img/g,
+                        `<img alt="${article.title}"`
+                      ),
+                    }
                   : undefined
               }
+              className="game_box_body_right_text des"
             ></div>
             <div className="tag_set_article">
               <span className="tag_set_article_span">

@@ -133,6 +133,7 @@ export const AddGamePost = () => {
         <div className="addGamePostBox">
           <div className="addGamePostBoxSection poster">
             <div>
+              <span>Size : 50 Kb</span>
               <FileCustomInput
                 setImageState={setPoster_300x300}
                 file={poster_300x300}
@@ -140,12 +141,13 @@ export const AddGamePost = () => {
                   width: 300,
                   height: 300,
                 }}
-                maxSize={0.2}
+                maxSize={0.05}
               />
             </div>
           </div>
           <div className="addGamePostBoxSection">
             <div>
+              <span>Size : 120 kb</span>
               <FileCustomInput
                 setImageState={setPoster_1024x768}
                 file={poster_1024x768}
@@ -153,10 +155,11 @@ export const AddGamePost = () => {
                   width: 1024,
                   height: 768,
                 }}
-                maxSize={0.3}
+                maxSize={0.12}
               />
             </div>
             <div>
+              <span>Size : 80 kb</span>
               <FileCustomInput
                 setImageState={setPoster_480x320}
                 file={poster_480x320}
@@ -164,7 +167,7 @@ export const AddGamePost = () => {
                   width: 480,
                   height: 320,
                 }}
-                maxSize={0.2}
+                maxSize={0.08}
               />
             </div>
           </div>
@@ -264,7 +267,7 @@ export const AddGamePost = () => {
                 value={seo_title}
                 onChange={(e) => setSeoTitle(e.target.value)}
                 placeholder={words.TITLE_SEO_ARTICLE}
-                minLength={65}
+                minLength={50}
                 maxLength={75}
                 required
                 className="input_seo"
@@ -321,7 +324,7 @@ export const AddGamePost = () => {
                 placeholder={words.OS}
                 onChange={(e) => setOS(e.target.value)}
                 minLength={4}
-                maxLength={20}
+                maxLength={40}
                 required
                 className="input_seo input_bottom"
               />
@@ -334,7 +337,7 @@ export const AddGamePost = () => {
                 placeholder={words.MIN_CPU}
                 onChange={(e) => setMinProcessor(e.target.value)}
                 minLength={4}
-                maxLength={20}
+                maxLength={40}
                 required
                 className="input_seo input_bottom"
               />
@@ -347,7 +350,7 @@ export const AddGamePost = () => {
                 placeholder={words.MAX_CPU}
                 onChange={(e) => setMaxProcessor(e.target.value)}
                 minLength={4}
-                maxLength={20}
+                maxLength={40}
                 required
                 className="input_seo input_bottom"
               />
@@ -360,7 +363,7 @@ export const AddGamePost = () => {
                 placeholder={words.MIN_RAM}
                 onChange={(e) => setMinRam(e.target.value)}
                 minLength={2}
-                maxLength={20}
+                maxLength={40}
                 required
                 className="input_seo input_bottom"
               />
@@ -375,7 +378,7 @@ export const AddGamePost = () => {
                 placeholder={words.MAX_RAM}
                 onChange={(e) => setMaxRam(e.target.value)}
                 minLength={2}
-                maxLength={20}
+                maxLength={40}
                 required
                 className="input_seo input_bottom"
               />
@@ -388,7 +391,7 @@ export const AddGamePost = () => {
                 placeholder={words.DRIVERS}
                 onChange={(e) => setDirectX(e.target.value)}
                 minLength={4}
-                maxLength={20}
+                maxLength={40}
                 required
                 className="input_seo input_bottom"
               />
@@ -401,7 +404,7 @@ export const AddGamePost = () => {
                 placeholder={words.NETWORK}
                 onChange={(e) => setLan(e.target.value)}
                 minLength={4}
-                maxLength={20}
+                maxLength={40}
                 required
                 className="input_seo input_bottom"
               />
@@ -414,7 +417,7 @@ export const AddGamePost = () => {
                 placeholder={words.SPACE_DISK}
                 onChange={(e) => setMemory(e.target.value)}
                 minLength={4}
-                maxLength={20}
+                maxLength={40}
                 required
                 className="input_seo input_bottom"
               />

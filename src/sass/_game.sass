@@ -79,6 +79,8 @@
     margin-top: 50px
     display: flex
     flex-direction: column
+    border-radius: 10px
+    align-items: center
 .game_left_rating
     padding-top: 50px
 .write_comment
@@ -87,9 +89,11 @@
     margin-left: 50px
     width: 300px
     height: 35px
-    font-size: 20px
+    font-size: var(--font-size-20)
     border-radius: 10px
     padding-top: 10px
+    text-align: center
+    font-family: 'Roboto-Medium'
 .game_box_comment
     display: flex
     flex-direction: column
@@ -184,8 +188,6 @@
 .star
     font-size: 24px
     margin-bottom: 20px
-    &:hover
-        fill: red
 .rating-stars
     margin-left: 15px
 .header_game_ul
@@ -210,3 +212,36 @@
 .count_news_for_game
     font-family: 'Roboto-Light'
     font-size: 13px
+.des
+    word-break: break-word
+    line-height: var(--font-size-24)
+    h2
+        text-align: center
+    p
+        text-align: left
+        strong
+            text-align: center
+            padding-left: 30px
+            font-size: var(--font-size-18)
+        ul
+            display: flex
+            flex-direction: column
+            align-items: baseline
+        img
+            display: block
+            max-width: 50%
+            height: auto
+            border-radius: 10px
+            margin: 0px auto
+            box-shadow: 5px 5px 5px black
+            &:hover
+                animation: color_des 1s forwards
+@keyframes color_des
+    0%
+        box-shadow: 5px 5px 5px black
+    50%
+        box-shadow: 7px 7px 7px black
+    100%
+        box-shadow: 9px 9px 9px black
+.star_img
+    width: 24px

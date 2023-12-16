@@ -29,12 +29,17 @@ export const HeaderGame = () => {
       <Helmet>
         <title>{game?.seo_title}</title>
         <meta name="description" content={game?.seo_des} />
+        <meta name="keywords" content={`${game?.title}`} />
+        <link
+          rel="canonical"
+          href={`https://gameforyou.online${process.env.PUBLIC_URL}/games/${game?.url_post}`}
+        />
       </Helmet>
       <div className="game_box_page">
         <div
           className="game_box_header_img"
           style={{
-            background: `url(${
+            backgroundImage: `url(${
               game &&
               game.posterHorizontal_uls &&
               game.posterHorizontal_uls.poster_1024x768
@@ -94,6 +99,7 @@ export const HeaderGame = () => {
                 src={`${game?.posterVertical_urs?.poster_300x300}`}
                 alt={game?.title}
                 className="game_box_body_left_img"
+                loading="lazy"
               />
             </div>
             <div className="game_box_body_right">
@@ -118,7 +124,7 @@ export const HeaderGame = () => {
                   {`${words.GENRE} - `}{" "}
                   {game?.genresSet ? (
                     game.genresSet.map((genre, index) => (
-                      <span key={index}>{genre.title}</span>
+                      <span key={index}> {genre.title} </span>
                     ))
                   ) : (
                     <span>No genres available</span>
@@ -144,16 +150,26 @@ export const HeaderGame = () => {
               >
                 {words.WRITE_A_REVIEW}
               </span>
-              {/* {
-                  isClose && (
-                    <ButtonComment setIsClose={setIsClose} title={game?.title} poster={game?.posterVertical_urs} id={game?.id}/>
-                  )
-                }
-                <CommentGame/> */}
+              {isClose && (
+                <ButtonComment
+                  setIsClose={setIsClose}
+                  title={game?.title}
+                  poster={game?.posterVertical_urs}
+                  id={game?.id}
+                />
+              )}
+              {/* <CommentGame /> */}
             </div>
             <div
               dangerouslySetInnerHTML={
-                game?.des ? createMarkup(game.des) : undefined
+                game?.des
+                  ? {
+                      __html: game.des.replace(
+                        /<img/g,
+                        `<img alt="${game.title}"`
+                      ),
+                    }
+                  : undefined
               }
               className="game_box_body_right_text des"
             ></div>

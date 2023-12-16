@@ -67,7 +67,7 @@ export const AddArticle = () => {
       tagSet
     )
       .then(() => {
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => {
         console.error("Ошибка при отправке статьи:", error);
@@ -102,7 +102,7 @@ export const AddArticle = () => {
                 setImageState={setPoster_1024x768}
                 file={poster_1024x768}
                 imageSize={{ width: 1024, height: 768 }}
-                maxSize={0.3}
+                maxSize={0.12}
               />
             </div>
             <div>
@@ -110,7 +110,7 @@ export const AddArticle = () => {
                 setImageState={setPoster_480x320}
                 file={poster_480x320}
                 imageSize={{ width: 480, height: 320 }}
-                maxSize={0.2}
+                maxSize={0.05}
               />
             </div>
           </div>
@@ -202,7 +202,7 @@ export const AddArticle = () => {
                 placeholder={words.TITLE_SEO_ARTICLE}
                 name={seo_title}
                 value={seo_title}
-                minLength={65}
+                minLength={40}
                 maxLength={75}
                 required
                 onChange={(e) => setSeo_title(e.target.value)}
@@ -215,7 +215,7 @@ export const AddArticle = () => {
                 placeholder={words.DES_SEO_ARTICLE}
                 name={seo_des}
                 value={seo_des}
-                minLength={135}
+                minLength={130}
                 max={150}
                 required
                 onChange={(e) => setSeo_des(e.target.value)}

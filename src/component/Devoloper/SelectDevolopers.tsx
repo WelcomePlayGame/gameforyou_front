@@ -23,7 +23,7 @@ export const SelectDevolopers = ({
   return (
     <section className="selectCategory_container">
       <span>{words.CHOOSE_DEVELOPER}</span>
-      <select onChange={onChange} className="selectCategory_select">
+      <select onChange={onChange} className="selectCategory_select" multiple>
         {devolopers.map((devoloper) => (
           <option key={devoloper.id} value={devoloper.id}>
             {devoloper.title}

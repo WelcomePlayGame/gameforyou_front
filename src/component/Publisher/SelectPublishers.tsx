@@ -21,7 +21,7 @@ export const SelectPublishers = ({
   return (
     <section className="selectCategory_container">
       <span>{words.CHOOSE_PUBLISHER}</span>
-      <select onChange={onChange} className="selectCategory_select">
+      <select onChange={onChange} className="selectCategory_select" multiple>
         {publishers.map((publish) => (
           <option key={publish.id} value={publish.id}>
             {publish.title}
