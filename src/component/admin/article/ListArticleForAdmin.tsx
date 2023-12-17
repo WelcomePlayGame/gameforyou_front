@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
+import { deleteArticle } from "../../../helper/MethodPost";
 import {
   getAllCategory,
   ResponseDataCategory,
@@ -19,8 +21,13 @@ export const ListArticleForAdmin = () => {
   ) => {
     setCurrentLanguage(event.target.value);
   };
+
   return (
     <section>
+      <Helmet>
+        <title>List Article</title>
+        <meta name="List Article" />
+      </Helmet>
       <div className="category_form_top">
         <div>
           <h4>List Game</h4>
@@ -50,6 +57,22 @@ export const ListArticleForAdmin = () => {
                 <a href={`${currentLanguage}/article/${article.url_post}`}>
                   link
                 </a>
+              </td>
+              <td>
+                <button
+                  onClick={() => {
+                    deleteArticle(
+                      URL_FOR_BACK.URL_BASE +
+                        URL_FOR_BACK.ARTICLE +
+                        currentLanguage +
+                        URL_FOR_BACK.DELETE,
+                      article.id
+                    );
+                    window.location.reload();
+                  }}
+                >
+                  Delete
+                </button>
               </td>
               <td>
                 <Link

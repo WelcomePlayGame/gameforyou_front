@@ -2,6 +2,7 @@ import { URL_FOR_BACK } from "../../helper/URL";
 import words from "../../wordsvariable/WORDS";
 import { useEffect, useState } from "react";
 import { getAllCategory, ResponseDataCategory } from "../../helper/MethodGet";
+import { Link } from "react-router-dom";
 export const ListGamePost = () => {
   const [currentLanguage, setCurrentLanguage] = useState<string>("/en");
   const [listGame, setListGame] = useState<ResponseDataCategory[]>([]);
@@ -60,11 +61,7 @@ export const ListGamePost = () => {
               </td>
               <td>{currentLanguage.substring(1)}</td>
               <td>
-                <a
-                  href={`${process.env.PUBLIC_URL}/admin/updategame/${game.id}`}
-                >
-                  Update
-                </a>
+                <Link to={`/admin/updategame/${game.url_post}`}>Update</Link>
               </td>
               <td>
                 <button>Delete</button>

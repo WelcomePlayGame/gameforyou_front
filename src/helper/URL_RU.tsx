@@ -1,6 +1,7 @@
 import { URL_Tem } from "./URL";
 const URL_RU: URL_Tem = {
   URL_BASE: "https://servergameforyou.online",
+  // URL_BASE: "http://localhost:8080",
   CATEGORY: "/category",
   ARTICLE: "/article",
   BLOG: "/blog",

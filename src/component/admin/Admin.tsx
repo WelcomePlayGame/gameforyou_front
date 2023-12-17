@@ -13,6 +13,7 @@ import { ListDeveloper } from "../Devoloper/ListDeveloper ";
 import { ListGamePost } from "../GamePost/ListGamePost";
 import { ListArticleForAdmin } from "./article/ListArticleForAdmin";
 import { UpdateArticle } from "./form/UpdateArticle";
+import { UpdateGame } from "./form/UpdateGame";
 export const Admin = () => {
   return (
     <>
@@ -22,6 +23,7 @@ export const Admin = () => {
         <Route path="/listarticle" element={<ListArticleForAdmin />} />
         <Route path="/addarticle" element={<AddArticle />} />
         <Route path="/updateartilce/:url_post" element={<UpdateArticle />} />
+        <Route path="/updategame/:url_post" element={<UpdateGame />} />
         <Route path="/listgame" element={<ListGamePost />} />
         <Route path="/addgamepost" element={<AddGamePost />} />
         <Route path="/addgenre" element={<AddGenres />} />

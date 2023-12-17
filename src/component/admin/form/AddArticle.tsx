@@ -91,7 +91,7 @@ export const AddArticle = () => {
     <section className="addcategory">
       <Helmet>
         <title>{words.ADD_ARTICLE}</title>
-        <meta name="Сторнінка для додавання категорії" />
+        <meta name="Add Article" />
       </Helmet>
       <form className="addArticle" onSubmit={handlSubmit}>
         <div className="addArticle_box">
