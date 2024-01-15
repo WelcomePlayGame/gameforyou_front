@@ -33,6 +33,7 @@ export const AddGamePost = () => {
   const [lan, setLan] = useState("");
   const [memory, setMemory] = useState("");
   const [url_post, setUrl_post] = useState("");
+  const [series_games, setSeries_games] = useState(``);
   const [poster_480x320, setPoster_480x320] = useState<File | undefined>(
     undefined
   );
@@ -74,6 +75,7 @@ export const AddGamePost = () => {
     lan: lan,
     memory: memory,
     url_post: url_post,
+    series_games: series_games,
   };
 
   const handleIdsUpdate = (id: number[]) => {
@@ -267,7 +269,7 @@ export const AddGamePost = () => {
                 value={seo_title}
                 onChange={(e) => setSeoTitle(e.target.value)}
                 placeholder={words.TITLE_SEO_ARTICLE}
-                minLength={50}
+                minLength={40}
                 maxLength={75}
                 required
                 className="input_seo"
@@ -280,7 +282,7 @@ export const AddGamePost = () => {
                 onChange={(e) => setSeoDes(e.target.value)}
                 placeholder={words.DES_SEO_ARTICLE}
                 required
-                minLength={135}
+                minLength={120}
                 maxLength={165}
                 className="input_seo"
               />
@@ -294,6 +296,15 @@ export const AddGamePost = () => {
                 required
                 minLength={3}
                 maxLength={40}
+                className="input_seo"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                value={series_games}
+                onChange={(e) => setSeries_games(e.target.value)}
+                placeholder={`series_games`}
                 className="input_seo"
               />
             </div>

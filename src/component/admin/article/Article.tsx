@@ -106,19 +106,24 @@ export const Article = () => {
           <title>{article?.seo_title}</title>
           <meta name="description" content={article?.seo_des} />
         </Helmet>
-        <div
-          className="article_box_header"
-          style={{
-            backgroundImage: `url(${
-              article &&
-              article.posterUrls &&
-              article.posterUrls.posterUrl1024x768
-            })`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            height: "300px",
-          }}
-        ></div>
+        <div className="article_box_header">
+          <picture>
+            <source
+              srcSet={`${article?.posterUrls.posterUrl1024x768}`}
+              media="(min-width: 1200px)"
+            />
+            <source
+              srcSet={`${article?.posterUrls.posterUrl480x320}`}
+              media="(max-width: 992px)"
+            />
+            <img
+              src={`${article?.posterUrls.posterUrl1024x768}`}
+              alt={article?.title}
+              loading="lazy"
+              className="article_header_box_img"
+            />
+          </picture>
+        </div>
 
         <div className="article_box_inf">
           <div className="crumbs_article">
@@ -189,6 +194,7 @@ export const Article = () => {
                       src={article?.gamePost?.posterVertical_urs.poster_300x300}
                       alt={article?.gamePost.title}
                       className="article_for_game_box_img"
+                      loading="lazy"
                     />
                   </a>
                 </div>

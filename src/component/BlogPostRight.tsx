@@ -4,6 +4,7 @@ import { getArticle, ResponseArticle } from "../helper/MethodGet";
 import { URL_FOR_BACK } from "../helper/URL";
 import { Link } from "react-router-dom";
 import { formDate } from "../helper/FormData";
+import { SectionGame } from "./SectionGame";
 
 export const BlogPostRight = () => {
   const [news, setNews] = useState<ResponseArticle[]>([]);
@@ -16,7 +17,6 @@ export const BlogPostRight = () => {
   }, []);
 
   const loadMoreNews = () => {
-    // Увеличиваем количество видимых новостей на 6
     setVisibleNewsCount((prevCount) => prevCount + 6);
   };
 
@@ -52,6 +52,7 @@ export const BlogPostRight = () => {
           </button>
         )}
       </div>
+      <SectionGame />
     </div>
   );
 };

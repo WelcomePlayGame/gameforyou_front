@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import words from "../wordsvariable/WORDS";
 import { ButtonComment } from "../component/comments/ButtonComment";
 import { CommentGame } from "../component/comments/CommentGame";
+import { SlideCaruselGame } from "../component/CaruselSerialGame/SlideCaruselGame";
 export const HeaderGame = () => {
   const [isClose, setIsClose] = useState(false);
   const { url_post } = useParams<string>();
@@ -115,7 +116,7 @@ export const HeaderGame = () => {
                 <span className="game_box_body_right_text">
                   {`${words.SITE_GAME} - `}
                   <a href={game?.url_game} target="_blank">
-                    {game?.url_game}
+                    {words.GAME_SOURCE}
                   </a>
                 </span>
                 <span className="game_box_body_right_text">{`${words.DEVOLOPER} - ${game?.developer.title}`}</span>
@@ -176,6 +177,7 @@ export const HeaderGame = () => {
           </div>
         </div>
       </div>
+      <SlideCaruselGame />
     </section>
   );
 };

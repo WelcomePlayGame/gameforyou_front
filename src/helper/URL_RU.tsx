@@ -19,5 +19,6 @@ const URL_RU: URL_Tem = {
   ARTICLE_DES_URL: "/article_des_url",
   STATISTICS: "/statistics",
   UPDATE: "/update",
+  SITEMAP: "/sitemap",
 };
 export default URL_RU;

@@ -12,6 +12,10 @@ export const ListArticle = () => {
       URL_FOR_BACK.URL_BASE + URL_FOR_BACK.ARTICLE + URL_FOR_BACK.COUNTRY + "/"
     ).then((data) => setArticles(data));
   }, []);
+  const reversedArticles = [...articles].reverse();
+  const secondHalf = reversedArticles.slice(
+    Math.ceil(reversedArticles.length / 2)
+  );
 
   return (
     <section className="article_list">
@@ -68,7 +72,16 @@ export const ListArticle = () => {
             </div>
           ))}
         </div>
-        <div></div>
+        <div className="article_list_box_right">
+          {[...secondHalf].map((article) => (
+            <div key={article.id}>
+              <img
+                src={article.posterUrls.posterUrl480x320}
+                alt={article.title}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

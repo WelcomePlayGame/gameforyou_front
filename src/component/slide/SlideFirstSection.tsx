@@ -24,13 +24,13 @@ export const SlideFirstSectiont = () => {
               >
                 <picture>
                   <img
-                    src={articles[0]?.posterUrls?.posterUrl480x320}
+                    src={articles[0]?.posterUrls?.posterUrl1024x768}
                     alt={articles[0]?.title}
                     className="slide_top_img"
                     loading="lazy"
                   />
                 </picture>
-                <div className="slide_box_title_img">
+                <div className="slide_box_title_img slide_top_first_img">
                   <span className="slide_top_title">{articles[0]?.title}</span>
                   <span className="slide_top_com_count">
                     <img
@@ -50,13 +50,13 @@ export const SlideFirstSectiont = () => {
               >
                 <picture>
                   <img
-                    src={articles[1]?.posterUrls?.posterUrl480x320}
+                    src={articles[1]?.posterUrls?.posterUrl1024x768}
                     alt={articles[1]?.title}
                     className="slide_top_img"
                     loading="lazy"
                   />
                 </picture>
-                <div className="slide_box_title_img">
+                <div className="slide_box_title_img slide_top_first_img">
                   <span className="slide_top_title">{articles[1]?.title}</span>
                   <span className="slide_top_com_count">
                     <img

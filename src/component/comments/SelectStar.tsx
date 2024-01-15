@@ -20,7 +20,12 @@ export const SelectStar: React.FC<DateSelectStar> = ({ setRating, rating }) => {
               />
             ) : (
               <span className="star">
-                <img src="../icons/star.svg" alt="star" className="star_img" />
+                <img
+                  src="../icons/star.svg"
+                  alt="star"
+                  className="star_img"
+                  loading="lazy"
+                />
               </span>
             )}
           </span>

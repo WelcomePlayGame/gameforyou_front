@@ -38,6 +38,7 @@ interface GamePost extends Base {
   publisher: {
     id: string;
   };
+  series_games: string;
 }
 
 type DataPostCatagory<T, U> = (

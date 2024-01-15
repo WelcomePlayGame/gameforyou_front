@@ -167,7 +167,7 @@ export const AddArticle = () => {
                 url={
                   URL_FOR_BACK.URL_BASE +
                   URL_FOR_BACK.ARTICLE_DES_URL +
-                  URL_FOR_BACK.COUNTRY +
+                  currentLanguage +
                   URL_FOR_BACK.ADD
                 }
                 url_delete={
@@ -215,7 +215,7 @@ export const AddArticle = () => {
                 placeholder={words.DES_SEO_ARTICLE}
                 name={seo_des}
                 value={seo_des}
-                minLength={130}
+                minLength={120}
                 max={150}
                 required
                 onChange={(e) => setSeo_des(e.target.value)}

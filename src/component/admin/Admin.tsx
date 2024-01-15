@@ -14,6 +14,7 @@ import { ListGamePost } from "../GamePost/ListGamePost";
 import { ListArticleForAdmin } from "./article/ListArticleForAdmin";
 import { UpdateArticle } from "./form/UpdateArticle";
 import { UpdateGame } from "./form/UpdateGame";
+import { GeneralSiteMap } from "../../Sitemap/GeneralSiteMap";
 export const Admin = () => {
   return (
     <>
@@ -32,6 +33,7 @@ export const Admin = () => {
         <Route path="/listdeveloper" element={<ListDeveloper />} />
         <Route path="/adddeveloper" element={<AddDevoloper />} />
         <Route path="/addtag" element={<AddTag />} />
+        <Route path="/sitemap" element={<GeneralSiteMap />} />
       </Routes>
     </>
   );

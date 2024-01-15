@@ -1,0 +1,53 @@
+@media (max-width: 768px)
+    .statistics_article
+        width: 100%
+    .header_menu_li
+        font-size: 25px
+    .section_game_container_top
+        flex-wrap: wrap
+    .section_game_img
+        width: 300px
+    .header_logo
+        width: 70px
+    .menu_active
+        display: none
+    .hamburger
+        display: block
+        position: absolute
+        right: 90px
+        top: 35px
+        transform: translateY(-50%)
+        width: 30px
+        z-index: 20
+        span
+            display: block
+            height: 5px
+            width: 200%
+            background-color: #fff
+            margin-bottom: 3px
+            transition: 0.5s all
+        &_active
+            span
+                margin-bottom: -3px
+                &:first-child
+                    transform: rotate(-45deg)
+                &:nth-child(2)
+                    display: none
+                &:last-child
+                    transform: rotate(45deg)
+    .header_menu_ul
+        background: rgba(0, 0, 0,0.8 )
+        flex-direction: column
+        position: fixed
+        top: -10px
+        height: 100vh
+        width: 169vw
+        left: 120%
+        transition: all .8s
+        justify-content: space-around
+        &_active
+            left: -70%
+    .header_menu_li
+        padding-left: 600px
+    .header_group_icons
+        margin-left: 70px

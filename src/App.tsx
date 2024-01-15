@@ -47,7 +47,7 @@ function App() {
           <Route path="/games" element={<ListGame />} />
           <Route path="/article" element={<ListArticle />} />
           <Route path="/admin/*" element={<Admin />} />
-          {/* <Route path="*" element={<Navigate to="/404" />} /> */}
+          <Route path="*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="/game/:url_post" element={<HeaderGame />} />
           <Route path="/game/:url_post/news" element={<HeaderNews />} />

@@ -111,6 +111,7 @@ export interface Game {
     id: number;
     title: string;
   }[];
+  series_games: string;
 }
 
 type DataGet<T> = (url: T) => Promise<ResponseDataCategory[]>;
@@ -323,6 +324,20 @@ type TGeneral<U> = (url: U) => Promise<IGeneral[]>;
 export const getAllGeneral: TGeneral<string> = async (url) => {
   try {
     const response = await axios.get<IGeneral[]>(url);
+    return response.data;
+  } catch (error: any) {
+    if (error.response && error.response.status === 404) {
+      throw Error("Not Found");
+    } else {
+      toast.error("No Connect");
+      return [];
+    }
+  }
+};
+
+export const getSiteMap = async (url: string) => {
+  try {
+    const response = await axios.get<string[]>(url);
     return response.data;
   } catch (error: any) {
     if (error.response && error.response.status === 404) {

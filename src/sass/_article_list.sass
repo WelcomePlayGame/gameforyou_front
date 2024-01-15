@@ -113,15 +113,15 @@
     justify-content: start
     align-items: start
     margin-left: 30px
-    &::after
-        content: ''
-        height: 200px
-        width: 2px
-        background-color: #000
-        display: block
-        position: absolute
-        right: 900px
-        margin-top: 10px
+    // &::after
+    //     content: ''
+    //     height: 200px
+    //     width: 2px
+    //     background-color: #000
+    //     display: block
+    //     position: absolute
+    //     right: 800px
+    //     margin-top: 10px
 .article_for_game_box_info_h2
     font-size: 24px
     font-family: 'Roboto-Black'
@@ -133,8 +133,18 @@
     font-size: 14px
     font-family: 'Roboto-Light'
 .article_for_game_box_rating
-    align-self: end
-    margin-left: 300px
+    align-self: self-start
+    display: flex
+    margin: 0 auto
+    margin-top: 30px
+    &::before
+        content: ''
+        height: 200px
+        width: 2px
+        background-color: #000
+        display: block
+        position: absolute
+        margin-top: 10px
 .icons_count
     width: 30px
     margin-right: 4px
@@ -173,3 +183,13 @@
     flex-direction: column
     margin-bottom: 10px
     margin-right: 70px
+.article_for_game_box_img
+    width: 100% !important
+.star_img
+    width: 24px !important
+    padding: 5px
+.rating-stars
+    display: flex
+.article_header_box_img
+    margin: 0px auto
+    display: block

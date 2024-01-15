@@ -1,3 +1,5 @@
+import words from "../wordsvariable/WORDS";
+
 const FormDate = (instantDate: any) => {
   const currentDate = new Date();
   const date = new Date(instantDate * 1000);
@@ -12,9 +14,9 @@ const FormDate = (instantDate: any) => {
   const minutes = date.getMinutes();
 
   if (daysAgo === 0) {
-    return `Today ${hour}:${minutes}`;
+    return `${words.TODAY} ${hour}:${minutes}`;
   } else if (daysAgo === 1) {
-    return `Tomorrow ${hour}:${minutes}`;
+    return `${words.TOMORROW} ${hour}:${minutes}`;
   }
 
   return `${day}:${month}:${year}`;

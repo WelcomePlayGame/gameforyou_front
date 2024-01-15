@@ -34,6 +34,7 @@ export const UpdateGame = () => {
   const [directX, setDirectX] = useState("");
   const [lan, setLan] = useState("");
   const [memory, setMemory] = useState("");
+  const [series_games, setSeries_games] = useState(``);
   const [poster_480x320, setPoster_480x320] = useState<File | undefined>(
     undefined
   );
@@ -72,6 +73,7 @@ export const UpdateGame = () => {
       setDirectX(data.directX!);
       setLan(data.lan!);
       setMemory(data.memory!);
+      setSeries_games(data.series_games);
     });
   }, [currentLanguage]);
   const gamepost = {
@@ -97,6 +99,7 @@ export const UpdateGame = () => {
     lan: lan,
     memory: memory,
     url_post: url_post,
+    series_games: series_games,
   };
 
   const handleIdsUpdate = (id: number[]) => {
