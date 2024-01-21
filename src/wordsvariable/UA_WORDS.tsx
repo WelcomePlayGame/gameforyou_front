@@ -102,4 +102,8 @@ export const UA_WORDS: WORDS_Tem = {
   GAME_SOURCE: "сайт",
   TODAY: "Сьогодні",
   TOMORROW: "Вчора",
+  BTN_GAME_LIST: "Більше ігор",
+  GAME_NEWS: "Ігрові Новини",
+  EVERYONE_IS_DISCUSSING: "Всі обговорюють",
+  PUSH_ON: "Натисніть",
 };

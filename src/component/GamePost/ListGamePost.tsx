@@ -1,5 +1,6 @@
 import { URL_FOR_BACK } from "../../helper/URL";
 import words from "../../wordsvariable/WORDS";
+import { deleteArticle } from "../../helper/MethodPost";
 import { useEffect, useState } from "react";
 import { getAllCategory, ResponseDataCategory } from "../../helper/MethodGet";
 import { Link } from "react-router-dom";
@@ -64,7 +65,19 @@ export const ListGamePost = () => {
                 <Link to={`/admin/updategame/${game.url_post}`}>Update</Link>
               </td>
               <td>
-                <button>Delete</button>
+                <button
+                  onClick={() => {
+                    deleteArticle(
+                      URL_FOR_BACK.URL_BASE +
+                        URL_FOR_BACK.GAMEPOST +
+                        currentLanguage +
+                        URL_FOR_BACK.DELETE,
+                      game.id
+                    );
+                  }}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

@@ -98,6 +98,10 @@ export interface WORDS_Tem {
   GAME_SOURCE: string;
   TODAY: string;
   TOMORROW: string;
+  BTN_GAME_LIST: string;
+  GAME_NEWS: string;
+  EVERYONE_IS_DISCUSSING: string;
+  PUSH_ON: string;
 }
 
 let words: WORDS_Tem;

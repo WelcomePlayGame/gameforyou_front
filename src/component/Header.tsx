@@ -19,7 +19,9 @@ export const Header = () => {
     (process.env.REACT_APP_LANGUAGE?.toLowerCase() as LanguageCode) || "en"
   );
   const location = useLocation();
-  const isHeader = location.pathname.startsWith("/admin");
+  const isHeader =
+    location.pathname.startsWith("/admin") ||
+    location.pathname.startsWith("/login");
   const handleChangeLanguage = (newLanguageCode: string) => {
     window.location.href = `https://gameforyou.online/${newLanguageCode}`;
   };

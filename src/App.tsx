@@ -17,6 +17,7 @@ import { HeaderGame } from "./pages/HeaderGame";
 import { HeaderNews } from "./pages/HeaderNews";
 import { HeaderComments } from "./pages/HeaderComments";
 import { HeaderBlogs } from "./pages/HeaderBlogs";
+import { Security } from "./component/admin/security/Security";
 
 function App() {
   const basenameMap = {
@@ -46,7 +47,6 @@ function App() {
           <Route path="/" element={<Body />} />
           <Route path="/games" element={<ListGame />} />
           <Route path="/article" element={<ListArticle />} />
-          <Route path="/admin/*" element={<Admin />} />
           <Route path="*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="/game/:url_post" element={<HeaderGame />} />
@@ -54,6 +54,8 @@ function App() {
           <Route path="/game/:url_post/comments" element={<HeaderComments />} />
           <Route path="/game/:url_post/blogs" element={<HeaderBlogs />} />
           <Route path="/article/:url_post" element={<Article />} />
+          <Route path="/login" element={<Security />} />
+          <Route path="/admin/*" element={<Admin />} />
         </Routes>
       </BrowserRouter>
     </div>

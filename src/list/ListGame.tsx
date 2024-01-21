@@ -12,7 +12,10 @@ export const ListGame = () => {
   }
 
   const [games, setGames] = useState<ResponseDataCategory[]>([]);
-
+  const [visibleNewsCount, setVisibleNewsCount] = useState(8);
+  const loadMoreNews = () => {
+    setVisibleNewsCount((prevCount) => prevCount + 8);
+  };
   useEffect(() => {
     getAllCategory(
       URL_FOR_BACK.URL_BASE + URL_FOR_BACK.GAMEPOST + URL_FOR_BACK.COUNTRY + "/"
@@ -21,24 +24,29 @@ export const ListGame = () => {
 
   return (
     <section className="games_list">
-      {games.map((game: Game) => (
-        <div key={game.id}>
-          <div className="box_game">
-            <img
-              src={game.posterVertical_urs?.poster_300x300}
-              alt={game.title}
-              className="box_game_img"
-              loading="lazy"
-            />
-            <span className="games_list_title">{game.title}</span>
-            <span className="games_list_span">
-              <Link to={`/game/${game.url_post}`} className="games_list_btn">
-                {words.DETAILS}
-              </Link>
-            </span>
+      <div className="games_list">
+        {games.slice(0, visibleNewsCount).map((game: Game) => (
+          <div key={game.id}>
+            <div className="box_game">
+              <img
+                src={game.posterVertical_urs?.poster_300x300}
+                alt={game.title}
+                className="box_game_img"
+                loading="lazy"
+              />
+              <span className="games_list_title">{game.title}</span>
+              <span className="games_list_span">
+                <Link to={`/game/${game.url_post}`} className="games_list_btn">
+                  {words.DETAILS}
+                </Link>
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <button className="btn_game_list" onClick={loadMoreNews}>
+        {words.BTN_GAME_LIST}
+      </button>
     </section>
   );
 };

@@ -75,10 +75,7 @@ export const ListArticleForAdmin = () => {
                 </button>
               </td>
               <td>
-                <Link
-                  to={`/admin/updateartilce/${article.url_post}`}
-                  target="_blank"
-                >
+                <Link to={`/admin/updateartilce/${article.url_post}`}>
                   Update
                 </Link>
               </td>

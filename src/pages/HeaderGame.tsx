@@ -175,9 +175,11 @@ export const HeaderGame = () => {
               className="game_box_body_right_text des"
             ></div>
           </div>
+          {game?.series_games && (
+            <SlideCaruselGame series_games={game.series_games} />
+          )}
         </div>
       </div>
-      <SlideCaruselGame />
     </section>
   );
 };

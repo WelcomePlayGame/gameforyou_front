@@ -6,13 +6,14 @@ import { SelectGenres } from "../../Genres/SelectGenres";
 import { SelectDevolopers } from "../../Devoloper/SelectDevolopers";
 import { SelectPublishers } from "../../Publisher/SelectPublishers";
 import { SelectPlatforms } from "../../Platforms/SelectPlatforms";
-import { submitGamePost } from "../../../helper/MethodPost";
+import { updateGamePost } from "../../../helper/MethodPost";
 import { URL_FOR_BACK } from "../../../helper/URL";
 import words from "../../../wordsvariable/WORDS";
 import { useParams } from "react-router-dom";
 import { getGameById } from "../../../helper/MethodGet";
 export const UpdateGame = () => {
   const { url_post } = useParams();
+  const [id, setId] = useState<number>();
   const [currentLanguage, setCurrentLanguage] = useState<string>("/en");
   const [title, setTitle] = useState("");
   const [des, setDes] = useState("");
@@ -57,6 +58,7 @@ export const UpdateGame = () => {
       URL_FOR_BACK.URL_BASE + URL_FOR_BACK.GAMEPOST + currentLanguage,
       url_post!
     ).then((data) => {
+      setId(data.id);
       setTitle(data.title);
       setDes(data.des);
       setSeoTitle(data.seo_title!);
@@ -77,6 +79,7 @@ export const UpdateGame = () => {
     });
   }, [currentLanguage]);
   const gamepost = {
+    id: id,
     title: title,
     des: des,
     seo_title: seo_title,
@@ -117,9 +120,9 @@ export const UpdateGame = () => {
       URL_FOR_BACK.URL_BASE +
       URL_FOR_BACK.GAMEPOST +
       currentLanguage +
-      URL_FOR_BACK.ADD;
+      URL_FOR_BACK.UPDATE;
 
-    submitGamePost(
+    updateGamePost(
       gamepost,
       posterPhoto_horizontal,
       ids,
@@ -129,7 +132,7 @@ export const UpdateGame = () => {
       platformsSet
     )
       .then(() => {
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => {
         console.error("Ошибка при отправке статьи:", error);

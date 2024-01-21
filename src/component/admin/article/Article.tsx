@@ -135,7 +135,7 @@ export const Article = () => {
                 },
                 {
                   label: `${words.BREADCRUMBS_LIST_ARTICLE}`,
-                  url: `${process.env.PUBLIC_URL}/article`,
+                  // url: `${process.env.PUBLIC_URL}/article`,
                 },
               ]}
             />

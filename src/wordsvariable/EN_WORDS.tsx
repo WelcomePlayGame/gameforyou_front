@@ -101,4 +101,8 @@ export const EN_WORDS: WORDS_Tem = {
   GAME_SOURCE: "site",
   TODAY: "Today",
   TOMORROW: "Yesterday",
+  BTN_GAME_LIST: "More Game",
+  GAME_NEWS: "Game News",
+  EVERYONE_IS_DISCUSSING: "Everyone is discussing",
+  PUSH_ON: "Push On",
 };

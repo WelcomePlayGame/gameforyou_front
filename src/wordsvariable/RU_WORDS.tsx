@@ -102,4 +102,8 @@ export const RU_WORDS: WORDS_Tem = {
   GAME_SOURCE: "сайт",
   TODAY: "Сегодня",
   TOMORROW: "Вчера",
+  BTN_GAME_LIST: "Больше игр",
+  GAME_NEWS: "Игровые Новости",
+  EVERYONE_IS_DISCUSSING: "Все обсуждают",
+  PUSH_ON: "Нажать",
 };

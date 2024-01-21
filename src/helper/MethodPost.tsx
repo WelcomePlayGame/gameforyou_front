@@ -250,10 +250,59 @@ export const updatetArticle = async (
     toast.error("Problem with server");
   }
 };
+export const updateGamePost = async (
+  article: GamePost,
+  posterPhoto: File[],
+  ids: number[],
+  url: string,
+  posterPhotoVertical?: File,
+  genresSet?: string[],
+  platformsSet?: string[]
+) => {
+  const formData = new FormData();
+  formData.append(
+    "article",
+    new Blob([JSON.stringify(article)], { type: "application/json" })
+  );
+  posterPhoto.forEach((file) => {
+    formData.append("posterPhoto", file);
+  });
+  if (posterPhotoVertical) {
+    formData.append("posterPhotoVertical", posterPhotoVertical);
+  }
+  formData.append(
+    "ids",
+    new Blob([JSON.stringify(ids)], { type: "application/json" })
+  );
+  formData.append(
+    "genresSet",
+    new Blob([JSON.stringify(genresSet)], { type: "application/json" })
+  );
+  formData.append(
+    "platformsSet",
+    new Blob([JSON.stringify(platformsSet)], { type: "application/json" })
+  );
+  try {
+    const response = await axios.put(url, formData);
+    if (response.status !== 200) {
+      throw new Error(`Server responded with status code ${response.status}`);
+    }
+
+    return response.data;
+  } catch (error) {
+    console.log(formData);
+    toast.error("Проблема з сервером");
+  }
+};
 
 export const deleteArticle = async (url: string, id: number) => {
   const response = await axios.delete(`${url}/${id}`);
   if (response.status !== 204) {
     toast.error("Can not delete");
+  } else {
+    toast.info("Game post was deleted");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   }
 };

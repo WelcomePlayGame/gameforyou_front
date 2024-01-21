@@ -2,6 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export type ResponseDataCategory = {
+  series_games: string;
   id: number;
   title: string;
   des: string;

@@ -84,7 +84,7 @@ export const UpdateArticle = () => {
       tagSet
     )
       .then(() => {
-        // window.location.reload();
+        window.location.href = `${process.env.PUBLIC_URL}/admin/listarticle`;
       })
       .catch((error) => {
         console.error("Ошибка при отправке статьи:", error);
