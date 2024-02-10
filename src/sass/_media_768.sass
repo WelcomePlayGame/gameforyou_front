@@ -1,4 +1,6 @@
-@media (max-width: 768px)
+@media (max-width: 767px)
+    .header_menu
+        justify-content: flex-start
     .statistics_article
         width: 100%
     .header_menu_li
@@ -53,3 +55,37 @@
         margin-left: 70px
     .article_list_box_left
         display: none
+        h2
+            font-size: var(---font-size-18)
+    .block_post_wrapper
+        margin-left: 9px
+    .block_box_post
+        padding: 1px
+    .header_menu_li
+        padding-left: 250px
+    .article_box_header
+        margin-bottom: 0px
+    .article_header_box_img
+        width: 100%
+    .article_for_game_box
+        flex-direction: column
+        align-items: center
+        padding: 15px 0px 15px 0px
+    .des
+        padding: 0px
+    .rating-stars
+        margin-left: 0px
+    .add_comment_for_article_btn
+        display: block
+        margin: 0 auto
+    .article_for_game_box_rating
+        &::before
+            content: ''
+            height: 2px
+            width: 100%
+            background-color: #000
+            display: block
+            position: absolute
+            left: 0
+            top: -80%
+            transform: translateY(-50%)

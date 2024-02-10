@@ -1,6 +1,5 @@
 import words from "../wordsvariable/WORDS";
-import { BlogPostRight } from "../component/BlogPostRight";
-
+import BlogPostRight from "../component/BlogPostRight";
 export const BlockPost = () => {
   return (
     <section className="block_post_wrapper container">
@@ -57,3 +56,4 @@ export const BlockPost = () => {
     </section>
   );
 };
+export default BlockPost;

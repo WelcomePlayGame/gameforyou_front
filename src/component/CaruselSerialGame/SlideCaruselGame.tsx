@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 import { getAllCategory, ResponseDataCategory } from "../../helper/MethodGet";
 import { URL_FOR_BACK } from "../../helper/URL";
 import words from "../../wordsvariable/WORDS";
-import { Link } from "react-router-dom";
-import { env } from "process";
 
 export const SlideCaruselGame = ({
   series_games,

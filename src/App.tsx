@@ -1,24 +1,26 @@
-import React from "react";
 import "./App.css";
 import { Header } from "./component/Header";
-import { Body } from "./pages/Body";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AdminMenu } from "./component/admin/menu/AdminMenu";
-import { Admin } from "./component/admin/Admin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { NotFound } from "./component/404/NotFound";
-import { ListGame } from "./list/ListGame";
-import { Game } from "./component/Game";
-import { PageGame } from "./pages/PageGame";
-import { Article } from "./component/admin/article/Article";
-import { ListArticle } from "./component/admin/article/ListArticle";
-import { HeaderGame } from "./pages/HeaderGame";
-import { HeaderNews } from "./pages/HeaderNews";
-import { HeaderComments } from "./pages/HeaderComments";
-import { HeaderBlogs } from "./pages/HeaderBlogs";
 import { Security } from "./component/admin/security/Security";
-
+import React, { Suspense } from "react";
+const Body = React.lazy(() => import("./pages/Body.tsx"));
+const ListGame = React.lazy(() => import("./list/ListGame.tsx"));
+const ListArticle = React.lazy(
+  () => import("./component/admin/article/ListArticle.tsx")
+);
+const Admin = React.lazy(() => import("./component/admin/Admin.tsx"));
+const HeaderGame = React.lazy(() => import("./pages/HeaderGame.tsx"));
+const HeaderNews = React.lazy(() => import("./pages/HeaderNews.tsx"));
+const HeaderComments = React.lazy(() => import("./pages/HeaderComments.tsx"));
+const HeaderBlogs = React.lazy(() => import("./pages/HeaderBlogs.tsx"));
+const Article = React.lazy(
+  () => import("./component/admin/article/Article.tsx")
+);
+const RSS = React.lazy(() => import("./component/RSS.tsx"));
 function App() {
   const basenameMap = {
     UA: "/ua",
@@ -44,18 +46,89 @@ function App() {
         <Header />
         <AdminMenu />
         <Routes>
-          <Route path="/" element={<Body />} />
-          <Route path="/games" element={<ListGame />} />
-          <Route path="/article" element={<ListArticle />} />
+          <Route
+            path="/"
+            element={
+              <Suspense>
+                <Body />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/games"
+            element={
+              <Suspense>
+                <ListGame />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/article"
+            element={
+              <Suspense>
+                <ListArticle />
+              </Suspense>
+            }
+          />
           <Route path="*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<NotFound />} />
-          <Route path="/game/:url_post" element={<HeaderGame />} />
-          <Route path="/game/:url_post/news" element={<HeaderNews />} />
-          <Route path="/game/:url_post/comments" element={<HeaderComments />} />
-          <Route path="/game/:url_post/blogs" element={<HeaderBlogs />} />
-          <Route path="/article/:url_post" element={<Article />} />
+          <Route
+            path="/game/:url_post"
+            element={
+              <Suspense>
+                <HeaderGame />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/game/:url_post/news"
+            element={
+              <Suspense>
+                <HeaderNews />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/game/:url_post/comments"
+            element={
+              <Suspense>
+                <HeaderComments />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/game/:url_post/blogs"
+            element={
+              <Suspense>
+                <HeaderBlogs />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/article/:url_post"
+            element={
+              <Suspense>
+                <Article />
+              </Suspense>
+            }
+          />
           <Route path="/login" element={<Security />} />
-          <Route path="/admin/*" element={<Admin />} />
+          <Route
+            path="/admin/*"
+            element={
+              <Suspense>
+                <Admin />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/rss"
+            element={
+              <Suspense>
+                <RSS />
+              </Suspense>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

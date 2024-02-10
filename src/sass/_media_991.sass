@@ -2,15 +2,14 @@
     .humburger
         display: none
     .header_menu
-        justify-content: flex-start
+        display: flex
+        justify-content: space-around
     .slider_wrapper
         margin: 0 auto
     .block_post_wrapper
         margin-left: 30px
     .slide_top
         justify-content: space-evenly
-    .header_menu
-        display: flex
     .block_box
         display: flex
         padding: 0px
@@ -38,3 +37,25 @@
         font-size: 17px
     .article_list_box_right_img
         object-fit: contain
+    .article_for_game_box
+        flex-direction: column
+        align-items: center
+        padding: 15px 0px 15px 0px
+    .des
+        padding: 0px
+    .rating-stars
+        margin-left: 0px
+    .add_comment_for_article_btn
+        display: block
+        margin: 0 auto
+    .article_for_game_box_rating
+        &::before
+            content: ''
+            height: 2px
+            width: 100%
+            background-color: #000
+            display: block
+            position: absolute
+            left: 0
+            top: -50%
+            transform: translateY(-50%)

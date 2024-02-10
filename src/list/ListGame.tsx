@@ -3,7 +3,7 @@ import { getAllCategory, ResponseDataCategory } from "../helper/MethodGet";
 import { URL_FOR_BACK } from "../helper/URL";
 import words from "../wordsvariable/WORDS";
 import { Link } from "react-router-dom";
-export const ListGame = () => {
+const ListGame = () => {
   interface Game {
     id: number;
     title: string;
@@ -50,3 +50,4 @@ export const ListGame = () => {
     </section>
   );
 };
+export default ListGame;

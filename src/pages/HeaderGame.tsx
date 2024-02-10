@@ -5,9 +5,8 @@ import { URL_FOR_BACK } from "../helper/URL";
 import { Helmet } from "react-helmet";
 import words from "../wordsvariable/WORDS";
 import { ButtonComment } from "../component/comments/ButtonComment";
-import { CommentGame } from "../component/comments/CommentGame";
 import { SlideCaruselGame } from "../component/CaruselSerialGame/SlideCaruselGame";
-export const HeaderGame = () => {
+const HeaderGame = () => {
   const [isClose, setIsClose] = useState(false);
   const { url_post } = useParams<string>();
   const [game, setGame] = useState<Game>();
@@ -183,3 +182,4 @@ export const HeaderGame = () => {
     </section>
   );
 };
+export default HeaderGame;

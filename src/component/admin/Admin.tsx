@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AddArticle } from "./form/AddArticle";
-import { Article } from "./article/Article";
 import { Category } from "./Category/Category";
 import { AddCategory } from "./form/AddCategory";
 import { AddGamePost } from "./form/AddGamePost";
@@ -15,7 +14,7 @@ import { ListArticleForAdmin } from "./article/ListArticleForAdmin";
 import { UpdateArticle } from "./form/UpdateArticle";
 import { UpdateGame } from "./form/UpdateGame";
 import { GeneralSiteMap } from "../../Sitemap/GeneralSiteMap";
-export const Admin = () => {
+const Admin = () => {
   const isAuthenticated = sessionStorage.getItem(`isAuthenticated`) === `true`;
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
@@ -42,3 +41,4 @@ export const Admin = () => {
     </>
   );
 };
+export default Admin;

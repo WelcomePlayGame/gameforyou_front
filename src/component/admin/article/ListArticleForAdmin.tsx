@@ -68,7 +68,7 @@ export const ListArticleForAdmin = () => {
                         URL_FOR_BACK.DELETE,
                       article.id
                     );
-                    window.location.reload();
+                    // window.location.reload();
                   }}
                 >
                   Delete

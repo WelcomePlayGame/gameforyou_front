@@ -5,7 +5,7 @@ import { formDate } from "../../../helper/FormData";
 import { Helmet } from "react-helmet";
 import words from "../../../wordsvariable/WORDS";
 import { Breadcrumbs } from "../../../Breadcrumbs/Breadcrumbs";
-export const ListArticle = () => {
+const ListArticle = () => {
   const [articles, setArticles] = useState<ResponseArticle[]>([]);
   const [visibleNewsCount, setVisibleNewsCount] = useState(8);
   useEffect(() => {
@@ -134,3 +134,4 @@ export const ListArticle = () => {
     </section>
   );
 };
+export default ListArticle;

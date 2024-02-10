@@ -3,7 +3,13 @@ import { URL_FOR_BACK } from "../helper/URL";
 import words from "../wordsvariable/WORDS";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-export const SectionGame = () => {
+import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+// import required modules
+import { Pagination } from "swiper/modules";
+const SectionGame = () => {
   const [games, setGames] = useState<ResponseDataCategory[]>([]);
 
   useEffect(() => {
@@ -26,6 +32,28 @@ export const SectionGame = () => {
             </Link>
           </div>
         ))}
+        {/* <Swiper
+          slidesPerView={3}
+          spaceBetween={10}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          {games.map((game) => (
+            <SwiperSlide key={game.id} className="section_game_box">
+              <Link to={`/game/${game.url_post}`}>
+                <img
+                  src={`${game.posterVertical_urs?.poster_300x300}`}
+                  alt={game.title}
+                  className="section_game_img"
+                  loading="lazy"
+                />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper> */}
       </div>
       <Link to={`/games`} className="section_game_a">
         <span className="section_game_a_span">{words.GAMES_REVIEWS}</span>
@@ -33,3 +61,5 @@ export const SectionGame = () => {
     </section>
   );
 };
+
+export default SectionGame;

@@ -1,12 +1,12 @@
 import words from "../wordsvariable/WORDS";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { getArticle, ResponseArticle } from "../helper/MethodGet";
 import { URL_FOR_BACK } from "../helper/URL";
 import { Link } from "react-router-dom";
 import { formDate } from "../helper/FormData";
-import { SectionGame } from "./SectionGame";
+import SectionGame from "../component/SectionGame";
 
-export const BlogPostRight = () => {
+const BlogPostRight = () => {
   const [news, setNews] = useState<ResponseArticle[]>([]);
   const [visibleNewsCount, setVisibleNewsCount] = useState(6);
 
@@ -23,7 +23,7 @@ export const BlogPostRight = () => {
   return (
     <div className="block_post_right">
       <div className="block_box_post">
-        <h5 className="block_post_right_h5">{words.LatestGamingNews}</h5>
+        <h1 className="block_post_right_h5">{words.LatestGamingNews}</h1>
         <ul className="block_post_ul">
           {news.slice(0, visibleNewsCount).map((elem) => (
             <li key={elem.id} className="block_post_li">
@@ -56,3 +56,4 @@ export const BlogPostRight = () => {
     </div>
   );
 };
+export default BlogPostRight;

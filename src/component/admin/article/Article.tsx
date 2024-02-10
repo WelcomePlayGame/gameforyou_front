@@ -10,7 +10,7 @@ import { formDate } from "../../../helper/FormData";
 import { SelectStar } from "../../comments/SelectStar";
 import { WriteCommentForArticle } from "../../comments/WriteCommentForArticle";
 
-export const Article = () => {
+const Article = () => {
   const [article, setArticle] = useState<ResponseArticle>();
   const { url_post } = useParams();
   const [rating, setRating] = useState<number>(0);
@@ -248,3 +248,4 @@ export const Article = () => {
     </>
   );
 };
+export default Article;

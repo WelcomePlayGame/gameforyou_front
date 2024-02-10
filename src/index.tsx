@@ -1,9 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./App";
 import "./css/Style.css";
-// import * as serviceWorker from "./serviceWorker"; // Эта строка должна присутствовать
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      const registration = await navigator.serviceWorker.register(
+        "./service-worker.js" // Измененный путь к файлу сервисного работника
+      );
+      console.log("Service Worker registered:", registration);
+    } catch (error) {
+      console.error("Service Worker registration failed:", error);
+    }
+  });
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,4 +23,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-// serviceWorker.register();

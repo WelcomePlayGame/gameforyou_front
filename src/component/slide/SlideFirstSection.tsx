@@ -23,8 +23,16 @@ export const SlideFirstSectiont = () => {
                 className="slider_wrapper_a"
               >
                 <picture>
+                  <source
+                    srcSet={`${articles[0]?.posterUrls.posterUrl1024x768}`}
+                    media="(min-width: 1200px)"
+                  />
+                  <source
+                    srcSet={`${articles[0]?.posterUrls.posterUrl1024x768}`}
+                    media="(min-width: 992px)"
+                  />
                   <img
-                    src={articles[0]?.posterUrls?.posterUrl1024x768}
+                    src={articles[0]?.posterUrls?.posterUrl480x320}
                     alt={articles[0]?.title}
                     className="slide_top_img"
                     loading="lazy"
@@ -49,8 +57,16 @@ export const SlideFirstSectiont = () => {
                 className="slider_wrapper_a"
               >
                 <picture>
+                  <source
+                    srcSet={`${articles[1]?.posterUrls.posterUrl1024x768}`}
+                    media="(min-width: 1200px)"
+                  />
+                  <source
+                    srcSet={`${articles[1]?.posterUrls.posterUrl1024x768}`}
+                    media="(min-width: 992px)"
+                  />
                   <img
-                    src={articles[1]?.posterUrls?.posterUrl1024x768}
+                    src={articles[1]?.posterUrls?.posterUrl480x320}
                     alt={articles[1]?.title}
                     className="slide_top_img"
                     loading="lazy"
@@ -84,7 +100,7 @@ export const SlideFirstSectiont = () => {
                     loading="lazy"
                   />
                 </picture>
-                <div className="slide_box_title_img">
+                <div className="slide_box_title_img slide_top_title_bottom">
                   <span className="slide_top_title">{articles[2]?.title}</span>
                   <span className="slide_top_com_count">
                     <img
@@ -110,7 +126,7 @@ export const SlideFirstSectiont = () => {
                     loading="lazy"
                   />
                 </picture>
-                <div className="slide_box_title_img">
+                <div className="slide_box_title_img slide_top_title_bottom">
                   <span className="slide_top_title">{articles[3]?.title}</span>
                   <span className="slide_top_com_count">
                     <img
@@ -136,7 +152,7 @@ export const SlideFirstSectiont = () => {
                     loading="lazy"
                   />
                 </picture>
-                <div className="slide_box_title_img">
+                <div className="slide_box_title_img slide_top_title_bottom">
                   <span className="slide_top_title">{articles[4]?.title}</span>
                   <span className="slide_top_com_count">
                     <img
