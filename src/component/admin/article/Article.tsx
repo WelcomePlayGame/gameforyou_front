@@ -105,6 +105,33 @@ const Article = () => {
         <Helmet>
           <title>{article?.seo_title}</title>
           <meta name="description" content={article?.seo_des} />
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "NewsArticle",
+              mainEntityOfPage: {
+                "@type": "WebPage",
+                "@id": window.location.href,
+              },
+              headline: `${article?.title}`,
+              image: `${article?.posterUrls.posterUrl1024x768}`,
+              datePublished: `${article?.atCreate}`,
+              dateModified: `${article?.atCreate}`,
+              author: {
+                "@type": "Person",
+                name: `GameForYouUA`,
+              },
+              publisher: {
+                "@type": "Organization",
+                name: "GameForYouUA",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "URL_to_your_logo",
+                },
+              },
+              description: `${article?.des}`,
+            })}
+          </script>
         </Helmet>
         <div className="article_box_header">
           <picture>

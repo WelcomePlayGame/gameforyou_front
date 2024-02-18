@@ -28,10 +28,10 @@ export const BlockPost = () => {
                 </a>
               </li>
               <li className="subcribe_li">
-                <a href="https://discord.gg/RFgrFhXJzk" target="_blank">
+                <a href="https://twitter.com/gameforyouUA" target="_blank">
                   <img
                     src={`${process.env.PUBLIC_URL}/icons/discord.png`}
-                    alt="discord"
+                    alt="twitter"
                     className="soc_icons_img"
                   />
                 </a>
