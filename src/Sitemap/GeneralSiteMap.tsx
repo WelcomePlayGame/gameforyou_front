@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { SiteMapGenerator } from "./SiteMapGenerator";
 import { getSiteMap } from "../helper/MethodGet";
 import { URL_FOR_BACK } from "../helper/URL";
-import { url } from "inspector";
 
 export const GeneralSiteMap = () => {
   const [urls, setUrls] = useState<string[]>([]);

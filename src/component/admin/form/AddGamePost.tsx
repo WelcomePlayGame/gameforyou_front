@@ -10,7 +10,9 @@ import { submitGamePost } from "../../../helper/MethodPost";
 import { URL_FOR_BACK } from "../../../helper/URL";
 import words from "../../../wordsvariable/WORDS";
 import { transliterate } from "transliteration";
+import SelectReviewsAdmin from "../../ReviewsAdmin/SelectReviewsAdmin";
 export const AddGamePost = () => {
+  const [revies_admin, setReviewsAdmin] = useState("");
   const [currentLanguage, setCurrentLanguage] = useState<string>("/en");
   const [title, setTitle] = useState("");
   const [des, setDes] = useState("");
@@ -76,6 +78,7 @@ export const AddGamePost = () => {
     memory: memory,
     url_post: url_post,
     series_games: series_games,
+    revies_admin: revies_admin,
   };
 
   const handleIdsUpdate = (id: number[]) => {
@@ -105,7 +108,7 @@ export const AddGamePost = () => {
       platformsSet
     )
       .then(() => {
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((error) => {
         console.error("Ошибка при отправке статьи:", error);
@@ -239,6 +242,11 @@ export const AddGamePost = () => {
             </div>
           </div>
           <div className="addGamePostBoxSection">
+            <div>
+              <SelectReviewsAdmin
+                onChange={(e) => setReviewsAdmin(e.target.value)}
+              />
+            </div>
             <div>
               <SelectGenres
                 onChange={(e) => setGenre(e)}

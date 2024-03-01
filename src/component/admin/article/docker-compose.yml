@@ -1,0 +1,44 @@
+version: "3"
+services:
+  database_game:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - /postgres/test:/var/lib/postgresql/data
+    command: ["postgres", "-c", "listen_addresses=*", "-p", "5435"]
+    networks:
+      - my_network
+    ports:
+      - "5435:5435"
+
+  game_back:
+    image: mevaro/misha_back:latest
+    volumes:
+      - "/root/upload/:/app/upload/"
+      - /etc/letsencrypt/:/etc/letsencrypt/
+    environment:
+      - UPLOAD_PRODCT=/app/upload/product/
+      - URL_BASE=http://smartchoicecn.com.ua:7070
+      - URL_DATABASE=jdbc:postgresql://database_game:5435/postgres
+    networks:
+      - my_network
+    ports:
+      - "7070:7070"
+
+  game_front:
+    image: mevaro/misha
+    networks:
+      - my_network
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt/:/etc/letsencrypt/
+      - /etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+
+networks:
+  my_network:
+    driver: bridge

@@ -11,7 +11,9 @@ import { URL_FOR_BACK } from "../../../helper/URL";
 import words from "../../../wordsvariable/WORDS";
 import { useParams } from "react-router-dom";
 import { getGameById } from "../../../helper/MethodGet";
+import SelectReviewsAdmin from "../../ReviewsAdmin/SelectReviewsAdmin";
 export const UpdateGame = () => {
+  const [revies_admin, setReviewsAdmin] = useState("");
   const { url_post } = useParams();
   const [id, setId] = useState<number>();
   const [currentLanguage, setCurrentLanguage] = useState<string>("/en");
@@ -64,9 +66,6 @@ export const UpdateGame = () => {
       setSeoTitle(data.seo_title!);
       setSeoDes(data.seo_des!);
       setUrlGame(data.url_game!);
-      setDataTime(
-        data.datatime ? new Date(data.datatime).toLocaleDateString() : ""
-      );
       setOS(data.os!);
       setMinProcessor(data.minProcessor!);
       setMaxProcessor(data.maxProcessor!);
@@ -76,6 +75,7 @@ export const UpdateGame = () => {
       setLan(data.lan!);
       setMemory(data.memory!);
       setSeries_games(data.series_games);
+      setReviewsAdmin(data.revies_admin);
     });
   }, [currentLanguage]);
   const gamepost = {
@@ -103,6 +103,7 @@ export const UpdateGame = () => {
     memory: memory,
     url_post: url_post,
     series_games: series_games,
+    revies_admin: revies_admin,
   };
 
   const handleIdsUpdate = (id: number[]) => {
@@ -248,6 +249,11 @@ export const UpdateGame = () => {
             </div>
           </div>
           <div className="addGamePostBoxSection">
+            <div>
+              <SelectReviewsAdmin
+                onChange={(e) => setReviewsAdmin(e.target.value)}
+              />
+            </div>
             <div>
               <SelectGenres
                 onChange={(e) => setGenre(e)}

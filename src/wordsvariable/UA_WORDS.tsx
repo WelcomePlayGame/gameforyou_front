@@ -106,4 +106,11 @@ export const UA_WORDS: WORDS_Tem = {
   GAME_NEWS: "Ігрові Новини",
   EVERYONE_IS_DISCUSSING: "Всі обговорюють",
   PUSH_ON: "Натисніть",
+  GAMES: "Ігри",
+  OPERATING_SYSTEM: "Операційна система",
+  MIN_PROCESSOR: "Мін.процесор",
+  REC_PROCESSOR: "Рек.процесор",
+  LAN: "Мережа",
+  MEMORY: "Вільне місце на диску",
+  AUTHOR_RATING: "Оцінка автора",
 };

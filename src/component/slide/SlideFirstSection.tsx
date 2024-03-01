@@ -101,7 +101,9 @@ export const SlideFirstSectiont = () => {
                   />
                 </picture>
                 <div className="slide_box_title_img slide_top_title_bottom">
-                  <span className="slide_top_title">{articles[2]?.title}</span>
+                  <span className="slide_top_title bottom_title">
+                    {articles[2]?.title}
+                  </span>
                   <span className="slide_top_com_count">
                     <img
                       src={`${process.env.PUBLIC_URL}/icons/com.png`}
@@ -127,7 +129,9 @@ export const SlideFirstSectiont = () => {
                   />
                 </picture>
                 <div className="slide_box_title_img slide_top_title_bottom">
-                  <span className="slide_top_title">{articles[3]?.title}</span>
+                  <span className="slide_top_title bottom_title">
+                    {articles[3]?.title}
+                  </span>
                   <span className="slide_top_com_count">
                     <img
                       src={`${process.env.PUBLIC_URL}/icons/com.png`}
@@ -153,7 +157,9 @@ export const SlideFirstSectiont = () => {
                   />
                 </picture>
                 <div className="slide_box_title_img slide_top_title_bottom">
-                  <span className="slide_top_title">{articles[4]?.title}</span>
+                  <span className="slide_top_title bottom_title">
+                    {articles[4]?.title}
+                  </span>
                   <span className="slide_top_com_count">
                     <img
                       src={`${process.env.PUBLIC_URL}/icons/com.png`}

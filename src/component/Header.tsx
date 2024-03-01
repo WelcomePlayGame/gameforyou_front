@@ -21,7 +21,8 @@ export const Header = () => {
   const location = useLocation();
   const isHeader =
     location.pathname.startsWith("/admin") ||
-    location.pathname.startsWith("/login");
+    location.pathname.startsWith("/login") ||
+    location.pathname.startsWith("/rss");
   const handleChangeLanguage = (newLanguageCode: string) => {
     window.location.href = `https://gameforyou.online/${newLanguageCode}`;
   };

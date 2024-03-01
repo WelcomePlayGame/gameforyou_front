@@ -6,6 +6,9 @@ import { Helmet } from "react-helmet";
 import words from "../wordsvariable/WORDS";
 import { ButtonComment } from "../component/comments/ButtonComment";
 import { SlideCaruselGame } from "../component/CaruselSerialGame/SlideCaruselGame";
+import { CommentGame } from "../component/comments/CommentGame";
+import Details from "../component/details/Details";
+
 const HeaderGame = () => {
   const [isClose, setIsClose] = useState(false);
   const { url_post } = useParams<string>();
@@ -22,8 +25,18 @@ const HeaderGame = () => {
   const handleClose = () => {
     setIsClose(!isClose);
   };
-
-  const createMarkup = (html: string) => ({ __html: html });
+  const createMarkup = (html: string | undefined) => ({ __html: html });
+  const isReviews = (value: string) => {
+    if (value === "bad") {
+      return "../img/angry.png";
+    } else if (value === "good") {
+      return "../img/good.png";
+    } else if (value === "super_good") {
+      return "../img/super_good.png";
+    } else if (value === null) {
+      return "../img/good.png";
+    }
+  };
   return (
     <section className="game_page">
       <Helmet>
@@ -131,11 +144,25 @@ const HeaderGame = () => {
                   )}
                 </span>
               </div>
+              <Details game={game} />
             </div>
             <div className="game_box_body_left_rating">
               <div className="game_left_rating">
-                <div>
-                  <span>{words.USER_RATING}</span>
+                <div className="review_general_box">
+                  <span>Оценка автора</span>
+                  <span>
+                    <img
+                      src={isReviews(game?.revies_admin as string)}
+                      alt="review admin"
+                      className="review_admin_img"
+                    />
+                  </span>
+                  <hr className="hr_review_general_box" />
+                  {game?.commentSet.length !== 0 ? (
+                    <span>{words.USER_RATING}</span>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
               <div></div>
@@ -158,7 +185,7 @@ const HeaderGame = () => {
                   id={game?.id}
                 />
               )}
-              {/* <CommentGame /> */}
+              {/* {game?.commentSet !== null ? <CommentGame /> : ""} */}
             </div>
             <div
               dangerouslySetInnerHTML={

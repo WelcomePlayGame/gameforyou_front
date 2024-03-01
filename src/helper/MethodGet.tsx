@@ -113,6 +113,7 @@ export interface Game {
     title: string;
   }[];
   series_games: string;
+  revies_admin: string;
 }
 
 type DataGet<T> = (url: T) => Promise<ResponseDataCategory[]>;

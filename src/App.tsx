@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { NotFound } from "./component/404/NotFound";
 import { Security } from "./component/admin/security/Security";
 import React, { Suspense } from "react";
+import RSSForyandex from "./component/RSSForyandex.tsx";
 const Body = React.lazy(() => import("./pages/Body.tsx"));
 const ListGame = React.lazy(() => import("./list/ListGame.tsx"));
 const ListArticle = React.lazy(
@@ -126,6 +127,14 @@ function App() {
             element={
               <Suspense>
                 <RSS />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/rss_ya.xml"
+            element={
+              <Suspense>
+                <RSSForyandex />
               </Suspense>
             }
           />

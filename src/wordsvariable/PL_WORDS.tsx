@@ -106,4 +106,11 @@ export const PL_WORDS: WORDS_Tem = {
   GAME_NEWS: "Wiadomości z gry",
   EVERYONE_IS_DISCUSSING: "Wszyscy dyskutują",
   PUSH_ON: "Napierać",
+  GAMES: "Gry",
+  OPERATING_SYSTEM: "System operacyjny",
+  MIN_PROCESSOR: "Min.procesor",
+  REC_PROCESSOR: "Procesor rec",
+  LAN: "Lan",
+  MEMORY: "Wolne miejsce na dysku",
+  AUTHOR_RATING: "Ocena autora",
 };

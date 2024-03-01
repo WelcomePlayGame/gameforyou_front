@@ -102,6 +102,13 @@ export interface WORDS_Tem {
   GAME_NEWS: string;
   EVERYONE_IS_DISCUSSING: string;
   PUSH_ON: string;
+  GAMES: string;
+  OPERATING_SYSTEM: string;
+  MIN_PROCESSOR: string;
+  REC_PROCESSOR: string;
+  LAN: string;
+  MEMORY: string;
+  AUTHOR_RATING: string;
 }
 
 let words: WORDS_Tem;

@@ -105,4 +105,11 @@ export const EN_WORDS: WORDS_Tem = {
   GAME_NEWS: "Game News",
   EVERYONE_IS_DISCUSSING: "Everyone is discussing",
   PUSH_ON: "Push On",
+  GAMES: "Games",
+  OPERATING_SYSTEM: "Operating system",
+  MIN_PROCESSOR: "Min.processor",
+  REC_PROCESSOR: "Rec.processor",
+  LAN: "Lan",
+  MEMORY: "Free disk space",
+  AUTHOR_RATING: "Author's rating",
 };

@@ -106,4 +106,11 @@ export const RU_WORDS: WORDS_Tem = {
   GAME_NEWS: "Игровые Новости",
   EVERYONE_IS_DISCUSSING: "Все обсуждают",
   PUSH_ON: "Нажать",
+  GAMES: "Игри",
+  OPERATING_SYSTEM: "Операционная система",
+  MIN_PROCESSOR: "Мин.процессор",
+  REC_PROCESSOR: "Рек.процессор",
+  LAN: "Сеть",
+  MEMORY: "Свободное место на диске",
+  AUTHOR_RATING: "Оценка автора",
 };
